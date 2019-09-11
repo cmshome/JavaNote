@@ -34,3 +34,30 @@ ext {
     fastjsonVersion = '1.2.58'
 }
 
+
+
+task packVertxCopyElasticDataAll(dependsOn: [':vertx:copyElasticData:packJarWithDependencies']) {
+
+    File dir = new File(rootDir.getAbsolutePath() + '/package')
+    dir.deleteDir()
+    dir.mkdir()
+
+    doLast {
+        copy {
+            from 'vertx/copyElasticData/build/libs/copy-elastic-data-all-1.0-SNAPSHOT.jar'
+            into 'package/libs'
+        }
+
+        copy {
+            from 'vertx/copyElasticData/startup.sh'
+            into 'package/bin/'
+        }
+
+        copy {
+            from 'vertx/copyElasticData/conf/log4j.json'
+            from 'vertx/copyElasticData/conf/es.conf'
+            into 'package/conf/'
+        }
+    }
+
+}

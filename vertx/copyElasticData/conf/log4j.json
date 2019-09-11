@@ -1,0 +1,34 @@
+{
+  "configuration": {
+    "appenders": {
+      "Console": {
+        "name": "STDOUT",
+        "PatternLayout": {
+          "pattern": "[%-5p] %d{yyyy-MM-dd HH:mm:ss,SSS} [%c] - %m %n"
+        }
+      },
+      "RollingFile": {
+        "name": "RollingFile",
+        "fileName": "logs/info.log",
+        "filePattern": "logs/info-%d{yyyy-MM-dd}.log",
+        "PatternLayout": {
+          "pattern": "[%-5p] %d{yyyy-MM-dd HH:mm:ss,SSS} [%c] - %m %n"
+        },
+        "Policies": {
+          "TimeBasedTriggeringPolicy": {
+            "interval": 1,
+            "modulate": true
+          }
+        }
+      }
+    },
+    "loggers": {
+      "root": {
+        "level": "info",
+        "AppenderRef": {
+          "ref": "STDOUT"
+        }
+      }
+    }
+  }
+}
