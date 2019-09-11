@@ -1,0 +1,36 @@
+group 'com.lxk.note'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+//做全局配置
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+    apply plugin: 'java'
+
+    tasks.withType(JavaCompile){
+        options.encoding = "UTF-8"
+    }
+
+    repositories {
+        mavenLocal()
+        maven {
+            url "http://192.168.1.155:8081/nexus/content/groups/ezsonarGroup/"
+        }
+        mavenCentral()
+    }
+}
+
+
+ext {
+    vertxVersion = '3.3.2'
+    guavaVersion = '23.0'
+    lombokVersion = '1.18.8'
+    junitVersion = '4.12'
+    log4jVersion = '2.8.2'
+    fastjsonVersion = '1.2.58'
+}
+

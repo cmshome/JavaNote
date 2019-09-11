@@ -1,0 +1,10 @@
+group 'com.lxk.note'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    //common tools jar dependencies
+    compile group: 'com.google.guava', name: 'guava', version: "${guavaVersion}"
+    compile group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+    compile group: 'com.alibaba', name: 'fastjson', version: "${fastjsonVersion}"
+}

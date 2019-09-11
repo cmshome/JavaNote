@@ -1,0 +1,12 @@
+rootProject.name = 'JavaNote'
+include 'tool'
+include 'jdk'
+include 'jdk8'
+include 'guava'
+include 'vertx'
+include 'elasticSearch'
+include 'doc'
+include 'springMVC'
+include 'lombok'
+include 'json'
+
