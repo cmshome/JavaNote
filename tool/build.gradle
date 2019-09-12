@@ -7,4 +7,5 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: "${guavaVersion}"
     compile group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
     compile group: 'com.alibaba', name: 'fastjson', version: "${fastjsonVersion}"
+    compile group: 'junit', name: 'junit', version: "${junitVersion}"
 }

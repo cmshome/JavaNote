@@ -13,7 +13,6 @@ dependencies {
     compile("org.elasticsearch:elasticsearch:5.6.0") {
         exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
     }
-    testCompile group: 'junit', name: 'junit', version: "${junitVersion}"
 }
 
 //对项目打带依赖带jar包的task
