@@ -1,0 +1,9 @@
+group 'com.lxk.note'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    compile project(':tool')
+    compile group: 'cglib', name: 'cglib-nodep', version: '2.2'
+
+}

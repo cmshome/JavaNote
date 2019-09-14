@@ -4,4 +4,9 @@ version '1.0-SNAPSHOT'
 
 dependencies {
     compile project(':tool')
+    compile project(':bean')
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.11'
+
+
 }

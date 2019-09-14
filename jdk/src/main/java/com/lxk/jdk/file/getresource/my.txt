@@ -1,0 +1,14 @@
+我写完文章，给自己点个赞，不过分吧，
+
+不过分，那我可就点啦啊。
+
+我先点为敬，你们随意。大家随意。不要客气。。。
+
+
+测试读文件用的
+
+XXX.class.getResourceAsStream()
+XXX.class.getResource()
+的用法
+
+本文件在当前运行Java文件的同一目录下

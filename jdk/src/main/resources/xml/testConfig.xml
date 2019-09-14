@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <stream>
+        <streamId>576a32b7393048060fdeb463,57198f91c5e62fca950103fd</streamId>
+        <name>借记卡及贷记卡总量</name>
+    </stream>
+    <stream>
+        <streamId>57ba9ea8e4b040a7317c86a0,57f88f52e4b0fbcf8381665f</streamId>
+        <name>支付宝-借记卡</name>
+    </stream>
+    <stream>
+        <streamId>580f0b32e4b034a9cf9eaaa6</streamId>
+        <name>支付宝-贷记卡</name>
+    </stream>
+    <stream>
+        <streamId>580f058ee4b034a9cf9eaaa2</streamId>
+        <name>财付通-借记卡</name>
+    </stream>
+    <stream>
+        <streamId>57918dade4b0e55b2369e165</streamId>
+        <name>财付通-贷记卡</name>
+    </stream>
+    <stream>
+        <streamId>579af7c3e4b0c5e678ed9853</streamId>
+        <name>其他借记卡快捷类交易</name>
+    </stream>
+    <stream>
+        <streamId>580f0c2ae4b034a9cf9eaaa8</streamId>
+        <name>其他贷记卡快捷类交易</name>
+    </stream>
+</root>
