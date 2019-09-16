@@ -17,7 +17,7 @@ public class House {
     /**
      * 默认值就是0，可以不写。
      */
-    @JSONField(ordinal = 0)
+    @JSONField()
     private int size;
     @JSONField(ordinal = 1)
     private int prize;

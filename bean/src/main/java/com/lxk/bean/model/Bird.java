@@ -21,10 +21,10 @@ import java.util.Date;
 public class Bird implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JSONField(ordinal = 6, name = "内容是json字符串的属性", jsonDirect = true)
+    @JSONField(ordinal = 6, name = "dog1属性", jsonDirect = true)
     private String dog1;
 
-    @JSONField(ordinal = 5, name = "内容是json字符串的属性,对比下差异")
+    @JSONField(ordinal = 5, name = "dog2属性")
     private String dog2;
 
     /**
