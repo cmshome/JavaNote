@@ -1,0 +1,12 @@
+group 'com.lxk.note'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    compile project(':tool')
+    compile group: 'io.vertx', name: 'vertx-core', version: "${vertxVersion}"
+    compile group: 'io.vertx', name: 'vertx-web', version: "${vertxVersion}"
+    compile group: 'io.vertx', name: 'vertx-hazelcast', version: "${vertxVersion}"
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4jVersion}"
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4jVersion}"
+}

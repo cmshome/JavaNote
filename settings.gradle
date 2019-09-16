@@ -14,4 +14,6 @@ include 'springMVC'
 include 'tool'
 include 'vertx:copyElasticData'
 findProject(':vertx:copyElasticData')?.name = 'copyElasticData'
+include 'vertx:webSocket'
+findProject(':vertx:webSocket')?.name = 'webSocket'
 
