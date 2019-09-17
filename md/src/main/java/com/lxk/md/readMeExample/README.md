@@ -304,6 +304,8 @@ string &operator+(const string& A,const string& B) //cpp
 | 图片 | 描述 |
 | ---- | ---- |
 |![baidu][baidu-logo] | 百度|
+|![weibo][weibo-logo] | weibo|
+|![csdn][csdn-logo] | csdn|
 
 表情
 ----------
