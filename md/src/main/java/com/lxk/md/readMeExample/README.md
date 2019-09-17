@@ -304,8 +304,8 @@ string &operator+(const string& A,const string& B) //cpp
 | 图片 | 描述 |
 | ---- | ---- |
 |![baidu][baidu-logo] | 百度|
-|![weibo](../img/weibo.png "点击图片进入我的微博") | weibo|
-|![csdn](md/src/main/java/com/lxk/md/readMeExample/img/csdn.png "我的CSDN博客") | csdn|
+|![weibo][weibo-logo] | weibo|
+|![csdn][csdn-logo] | csdn|
 
 表情
 ----------
@@ -322,6 +322,6 @@ Github的Markdown语法支持添加emoji表情，输入不同的符号码（两�
 [zhihu]:https://www.zhihu.com/people/jellywong "我的知乎，欢迎关注"
 [weibo]:http://weibo.com/linpiaochen
 [baidu-logo]:http://www.baidu.com/img/bdlogo.gif "百度logo"
-[weibo-logo]:md/src/main/java/com/lxk/md/readMeExampleple/img/weibo.png "点击图片进入我的微博"
-[csdn-logo]:md/src/main/java/com/lxk/md/readMeExample/img/csdn.png "我的CSDN博客"
+[weibo-logo]:https://github.com/cmshome/JavaNote/tree/master/md/src/main/java/com/lxk/md/readMeExample/img/weibo.png "点击图片进入我的微博"
+[csdn-logo]:https://github.com/cmshome/JavaNote/tree/master/md/src/main/java/com/lxk/md/readMeExample/img/img/csdn.png "我的CSDN博客"
 [foryou]:https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif
