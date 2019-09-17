@@ -304,7 +304,7 @@ string &operator+(const string& A,const string& B) //cpp
 | 图片 | 描述 |
 | ---- | ---- |
 |![baidu][baidu-logo] | 百度|
-|![weibo](md/src/main/java/com/lxk/md/readMeExampleple/img/weibo.png "点击图片进入我的微博") | weibo|
+|![weibo](../img/weibo.png "点击图片进入我的微博") | weibo|
 |![csdn](md/src/main/java/com/lxk/md/readMeExample/img/csdn.png "我的CSDN博客") | csdn|
 
 表情
