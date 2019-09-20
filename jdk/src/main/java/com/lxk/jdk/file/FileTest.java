@@ -1,5 +1,7 @@
 package com.lxk.jdk.file;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,6 +20,16 @@ public class FileTest {
         //testRenameFile();
         testIsDir();
 
+    }
+
+    @Test
+    public void test(){
+        String configDataFilePath = "";
+        File file = new File(configDataFilePath);
+        String[] fileArray = file.list();
+        if (fileArray == null) {
+            System.out.println("---");
+        }
     }
 
     /**

@@ -3,6 +3,7 @@ package com.lxk.jdk8.date;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
 /**
@@ -15,6 +16,18 @@ import java.time.temporal.TemporalAdjusters;
  * @author LiXuekai on 2019/9/12
  */
 public class LocalDateTest {
+
+    @Test
+    public void parseTest(){
+        LocalDate endOfDec = LocalDate.parse("2017-12-28");
+        //xxxx不能这么做
+        DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate parse = LocalDate.parse("20181011", yyyyMMdd);
+        System.out.println(parse);
+        String format = yyyyMMdd.format(parse);
+        System.out.println(format);
+
+    }
 
     /**
      * jdk 1.8 中的 localDate 的使用

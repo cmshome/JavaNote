@@ -19,6 +19,12 @@ import java.text.NumberFormat;
 public class DoubleTest {
 
 
+    @Test
+    public void test() {
+        Double add = DoubleUtil.add(1.11, 2.22);
+        System.out.println(add);
+    }
+
     /**
      * 测试值为 infinity（无穷 ∞ ） 的情况
      */

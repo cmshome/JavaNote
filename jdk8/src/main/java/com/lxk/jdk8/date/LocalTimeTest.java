@@ -1,8 +1,11 @@
 package com.lxk.jdk8.date;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.junit.Test;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.*;
 
 /**
  * LocalTime Test
@@ -14,6 +17,27 @@ import java.time.LocalTime;
  * @author LiXuekai on 2019/9/12
  */
 public class LocalTimeTest {
+
+    public static void main(String[] args) {
+        ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("File-Config-Center-Monitor-Thread-Pool").build();
+        ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(1, monitorThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+        monitorSchedule.scheduleWithFixedDelay(LocalTimeTest::monitorConfigFileChange, 0, 1, TimeUnit.MINUTES);
+    }
+
+
+    private static void monitorConfigFileChange() {
+        LocalTime localTime = LocalTime.now();
+        String hhMM = localTime.format(DateTimeFormatter.ofPattern("HHmm"));
+        System.out.println(hhMM);
+    }
+
+
+    @Test
+    public void localTimeFormatTest() {
+        LocalTime now = LocalTime.now();
+        String hhMM = now.format(DateTimeFormatter.ofPattern("HHmm"));
+        System.out.println(hhMM);
+    }
 
     /**
      * jdk 1.8 中的 LocalTime 的使用
