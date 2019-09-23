@@ -22,11 +22,14 @@ public class ListTest {
 
     }
 
+    /**
+     * 左闭右开
+     */
     @Test
-    public void subListTest(){
-        List<String> list = Lists.newArrayList("1","2","3","4","5","6");
+    public void subListTest() {
+        List<String> list = Lists.newArrayList("0", "1", "2", "3", "4", "5", "6");
         System.out.println(list.toString());
-        List<String> subList = list.subList(1, list.size());
+        List<String> subList = list.subList(0, 5);
         System.out.println(subList.toString());
     }
 }

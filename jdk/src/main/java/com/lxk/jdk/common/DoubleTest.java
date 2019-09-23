@@ -23,6 +23,13 @@ public class DoubleTest {
     public void test() {
         Double add = DoubleUtil.add(1.11, 2.22);
         System.out.println(add);
+        double sub = DoubleUtil.sub(1.11, 2.22);
+        System.out.println(sub);
+        //会自动转科学计数法：1.2345678998765123E13
+        double bigData = 12345678998765.123D;
+        System.out.println(bigData);
+        long bigLong = 123456789987654L;
+        System.out.println(bigLong);
     }
 
     /**
