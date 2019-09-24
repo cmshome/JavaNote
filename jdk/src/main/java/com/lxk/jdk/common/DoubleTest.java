@@ -32,6 +32,15 @@ public class DoubleTest {
         System.out.println(bigLong);
     }
 
+    @Test
+    public void getTotalAmount() {
+        Double inData = 2.22D;
+        Double outData = 1.11D;
+        Double configData = 3.33D;
+        Double sub = DoubleUtil.sub(inData, outData);
+        Double add = DoubleUtil.add(sub, configData);
+        System.out.println(add);
+    }
     /**
      * 测试值为 infinity（无穷 ∞ ） 的情况
      */
