@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * 为测试代码块而写的model
  * <p>
+ *
  * @author lxk on 2017/2/16
  */
 @Data
@@ -13,11 +14,13 @@ public class CodeBlockModel {
     private String age;
     private String job;
 
-    /*
-     * 代码块
-     */
+    static {
+        System.out.println("静态 构造代码块");
+    }
+
     {
         System.out.println("构造代码块");
+        this.name = "default name";
     }
 
     public CodeBlockModel() {
@@ -29,6 +32,10 @@ public class CodeBlockModel {
         this.name = name;
         this.age = age;
         this.job = job;
+    }
+
+    public static void out(){
+         System.out.println("静态代码的执行的时候。。。。");
     }
 
 }
