@@ -18,6 +18,15 @@ import java.text.NumberFormat;
  */
 public class DoubleTest {
 
+    /**
+     * double 2 long
+     */
+    @Test
+    public void double2Long() {
+        Double dd = 123.2D;
+        long longValue = dd.longValue();
+        System.out.println(longValue);
+    }
 
     @Test
     public void test() {
@@ -41,6 +50,7 @@ public class DoubleTest {
         Double add = DoubleUtil.add(sub, configData);
         System.out.println(add);
     }
+
     /**
      * 测试值为 infinity（无穷 ∞ ） 的情况
      */
