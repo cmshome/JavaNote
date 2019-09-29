@@ -19,7 +19,7 @@ public class TableTest {
      */
     @Test
     public void test() {
-        Table<Integer, Integer, Integer> table = HashBasedTable.<Integer, Integer, Integer>create();
+        Table<Integer, Integer, Integer> table = HashBasedTable.create();
         table.put(1,1,1);
         System.out.println(table.get(1,1));
     }

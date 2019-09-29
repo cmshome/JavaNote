@@ -25,9 +25,9 @@ public class RegexTest {
      */
     private static Pattern RANGE_PATTERN = Pattern.compile("^(-?\\d+)(\\.\\d+)?$");
     /**
-     * * 任意字符，，，包含这个的字符串都行能匹配上
+     * * 点代表任意字符，，，包含这个的字符串都行能匹配上
      */
-    private Pattern pattern = Pattern.compile("123*456");
+    private Pattern pattern = Pattern.compile("123.456");
 
 
     @Test
