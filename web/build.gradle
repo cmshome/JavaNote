@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.lxk.note'
+version '1.0-SNAPSHOT'
+
+ext {
+    springVersion = '5.1.3.RELEASE'
+    slf4jVersion = '1.7.5'
+}
+
+dependencies {
+    compile project(':tool')
+
+    //Spring MVC support
+    compile("org.springframework:spring-webmvc:5.1.3.RELEASE") {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
+
+    //log
+    compile group: 'org.slf4j', name: 'slf4j-api', version: "${slf4jVersion}"
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: "${slf4jVersion}"
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: "${slf4jVersion}"
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    //Servlet
+    compile("org.apache.tomcat:tomcat-servlet-api:7.0.30")
+    compile("javax.servlet.jsp:jsp-api:2.1")
+    compile("javax.servlet.jsp.jstl:jstl-api:1.2") {
+        exclude group: 'javax.servlet', module: 'servlet-api'
+    }
+    compile("org.glassfish.web:jstl-impl:1.2") {
+        exclude group: 'javax.servlet', module: 'servlet-api'
+    }
+
+    //AspectJ
+    compile("org.aspectj:aspectjrt:1.6.10")
+    compile("org.aspectj:aspectjweaver:1.7.2")
+
+    //mongo
+    compile("org.springframework.data:spring-data-mongodb:2.1.1.RELEASE") {
+        exclude group: 'spring-core', module: 'org.springframework'
+        exclude group: 'spring-beans', module: 'org.springframework'
+        exclude group: 'slf4j-api', module: 'org.slf4j'
+        exclude group: 'jcl-over-slf4j', module: 'org.slf4j'
+        exclude group: 'spring-context', module: 'org.springframework'
+        exclude group: 'spring-expression', module: 'org.springframework'
+    }
+
+    //jackson
+    compile("org.codehaus.jackson:jackson-mapper-asl:1.9.13")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.5")
+
+    //swagger2
+    compile("io.springfox:springfox-swagger-ui:2.6.1")
+    compile("io.springfox:springfox-swagger2:2.6.1"){
+        exclude group: 'org.springframework', module: 'spring-core'
+        exclude group: 'org.springframework', module: 'spring-beans'
+        exclude group: 'org.springframework', module: 'spring-context'
+        exclude group: 'org.springframework', module: 'spring-aop'
+        exclude group: 'org.springframework', module: 'spring-web'
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+
+
+    testCompile group: 'org.springframework', name: 'spring-test', version: "${springVersion}"
+
+}
