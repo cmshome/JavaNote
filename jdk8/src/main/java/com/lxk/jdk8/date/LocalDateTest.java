@@ -17,6 +17,50 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class LocalDateTest {
 
+
+    /**
+     * 对时间进行  加减操作。把年月日转成int类型的数字。
+     */
+    @Test
+    public void mathTest() {
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate.format(sf));
+
+        LocalDate localDate1 = localDate.minusYears(1);
+        String format = localDate1.format(sf);
+        System.out.println(format);
+
+        int year = localDate1.getYear();
+        int month = localDate1.getMonthValue();
+        int dayOfMonth = localDate1.getDayOfMonth();
+        System.out.println(year);
+        System.out.println(month);
+        System.out.println(dayOfMonth);
+
+        System.out.println(Integer.parseInt(format));
+
+        System.out.println();
+        System.out.println(getBirthday(10));
+        System.out.println(getBirthday(20));
+    }
+
+    /**
+     * @param age 年纪
+     * @return 这个年纪的日期
+     */
+    private Integer getBirthday(Integer age) {
+        if (age == null) {
+            return null;
+        }
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate localDate = LocalDate.now();
+        LocalDate localDate1 = localDate.minusYears(age);
+        String format = localDate1.format(sf);
+        return Integer.parseInt(format);
+    }
+
+
     @Test
     public void parseTest(){
         LocalDate endOfDec = LocalDate.parse("2017-12-28");

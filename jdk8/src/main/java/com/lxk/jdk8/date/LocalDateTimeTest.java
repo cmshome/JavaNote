@@ -21,6 +21,7 @@ import java.time.temporal.TemporalAdjusters;
 public class LocalDateTimeTest {
 
 
+
     /**
      * 将秒数格式化成日期字符串输出
      */
@@ -125,4 +126,19 @@ public class LocalDateTimeTest {
         //格式化一下
         System.out.println(localDateTime.format(sf));
     }
+
+
+    /**
+     * 对时间进行  加减操作。
+     */
+    @Test
+    public void mathTest() {
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime.format(sf));
+
+        LocalDateTime localDateTime1 = localDateTime.minusYears(1);
+        System.out.println(localDateTime1.format(sf));
+    }
+
 }
