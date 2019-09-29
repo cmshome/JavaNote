@@ -1,0 +1,29 @@
+http://192.168.1.166:9200/ezsonar_2019-09-16/_search
+
+post
+
+
+
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "_trans_ref.amount": {
+              "gt": "8211",
+              "lt": "8213"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 10,
+  "sort": [],
+  "aggs": {}
+}
