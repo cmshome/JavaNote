@@ -4,6 +4,7 @@ post
 
 
 
+只有from to
 
 {
   "query": {
@@ -15,6 +16,39 @@ post
               "gt": "8211",
               "lt": "8213"
             }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 10,
+  "sort": [],
+  "aggs": {}
+}
+
+
+from to + 某个key等于1或者2或者。。。    terms的用法。
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "starttime": {
+              "gte": "1565748000",
+              "lte": "1565755200"
+            }
+          }
+        },
+        {
+          "terms": {
+            "statisticalKey": [
+              "5d269c1f45ce44056a1abcfe",
+              "5d072d892d0e3fe50ef7ec3b"
+            ]
           }
         }
       ],
