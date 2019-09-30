@@ -1,15 +1,19 @@
 package com.lxk.thread.cyclicbarrier;
 
+import java.util.Random;
 import java.util.concurrent.CyclicBarrier;
 
 /**
+ * [ok test]
+ * 同样的代码，使用main方法去运行，就能正常运行，该sleep就sleep，还都能正常summon 神龙。
+ *
  * 可循环使用（Cyclic）的屏障（Barrier）。
  * 它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，
  * 直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。
  *
  * @author lxk on 2018/4/19
  */
-public class CyclicBarrierTest {
+public class CyclicBarrierMainTest {
     private static final Integer THREAD_COUNT_NUM = 7;
 
     public static void main(String[] args) {
@@ -24,14 +28,15 @@ public class CyclicBarrierTest {
             int index = i;
             new Thread(() -> {
                 try {
-                    System.out.println("召集第" + index + "个法师");
+                    int sleepInt = new Random().nextInt(3000);
+                    Thread.sleep(sleepInt);
+                    System.out.println("召集第" + index + "个法师 sleep " + sleepInt);
                     callMasterBarrier.await();
                 } catch (Exception e) {
 
                 }
             }).start();
         }
-
     }
 
     private static void summonDragon() {
@@ -45,7 +50,9 @@ public class CyclicBarrierTest {
             int index = i;
             new Thread(() -> {
                 try {
-                    System.out.println("第" + index + "个龙珠已经收集到。");
+                    int sleepInt = new Random().nextInt(3000);
+                    Thread.sleep(sleepInt);
+                    System.out.println("第" + index + "个龙珠已经收集到。 sleep " + sleepInt);
                     summonDragonBarrier.await();
                 } catch (Exception e) {
 
