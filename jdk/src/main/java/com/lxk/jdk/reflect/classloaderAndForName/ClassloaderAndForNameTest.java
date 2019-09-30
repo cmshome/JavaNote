@@ -11,8 +11,8 @@ package com.lxk.jdk.reflect.classloaderAndForName;
  */
 public class ClassloaderAndForNameTest {
     public static void main(String[] args) {
-        String wholeNameLine = "com.lxk.reflect.classloaderAndForName.Line";
-        String wholeNamePoint = "com.lxk.reflect.classloaderAndForName.Point";
+        String wholeNameLine = "com.lxk.jdk.reflect.classloaderAndForName.Line";
+        String wholeNamePoint = "com.lxk.jdk.reflect.classloaderAndForName.Point";
         System.out.println("下面是测试Classloader的效果");
         testClassloader(wholeNameLine, wholeNamePoint);
         System.out.println("----------------------------------");

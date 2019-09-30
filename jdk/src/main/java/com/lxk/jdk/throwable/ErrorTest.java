@@ -1,7 +1,6 @@
 package com.lxk.jdk.throwable;
 
-import com.lxk.model.Test;
-import com.lxk.programQuestions.Questions;
+import com.lxk.bean.model.Test;
 
 /**
  * 这俩不叫exception，叫error。是throwable接口下主要的2个实现
@@ -34,8 +33,18 @@ public class ErrorTest {
      * 【栈】递归函数炸掉啦
      */
     private static void stackOverflowError() {
-        long result = Questions.questions7(100000);
+        long result = questions7(100000);
         System.out.println(result);
+    }
+
+    /**
+     * 用递归算法写一段程序实现 1+2+...+1000000
+     */
+    private static long questions7(long sum) {
+        if (sum == 0) {
+            return sum;
+        }
+        return sum + questions7(sum - 1);
     }
 
 
