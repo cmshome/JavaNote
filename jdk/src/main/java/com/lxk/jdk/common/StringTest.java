@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -30,6 +31,18 @@ public class StringTest {
         LO_ = "lo";
     }
 
+    @Test
+    public void lengthTest(){
+        String ss = "我是一个小学生";
+        System.out.println(ss.length());
+        try {
+            byte[] bytes = ss.getBytes("utf-8");
+            System.out.println(Arrays.toString(bytes));
+            System.out.println(bytes.length);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void java8() {
