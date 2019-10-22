@@ -25,7 +25,7 @@ public class ScannerTest {
 
 
     public static void main(String[] args) {
-        String s = readFile3("/Users/fang/Downloads/request.xml");
+        String s = readFile3("/Users/fang/Downloads/response.xml");
 
         SAXReader reader = new SAXReader();
         reader.setEncoding("utf-8");
@@ -34,10 +34,13 @@ public class ScannerTest {
             Document read = DocumentHelper.parseText(s);
 
             Element rootElement = read.getRootElement();
+            Element SysHead = rootElement.element("SysHead");
+            Element retInfArry = SysHead.element("RetInfArry");
+            String retCd = retInfArry.element("RetCd").getStringValue();
+            System.out.println(retCd);
+
             Element body = rootElement.element("Body");
-            System.out.println(body.element("SsoToken").getStringValue());
-            body.addAttribute("SsoToken","123");
-            System.out.println(body.element("SsoToken").getStringValue());
+            System.out.println(body.element("LogonNm").getStringValue());
 
         } catch (Exception e) {
             e.printStackTrace();

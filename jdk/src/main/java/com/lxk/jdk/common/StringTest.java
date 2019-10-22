@@ -32,6 +32,11 @@ public class StringTest {
     }
 
     @Test
+    public void subStringTest(){
+        String s = "12345678qwweqwrqqtqtqt";
+        System.out.println(s.substring(8));
+    }
+    @Test
     public void lengthTest(){
         String ss = "我是一个小学生";
         System.out.println(ss.length());
