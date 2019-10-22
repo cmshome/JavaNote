@@ -61,3 +61,228 @@ from to + 某个key等于1或者2或者。。。    terms的用法。
   "sort": [],
   "aggs": {}
 }
+
+from to + 某个key等于1    term 的用法。
+{
+    "query":{
+        "bool":{
+            "must":[
+                {
+                    "term":{
+                        "probe_name":"lxk-probeName"
+                    }
+                },
+                {
+                    "range":{
+                        "start_at":{
+                            "gte":"1571193000",
+                            "lt":"1571221800"
+                        }
+                    }
+                }
+            ],
+            "must_not":[
+
+            ],
+            "should":[
+
+            ]
+        }
+    },
+    "from":0,
+    "size":10,
+    "sort":[
+
+    ],
+    "aggs":{
+
+    }
+}
+
+聚合，按照条件（from to； terms ）求某个字段的全部值。
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "start_at": {
+              "gte": 1571068800,
+              "lt": 1571130000
+            }
+          }
+        },
+        {
+          "terms": {
+            "streams": [
+              "5937ba7ce4b09be41be3a9bd",
+              "59819379e4b0f62ee7f4d5a5"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "from": 0,
+  "size": 0,
+  "sort": [],
+  "aggs": {
+    "trans_ref.amount_sum": {
+      "sum": {
+        "field": "trans_ref.amount"
+      }
+    }
+  }
+}
+
+
+查某个纬度的 top n
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {
+            "boost": 1
+          }
+        }
+      ],
+      "filter": [
+        {
+          "bool": {
+            "must": [
+              {
+                "range": {
+                  "_start_at": {
+                    "from": 1571637600,
+                    "to": 1571641200,
+                    "include_lower": true,
+                    "include_upper": false,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "range": {
+                  "_start_at": {
+                    "from": 1571637600,
+                    "to": 1571639760,
+                    "include_lower": true,
+                    "include_upper": false,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "terms": {
+                  "streams": [
+                    "5c4ad500e4b0f2556459e026",
+                    "5bff58d1e4b0898ef18884d6"
+                  ],
+                  "boost": 1
+                }
+              },
+              {
+                "query_string": {
+                  "query": "_trans_ref.card:\"Black21\" OR _ret_code_x.S0:\"Black21\" OR _trans_id:\"Black21\" OR _trans_ref.ID:\"Black21\"",
+                  "fields": [],
+                  "use_dis_max": true,
+                  "tie_breaker": 0,
+                  "default_operator": "or",
+                  "auto_generate_phrase_queries": false,
+                  "max_determinized_states": 10000,
+                  "allow_leading_wildcard": true,
+                  "enable_position_increments": true,
+                  "fuzziness": "AUTO",
+                  "fuzzy_prefix_length": 0,
+                  "fuzzy_max_expansions": 50,
+                  "phrase_slop": 0,
+                  "escape": false,
+                  "split_on_whitespace": true,
+                  "boost": 1
+                }
+              }
+            ],
+            "disable_coord": false,
+            "adjust_pure_negative": true,
+            "boost": 1
+          }
+        }
+      ],
+      "disable_coord": false,
+      "adjust_pure_negative": true,
+      "boost": 1
+    }
+  },
+  "aggregations": {
+    "_dport": {
+      "terms": {
+        "field": "_dport",
+        "size": 20,
+        "min_doc_count": 1,
+        "shard_min_doc_count": 0,
+        "show_term_doc_count_error": false,
+        "order": [
+          {
+            "_count": "desc"
+          },
+          {
+            "_term": "asc"
+          }
+        ]
+      }
+    },
+    "_trans_ref.TEL": {
+      "terms": {
+        "field": "_trans_ref.TEL",
+        "size": 20,
+        "min_doc_count": 1,
+        "shard_min_doc_count": 0,
+        "show_term_doc_count_error": false,
+        "order": [
+          {
+            "_count": "desc"
+          },
+          {
+            "_term": "asc"
+          }
+        ]
+      }
+    },
+    "_trans_id": {
+      "terms": {
+        "field": "_trans_id",
+        "size": 20,
+        "min_doc_count": 1,
+        "shard_min_doc_count": 0,
+        "show_term_doc_count_error": false,
+        "order": [
+          {
+            "_count": "desc"
+          },
+          {
+            "_term": "asc"
+          }
+        ]
+      }
+    },
+    "_trans_ref.ID": {
+      "terms": {
+        "field": "_trans_ref.ID",
+        "size": 20,
+        "min_doc_count": 1,
+        "shard_min_doc_count": 0,
+        "show_term_doc_count_error": false,
+        "order": [
+          {
+            "_count": "desc"
+          },
+          {
+            "_term": "asc"
+          }
+        ]
+      }
+    }
+  }
+}
