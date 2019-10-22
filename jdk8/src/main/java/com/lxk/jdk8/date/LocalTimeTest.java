@@ -27,7 +27,7 @@ public class LocalTimeTest {
 
     private static void monitorConfigFileChange() {
         LocalTime localTime = LocalTime.now();
-        String hhMM = localTime.format(DateTimeFormatter.ofPattern("HHmm"));
+        String hhMM = localTime.format(DateTimeFormatter.ofPattern("HHmmss"));
         System.out.println(hhMM);
     }
 
@@ -35,7 +35,7 @@ public class LocalTimeTest {
     @Test
     public void localTimeFormatTest() {
         LocalTime now = LocalTime.now();
-        String hhMM = now.format(DateTimeFormatter.ofPattern("HHmm"));
+        String hhMM = now.format(DateTimeFormatter.ofPattern("HHmmss"));
         System.out.println(hhMM);
     }
 
