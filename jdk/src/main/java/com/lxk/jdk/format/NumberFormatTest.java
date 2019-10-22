@@ -1,11 +1,15 @@
 package com.lxk.jdk.format;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 数字格式化测试
@@ -13,6 +17,27 @@ import java.text.NumberFormat;
  * @author lxk on 2017/1/22
  */
 public class NumberFormatTest {
+
+    /**
+     * 获得8位数的长度值 将msg的字节长度转成8位数
+     */
+    @Test
+    @SuppressWarnings("unchecked")
+    public void get8BitLength() {
+        String length = "123456789";
+        int expectLength = 8;
+        int count = length.length();
+        int needAdd = expectLength - count;
+        StringBuilder stringBuilder = new StringBuilder();
+        List<String> list = Lists.newArrayList();
+        if (needAdd > 0) {
+            list = new ArrayList(Collections.nCopies(needAdd, "0"));
+        }
+        if (!list.isEmpty()) {
+            list.forEach(stringBuilder::append);
+        }
+        System.out.println(stringBuilder.toString() + length);
+    }
 
     /**
      * 2.3F经过格式化，竟然变成2.99啦。what the fuck .
