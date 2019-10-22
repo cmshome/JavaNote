@@ -12,6 +12,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 1,Document read = reader.read(new ByteArrayInputStream(s.getBytes("utf-8")));
+ * 2,Document read = DocumentHelper.parseText(s);
+ * 3,Document read = reader.read(new File("src/main/resources/xml/testConfig.xml"));
+ *
  * @author lxk on 2016/11/10
  */
 public class XmlTest {
