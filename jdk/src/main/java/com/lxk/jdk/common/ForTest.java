@@ -1,9 +1,11 @@
 package com.lxk.jdk.common;
 
 
+import com.google.common.collect.Lists;
 import com.lxk.tool.collection.CollectionUtil;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +16,21 @@ import java.util.List;
 public class ForTest {
     private static final int SIZE = 40000;
 
+
+    /**
+     * 测试下for each写法中的循环体，是否是只执行一次。测试结果，是的。
+     */
+    @Test
+    public void forTest(){
+        for (String s : getList()) {
+            System.out.println(s);
+        }
+    }
+
+    private ArrayList<String> getList() {
+        System.out.println("get list run...");
+        return Lists.newArrayList("1","2","3","4");
+    }
 
     /**
      * 测试不同for的效率问题
