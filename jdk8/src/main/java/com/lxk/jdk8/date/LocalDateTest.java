@@ -17,6 +17,14 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class LocalDateTest {
 
+    @Test
+    public void toEpochDay() {
+        long l = LocalDate.now().toEpochDay();
+        System.out.println(l);
+        DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate parse = LocalDate.parse("20191031", yyyyMMdd);
+        System.out.println(parse.toEpochDay());
+    }
 
     /**
      * 对时间进行  加减操作。把年月日转成int类型的数字。
@@ -62,7 +70,7 @@ public class LocalDateTest {
 
 
     @Test
-    public void parseTest(){
+    public void parseTest() {
         LocalDate endOfDec = LocalDate.parse("2017-12-28");
         //xxxx不能这么做
         DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
