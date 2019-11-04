@@ -31,6 +31,26 @@ public class StringTest {
         LO_ = "lo";
     }
 
+    /**
+     * 点做分隔符的时候，需要转义一下，不能直接split
+     */
+    @Test
+    public void splitpoint(){
+        String s = "trans_ref.amount";
+        String[] split = s.split("\\.");
+        System.out.println(Arrays.toString(split));
+        System.out.println(s.contains("\\."));
+    }
+
+    /**
+     * replace方法，如果arg1不存在，那么原始值是不会被修改的。
+     */
+    @Test
+    public void replaceTest(){
+        String s = "trans_ref.amount";
+        System.out.println(s.replace("lxk",""));
+    }
+
     @Test
     public void subStringTest(){
         String s = "12345678qwweqwrqqtqtqt";
