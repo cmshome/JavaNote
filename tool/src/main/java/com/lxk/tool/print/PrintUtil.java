@@ -8,6 +8,7 @@ package com.lxk.tool.print;
 public class PrintUtil {
     public static void divideLine() {
         System.out.println("--------------分界符--------------");
+        System.out.println();
     }
 
     /**

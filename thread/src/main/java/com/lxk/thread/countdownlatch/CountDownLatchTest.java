@@ -21,11 +21,11 @@ public class CountDownLatchTest {
 
     /**
      * 缓存线程池，线程池的数量不固定，可以根据需求自动的更改数量。
-     * ExecutorService executor = Executors.newCachedThreadPool();
+     * ExecutorService executor = executors.newCachedThreadPool();
      * 创建固定大小的线程池，可以延迟或定时的执行任务。
-     * ScheduledExecutorService executor = Executors.newScheduledThreadPool(THREAD_COUNT_NUM);
+     * ScheduledExecutorService executor = executors.newScheduledThreadPool(THREAD_COUNT_NUM);
      * 创建单个线程池。线程池中只有一个线程
-     * ExecutorService executor = Executors.newSingleThreadExecutor();
+     * ExecutorService executor = executors.newSingleThreadExecutor();
      */
     @Test
     public void main() throws InterruptedException {
