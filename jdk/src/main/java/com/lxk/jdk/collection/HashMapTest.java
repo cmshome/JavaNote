@@ -1,6 +1,7 @@
 package com.lxk.jdk.collection;
 
 import com.google.common.collect.Maps;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,5 +37,19 @@ public class HashMapTest {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+    }
+
+    /**
+     * 测试remove一个不存在的key，会发生什么情况。结果：正常运行，无异常。
+     */
+    @Test
+    public void removeTest(){
+        HashMap<String, String> map = Maps.newHashMap();
+        map.put("a", "one");
+        map.put("b", "two");
+        map.put("c", "three");
+
+        map.remove("sss");
+        System.out.println(map.size());
     }
 }
