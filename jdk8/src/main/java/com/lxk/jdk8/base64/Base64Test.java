@@ -6,6 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.UUID;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 /**
  * 在Java 8中，Base64编码已经成为Java类库的标准。
  * Java 8 内置了 Base64 编码的编码器和解码器。
@@ -19,7 +21,6 @@ import java.util.UUID;
  */
 public class Base64Test {
 
-    private static final String UTF_8 = "utf-8";
     private static final int MAX = 10;
 
     @Test
@@ -63,7 +64,7 @@ public class Base64Test {
             sb.append(UUID.randomUUID().toString());
         }
 
-        byte[] toEncode = sb.toString().getBytes("utf-8");
+        byte[] toEncode = sb.toString().getBytes(UTF_8);
         String mimeEncoded = Base64.getMimeEncoder().encodeToString(toEncode);
         System.out.println("Using MIME      : ");
         System.out.println(mimeEncoded);

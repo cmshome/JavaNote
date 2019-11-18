@@ -1,6 +1,7 @@
 package com.lxk.jdk.file.character;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 复制文件：先从硬盘读到内存，在写到硬盘
@@ -17,8 +18,8 @@ class CopyText {
         InputStreamReader fr = null;
         OutputStreamWriter fw = null;
         try {
-            fr = new InputStreamReader(new FileInputStream("D:MyAssetJob.java"),"UTF-8");//读
-            fw = new OutputStreamWriter(new FileOutputStream("e:MyAssetJob.txt"), "UTF-8");//写
+            fr = new InputStreamReader(new FileInputStream("D:MyAssetJob.java"), StandardCharsets.UTF_8);//读
+            fw = new OutputStreamWriter(new FileOutputStream("e:MyAssetJob.txt"), StandardCharsets.UTF_8);//写
             char[] buf = new char[1024];//缓冲区
             int len;
             while ((len = fr.read(buf)) != -1) {

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  * client
@@ -32,7 +33,7 @@ public class TwoWaySocketClient {
 
     private void sendSingle(String message) throws IOException {
         try {
-            this.outputStream.write(message.getBytes("UTF-8"));
+            this.outputStream.write(message.getBytes(StandardCharsets.UTF_8));
             // 告诉服务器，所有的发送动作已经结束，之后只能接收
             socket.shutdownOutput();
             InputStream inputStream = socket.getInputStream();
@@ -41,7 +42,7 @@ public class TwoWaySocketClient {
             int msgLen;
             StringBuilder stringBuilder = new StringBuilder();
             while ((msgLen = inputStream.read(readBytes)) != -1) {
-                stringBuilder.append(new String(readBytes, 0, msgLen, "UTF-8"));
+                stringBuilder.append(new String(readBytes, 0, msgLen, StandardCharsets.UTF_8));
             }
             System.out.println("client get return msg from server : " + stringBuilder.toString());
         } catch (UnsupportedEncodingException e) {

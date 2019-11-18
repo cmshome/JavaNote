@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  * client
@@ -30,7 +31,7 @@ public class BaseSocketClient {
 
     private void sendSingle(String message) throws IOException {
         try {
-            this.outputStream.write(message.getBytes("UTF-8"));
+            this.outputStream.write(message.getBytes(StandardCharsets.UTF_8));
         } catch (UnsupportedEncodingException e) {
             System.out.println(e.getMessage());
         }

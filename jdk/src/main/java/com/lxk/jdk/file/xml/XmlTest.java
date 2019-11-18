@@ -8,6 +8,7 @@ import org.dom4j.io.SAXReader;
 import org.junit.Test;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class XmlTest {
     @SuppressWarnings("unchecked")
     public void xmlTest() {
         SAXReader reader = new SAXReader();
-        reader.setEncoding("utf-8");
+        reader.setEncoding(StandardCharsets.UTF_8.toString());
         Document document;
         try {
             document = reader.read(new File("src/main/resources/xml/testConfig.xml"));

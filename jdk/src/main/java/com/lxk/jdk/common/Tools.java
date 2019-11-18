@@ -8,6 +8,7 @@ import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -162,7 +163,7 @@ public final class Tools {
         for (int bytesRead = 0; bytesRead != -1; bytesRead = in.read(buffer)) {
             out.write(buffer, 0, bytesRead);
         }
-        return new String(out.toByteArray(), "UTF-8");
+        return new String(out.toByteArray(), StandardCharsets.UTF_8);
     }
 
     /**
@@ -177,7 +178,7 @@ public final class Tools {
         for (int bytesRead = 0; bytesRead != -1; bytesRead = in.read(buffer)) {
             out.write(buffer, 0, bytesRead);
         }
-        return new String(out.toByteArray(), "UTF-8");
+        return new String(out.toByteArray(), StandardCharsets.UTF_8);
     }
 
     /**

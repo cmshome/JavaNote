@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
@@ -93,7 +94,7 @@ public class FileTest {
         try {
             //true表示追加打开,false每次都是清空再重写
             FileOutputStream fileOutputStream = new FileOutputStream(path, false);
-            outputStreamWriter = new OutputStreamWriter(fileOutputStream, "utf-8");
+            outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
             properties.store(outputStreamWriter, "");
         } catch (Exception e) {
             System.out.println("writeOrderedPropertiesFile IOException:" + e.getMessage());

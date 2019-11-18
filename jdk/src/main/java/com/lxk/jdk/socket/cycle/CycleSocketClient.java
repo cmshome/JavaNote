@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -33,7 +34,7 @@ public class CycleSocketClient {
         // we mark \n as a end of line.
         String sendMsg = message + "\r\n";
         try {
-            this.outputStream.write(sendMsg.getBytes("UTF-8"));
+            this.outputStream.write(sendMsg.getBytes(StandardCharsets.UTF_8));
         } catch (UnsupportedEncodingException e) {
             System.out.println(e.getMessage());
         }

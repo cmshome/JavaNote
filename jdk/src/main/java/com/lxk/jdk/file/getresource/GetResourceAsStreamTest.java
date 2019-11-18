@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * getResource()和getResourceAsStream以及路径问题
@@ -22,7 +23,7 @@ public class GetResourceAsStreamTest {
         BufferedReader bufferedReader = null;
         try {
             InputStream inputStream = getInputStream();
-            InputStreamReader fr = new InputStreamReader(inputStream, "utf-8");
+            InputStreamReader fr = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             bufferedReader = new BufferedReader(fr);
             String line;
             try {

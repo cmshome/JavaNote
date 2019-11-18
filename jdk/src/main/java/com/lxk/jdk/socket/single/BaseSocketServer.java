@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  * server
@@ -42,7 +43,7 @@ public class BaseSocketServer {
         StringBuilder stringBuilder = new StringBuilder();
 
         while ((msgLen = inputStream.read(readBytes)) != -1) {
-            stringBuilder.append(new String(readBytes, 0, msgLen, "UTF-8"));
+            stringBuilder.append(new String(readBytes, 0, msgLen, StandardCharsets.UTF_8));
         }
 
         System.out.println("get message from client: " + stringBuilder);
