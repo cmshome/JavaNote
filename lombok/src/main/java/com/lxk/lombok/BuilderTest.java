@@ -4,6 +4,7 @@ package com.lxk.lombok;
 import com.lxk.bean.extend.TCL;
 import com.lxk.bean.model.Bird;
 import com.lxk.bean.model.Dog;
+import com.lxk.bean.model.Phone;
 import com.lxk.tool.json.JsonUtils;
 import org.junit.Test;
 
@@ -86,7 +87,7 @@ public class BuilderTest {
      */
     @Test
     public void test2() {
-
+        Phone phone = Phone.builder().build();
     }
 
 }
