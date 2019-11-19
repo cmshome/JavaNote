@@ -5,6 +5,7 @@ import com.lxk.bean.extend.TCL;
 import com.lxk.bean.model.Bird;
 import com.lxk.bean.model.Dog;
 import com.lxk.tool.json.JsonUtils;
+import org.junit.Test;
 
 import java.util.Date;
 
@@ -80,5 +81,12 @@ public class BuilderTest {
         System.out.println(bird.getName());
     }
 
+    /**
+     * 当使用@Builder的时候，原来的无参数构造函数会被覆盖掉，默认出了个全参数的构造函数。
+     */
+    @Test
+    public void test2() {
+
+    }
 
 }
