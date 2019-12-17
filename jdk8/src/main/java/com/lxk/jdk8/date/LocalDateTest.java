@@ -2,7 +2,7 @@ package com.lxk.jdk8.date;
 
 import org.junit.Test;
 
-import java.time.LocalDate;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
@@ -16,6 +16,19 @@ import java.time.temporal.TemporalAdjusters;
  * @author LiXuekai on 2019/9/12
  */
 public class LocalDateTest {
+
+    /**
+     * 将秒数格式化成日期字符串输出
+     */
+    @Test
+    public void turnSecondsToData() {
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        ZoneId zoneId = ZoneOffset.systemDefault();
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(System.currentTimeMillis() / 1000), zoneId);
+        LocalDate localDate = localDateTime.toLocalDate();
+        System.out.println(localDate.format(sf));
+    }
+
 
     @Test
     public void toEpochDay() {
