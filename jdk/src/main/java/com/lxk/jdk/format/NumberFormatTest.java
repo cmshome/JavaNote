@@ -172,4 +172,14 @@ public class NumberFormatTest {
         //将格式嵌入文本
         System.out.println(new DecimalFormat("所传入的格式化参数是：###大小。").format(value));
     }
+
+    @Test
+    public void format() {
+        double value = 0.8845;
+        System.out.println(new DecimalFormat("#.##%").format(value));
+
+    }
+
+
+
 }
