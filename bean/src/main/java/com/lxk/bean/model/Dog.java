@@ -1,5 +1,6 @@
 package com.lxk.bean.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.google.common.base.Objects;
 import lombok.Builder;
 import lombok.Data;
@@ -14,14 +15,18 @@ import java.io.Serializable;
 @Builder(toBuilder = true)
 @Data
 public class Dog implements Serializable {
+
+    @JSONField(name = "年纪")
     private String name;
     /**
      * 忠诚的
      */
+    @JSONField(ordinal = 1, name = "忠诚")
     private boolean isLoyal;
     /**
      * 活蹦乱跳的
      */
+    @JSONField(ordinal = 2, name = "存活")
     private boolean alive;
 
 
