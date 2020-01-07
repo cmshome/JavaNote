@@ -1,5 +1,7 @@
 package com.lxk.jdk.common;
 
+import org.junit.Test;
+
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,5 +87,56 @@ public class IP2LongTest {
                 + ((Long) ipNums.get(3)).longValue();
 
         return ZhongIPNumTotal;
+    }
+
+    public static String longToIP(long ip) {
+        long a = ip % 256;
+        long b = (ip -= a) >> 24;
+        long c = (ip -= b << 24) >> 16;
+        long d = (ip -= c << 16) >> 8;
+        StringBuffer sb = new StringBuffer();
+        sb.append(b);
+        sb.append(".");
+        sb.append(c);
+        sb.append(".");
+        sb.append(d);
+        sb.append(".");
+        sb.append(a);
+        return sb.toString();
+    }
+
+    public static String long22IP(long ip) {
+        long a = ip % 256;
+        long b = (ip -= a) >> 24;
+        long c = (ip -= b << 24) >> 16;
+        long d = ip - (c << 16) >> 8;
+        return b + "." + c + "." + d + "." + a;
+    }
+
+    public static long ip22Long(String ip) {
+        ip = ip.replaceAll(" ", "");
+        String[] ipArray = ip.split("\\.");
+        long ipLong = (Long.parseLong(ipArray[0]) << 24)
+                + (Long.parseLong(ipArray[1]) << 16)
+                + (Long.parseLong(ipArray[2]) << 8)
+                + Long.parseLong(ipArray[3]);
+        return ipLong;
+    }
+    public static String longasdToIP(long ip) {
+        long a = ip % 256;
+        long b = (ip -= a) >> 24;
+        long c = (ip -= b << 24) >> 16;
+        long d = ip - (c << 16) >> 8;
+        return b + "." + c + "." + d + "." + a;
+    }
+
+    @Test
+    public void long2Ip() {
+        String ip = "21.120.69.55";
+        System.out.println(ip22Long(ip));
+        System.out.println(long22IP(360203575));
+        ip = "31.4.248.88";
+        System.out.println(ip22Long(ip));
+        System.out.println(long22IP(520419416));
     }
 }
