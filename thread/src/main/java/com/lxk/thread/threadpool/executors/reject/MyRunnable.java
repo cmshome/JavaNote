@@ -14,7 +14,7 @@ public class MyRunnable implements Runnable {
     public void run() {
         try {
             String name = "当前线程名称：" + Thread.currentThread().getName();
-            System.out.println(name + " " + this.name + " is running.");
+            System.out.println(name + ", " + this.name + " is running.");
             Thread.sleep(200);
         } catch (Exception e) {
             e.printStackTrace();

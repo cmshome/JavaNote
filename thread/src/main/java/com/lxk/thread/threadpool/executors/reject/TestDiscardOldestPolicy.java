@@ -1,6 +1,9 @@
 package com.lxk.thread.threadpool.executors.reject;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -20,10 +23,11 @@ public class TestDiscardOldestPolicy {
     private static final int CAPACITY = 1;
 
     public static void main(String[] args) throws Exception {
+        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("Test-Rejected-Policy-Pool-%d").build();
 
         // 创建线程池。线程池的"最大池大小"和"核心池大小"都为1(THREADS_SIZE)，"线程池"的阻塞队列容量为1(CAPACITY)。
         ThreadPoolExecutor pool = new ThreadPoolExecutor(THREADS_SIZE, THREADS_SIZE, 0, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(CAPACITY));
+                new ArrayBlockingQueue<Runnable>(CAPACITY), namedThreadFactory);
         // 设置线程池的拒绝策略为"DiscardOldestPolicy"
         pool.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardOldestPolicy());
 
