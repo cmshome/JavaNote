@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 
 /**
  * 创建一个缓冲池，缓冲池容量大小为Integer.MAX_VALUE
- * 当拒绝处理任务时的策略-ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
+ * 当拒绝处理任务时的策略-ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出 RejectedExecutionException 异常。
  * core size是0，那么这个线程池创建的线程都是来个任务就创建线程，没有上限限制的。很危险的。
  * 只要 pool size 不到 Integer.MAX_VALUE，且无可用的线程，他就能一直创建新的线程。
  * 下面的例子，1000个runnable几乎一起提交且都至少执行10秒，所以，池中无可用线程，就只能自己再造个新的，自己用。然后就造了1000个。
@@ -41,7 +41,7 @@ public class CachedThreadPool {
                 System.out.println("HeartBeat......................... index is " + index);
             });
         }
-        ThreadUtils.printPoolInfo(service);
+        //ThreadUtils.printPoolInfo(service);
         System.out.println("ok");
         service.shutdown();
     }
