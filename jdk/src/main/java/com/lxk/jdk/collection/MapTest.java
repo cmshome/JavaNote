@@ -1,5 +1,6 @@
 package com.lxk.jdk.collection;
 
+import com.google.common.collect.Maps;
 import com.lxk.tool.collection.CollectionUtil;
 import org.junit.Test;
 
@@ -13,6 +14,17 @@ import java.util.Map;
  */
 public class MapTest {
 
+    /**
+     * put return old value
+     */
+    @Test
+    public void putTest() {
+        Map<String, String> map = Maps.newHashMap();
+        String put = map.put("ss", "yy");
+        System.out.println(put);
+        put = map.put("ss", "zz");
+        System.out.println(put);
+    }
 
     /**
      * 在遍历的时候删除元素会出现下面的异常
