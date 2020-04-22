@@ -69,4 +69,11 @@ public class MapTest {
         }
         System.out.println(map.toString());
     }
+
+    @Test
+    public void removeOne() {
+        Map<String, String> map = CollectionUtil.getMap(5);
+        map.remove("9");
+        System.out.println(map.toString());
+    }
 }
