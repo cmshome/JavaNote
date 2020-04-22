@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 测试model集合按某属性排序
- * <p>
+ *
  * @author lxk on 2016/11/25
  */
 @Data
@@ -20,6 +20,14 @@ public class Person implements Serializable, Cloneable {
         this.name = name;
     }
 
+    public Person(String name, int age) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int ageDifference(final Person other) {
+        return age - other.age;
+    }
 
     @Override
     public String toString() {
