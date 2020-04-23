@@ -1,5 +1,7 @@
 package com.lxk.jdk.common;
 
+import org.junit.Test;
+
 /**
  * 测试 try{}catch(){}finally{}的具体执行顺序
  * 结论：
@@ -8,23 +10,24 @@ package com.lxk.jdk.common;
  * try catch 都有返回 finally没有返回：try没有异常，会得到try的返回结果。  finally中的操作，不影响返回结果。
  *
  * <p>
+ *
  * @author lxk on 2016/11/11
  */
 public class TryCatchFinallyTest {
     public static void main(String[] args) {
-        //System.out.println(testFunc1());
-        //System.out.println(testFunc2());
-        whenFinallyNoRun();
+        System.out.println(testFunc1());
+        //whenFinallyNoRun();
     }
 
     /**
      * System.exit(0); //退出jvm，只有这种情况finally不执行。
      * 下面2个return都阻挡不了打印语句的执行。
      */
-    private static void whenFinallyNoRun() {
+    @Test
+    public void whenFinallyNoRun() {
         try {
             throw new Exception("我抛弃你啦。");
-        } catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println("catch exception: " + exception.getMessage());
             //jvm stop
             //System.exit(0);
@@ -37,11 +40,21 @@ public class TryCatchFinallyTest {
     }
 
     /**
+     * 在finally里面又修改了最终返回结果，会怎么样？
+     * 不管用
+     */
+    @Test
+    public void finallyDo() {
+        // 1
+        System.out.println(testFunc2());
+    }
+
+    /**
      * try里面return的结果在finally中修改有影响吗
      * try正常结束，catch不会执行，finally没有返回，即使执行，也不影响返回结果。
      * 最后返回的就是try里面正常结束的结果：1
      */
-    private static int testFunc2() {
+    public static int testFunc2() {
         int x = 1;
         try {
             return x;
@@ -61,12 +74,14 @@ public class TryCatchFinallyTest {
         int result;
         try {
             s.equals("ss");
-            result = 1;                             //不走
-            System.out.println("try " + result);    //不走
-            return result;                          //try 的return语句
+            result = 1;
+            System.out.println("try " + result);
+            //try 的return语句
+            return result;
         } catch (Exception e) {
             result = 2;
-            System.out.println("catch " + result);  //走，且会给result赋值
+            //走，且会给result赋值
+            System.out.println("catch " + result);
             //return result;                          //不一定会return
         } finally {
             result = 3;
@@ -75,6 +90,34 @@ public class TryCatchFinallyTest {
         }
         //result = 4;
         System.out.println("之外" + result);
-        return result;                              //这个就占个位置，打开finally的return这个返回就永远走不到了，得注释了。
+        //这个就占个位置，打开finally的return这个返回就永远走不到了，得注释了。
+        return result;
+    }
+
+
+    @Test
+    public void tt() {
+        System.out.println(getReturn());
+        System.out.println(getReturnStatic());
+    }
+
+    private int getReturn() {
+        try {
+            return 1;
+        } catch (Exception e) {
+            return 2;
+        } finally {
+            return 3;
+        }
+    }
+
+    private static int getReturnStatic() {
+        try {
+            return 1;
+        } catch (Exception e) {
+            return 2;
+        } finally {
+            return 3;
+        }
     }
 }
