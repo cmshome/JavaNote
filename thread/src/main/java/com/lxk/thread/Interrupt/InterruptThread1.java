@@ -3,14 +3,19 @@ package com.lxk.thread.Interrupt;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 阻塞中断
+ * <p>
  * 当一个线程处于被阻塞状态或者试图执行一个阻塞操作时，使用Thread.interrupt()方式中断该线程，
  * 注意此时将会抛出一个InterruptedException的异常，同时中断状态将会被复位(由中断状态改为非中断状态)
  *
  * @author LiXuekai on 2020/4/30
  */
-public class InterruptSleepThread3 {
+public class InterruptThread1 {
 
 
+    /**
+     * 阻塞中断
+     */
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread() {
             @Override
