@@ -1,4 +1,4 @@
-package com.lxk.thread.Interrupt;
+package com.lxk.thread.syn;
 
 import java.util.concurrent.TimeUnit;
 
