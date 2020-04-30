@@ -22,7 +22,7 @@ public class InterruptSleepThread3 {
                         TimeUnit.SECONDS.sleep(2);
                     }
                 } catch (InterruptedException e) {
-                    System.out.println("Interruted When Sleep");
+                    System.out.println("interrupted When Sleep");
                     boolean interrupt = this.isInterrupted();
                     //中断状态被复位
                     System.out.println("interrupt:" + interrupt);
@@ -34,9 +34,9 @@ public class InterruptSleepThread3 {
         //中断处于阻塞状态的线程
         t1.interrupt();
 
-        /**
+        /*
          * 输出结果:
-         Interruted When Sleep
+         interrupted When Sleep
          interrupt:false
          */
     }
