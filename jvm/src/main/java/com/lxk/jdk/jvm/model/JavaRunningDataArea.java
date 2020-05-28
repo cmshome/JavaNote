@@ -1,7 +1,6 @@
 package com.lxk.jdk.jvm.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.lxk.jdk.jvm.model.runningDataArea.*;
 import lombok.Data;
 
 /**
@@ -12,18 +11,33 @@ import lombok.Data;
 @Data
 public class JavaRunningDataArea {
 
+    /**
+     * 程序计数器
+     */
     @JSONField
     private ProgramCounterRegister programCounterRegister;
 
+    /**
+     * Java 虚拟机栈
+     */
     @JSONField(ordinal = 1)
     private JavaVirtualMachineStacks javaVirtualMachineStacks;
 
+    /**
+     * 本地方法栈
+     */
     @JSONField(ordinal = 2)
     private NativeMethodStacks nativeMethodStacks;
 
+    /**
+     * Java 堆 内存
+     */
     @JSONField(ordinal = 3)
     private JavaHeap heap;
 
+    /**
+     * 方法区
+     */
     @JSONField(ordinal = 4)
     private MethodArea methodArea;
 

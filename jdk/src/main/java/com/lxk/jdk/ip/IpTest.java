@@ -3,6 +3,7 @@ package com.lxk.jdk.ip;
 import com.lxk.jdk.common.Tools;
 import org.junit.Test;
 
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
@@ -20,5 +21,16 @@ public class IpTest {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void getIp() throws UnknownHostException {
+        InetAddress addr = InetAddress.getLocalHost();
+        //获取本机ip
+        String ip= addr.getHostAddress();
+        //获取本机计算机名称
+        String hostName= addr.getHostName();
+        System.out.println(ip);
+        System.out.println(hostName);
     }
 }

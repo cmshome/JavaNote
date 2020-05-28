@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class JMMTest {
 
+    /**
+     * 用对象的形式把JMM梳理一下
+     */
     @Test
     public void jvm() {
         JavaMemoryModel JMM = new JavaMemoryModel();

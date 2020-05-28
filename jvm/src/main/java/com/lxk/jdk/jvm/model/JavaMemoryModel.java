@@ -9,5 +9,14 @@ import lombok.Data;
  */
 @Data
 public class JavaMemoryModel {
+    /**
+     * 运行时数据区域
+     */
     private JavaRunningDataArea runningDataArea;
+
+    /**
+     * 直接内存
+     */
+    private  DirectMemory directMemory;
+
 }

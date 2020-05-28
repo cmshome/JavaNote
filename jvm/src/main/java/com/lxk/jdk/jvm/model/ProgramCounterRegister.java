@@ -1,4 +1,4 @@
-package com.lxk.jdk.jvm.model.runningDataArea;
+package com.lxk.jdk.jvm.model;
 
 /**
  * 程序计数器
