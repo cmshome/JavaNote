@@ -1,8 +1,10 @@
 package com.lxk.design.pattern.singleton;
 
 /**
- * 饿汉式--就是屌丝，穷，不给准备好，担心饿死。类加载就给准备好
- * <p>
+ * 饿汉式
+ * 优点：没有加锁，执行效率会提高。
+ * 缺点：类加载时就初始化，浪费内存。
+ *
  * @author lxk on 2017/3/23
  */
 public class SingletonPattern1 {
