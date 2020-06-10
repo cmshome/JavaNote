@@ -14,9 +14,9 @@ package com.lxk.design.pattern.decorator;
 
 public class Main {
     public static void main(String[] args) {
-        PersonBefore p = new PersonBefore();
+        Person p = new PersonImpl();
         //p.eat();//这个是需求1.0
-        PersonNow sp = new PersonNow(p);
+        Person sp = new DecoratorPerson(p);
         sp.eat();
     }
 }

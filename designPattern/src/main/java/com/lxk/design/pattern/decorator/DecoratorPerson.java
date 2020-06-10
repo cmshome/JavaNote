@@ -8,10 +8,10 @@ package com.lxk.design.pattern.decorator;
  * <p>
  * @author lxk on 2016/11/24
  */
-public class PersonNow implements Person {
-    private PersonBefore p;
+public class DecoratorPerson implements Person {
+    private Person p;
 
-    PersonNow(PersonBefore p) {
+    DecoratorPerson(Person p) {
         this.p = p;
     }
 
