@@ -1,4 +1,4 @@
-package com.lxk.jdk.jvm.model;
+package com.lxk.jdk.jvm.memory.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
@@ -36,7 +36,7 @@ public class JavaRunningDataArea {
     private JavaHeap heap;
 
     /**
-     * 方法区
+     * 方法区 (从jdk1.8开始，将不再有这个区间)
      */
     @JSONField(ordinal = 4)
     private MethodArea methodArea;

@@ -1,9 +1,9 @@
-package com.lxk.jdk.jvm.model;
+package com.lxk.jdk.jvm.memory.model;
 
 import lombok.Data;
 
 /**
- * JMM Java 内存模型 对象
+ * Java 内存分区
  *
  * @author LiXuekai on 2019/12/31
  */
@@ -19,4 +19,8 @@ public class JavaMemoryModel {
      */
     private  DirectMemory directMemory;
 
+    /**
+     * 元空间(since jdk 1.8)
+     */
+    private MetaSpace metaSpace;
 }
