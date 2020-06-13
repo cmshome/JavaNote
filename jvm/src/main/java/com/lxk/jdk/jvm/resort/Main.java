@@ -7,6 +7,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 重排序导致问题
+ * （同时也能验证 使用volatile 是可以禁止指令重排序的观点）
  *
  * @author LiXuekai on 2020/6/11
  */
