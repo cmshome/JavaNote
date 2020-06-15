@@ -6,7 +6,8 @@ import java.util.List;
 
 /**
  * 说是jdk1.8之后，没有了方法区，永久代最终被移除，方法区移至Metaspace，字符串常量移至Java Heap。
- * -XX:+PrintGCDetails -Xms10M -Xmx10M -Xmn10M -XX:SurvivorRatio=8
+ * -XX:PermSize=10m -XX:MaxPermSize=10m   （jdk 1.7 的时候使用，1.8 无了）
+ * -XX:+PrintGCDetails -Xms30M -Xmx30M -Xmn10M -XX:SurvivorRatio=8 -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=10m -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:CompressedClassSpaceSize=5M
  *
  * @author LiXuekai on 2020/6/9
  */
