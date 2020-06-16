@@ -15,8 +15,7 @@ public class StringConstantPoolTest {
 
 
     /**
-     * 测试是Java heap 溢出，但是，使用1.7的jdk测试这段代码，还是Java heap溢出。
-     * 怎么解释。
+     * 字符串常量池还是在堆里面
      */
     public static void main(String[] args) {
         List<String> list = Lists.newArrayList();
