@@ -2,6 +2,9 @@ package com.lxk.design.pattern.observer;
 
 /**
  * 观察者模式
+ * 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）
+ * 一个对象状态改变给其他对象通知的问题，而且要考虑到易用和低耦合，保证高度的协作。
+ * 关键代码：在抽象类里有一个 ArrayList 存放观察者们。
  *
  * @author lxk on 2018/4/19
  */
