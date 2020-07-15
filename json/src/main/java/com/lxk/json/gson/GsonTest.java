@@ -2,7 +2,7 @@ package com.lxk.json.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 import java.util.Map;

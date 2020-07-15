@@ -2,7 +2,7 @@ package com.lxk.lombok;
 
 import com.lxk.bean.model.Bird;
 import com.lxk.bean.model.Dog;
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 import java.util.Date;

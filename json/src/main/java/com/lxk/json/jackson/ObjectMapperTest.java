@@ -2,7 +2,7 @@ package com.lxk.json.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lxk.bean.model.Dog;
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 import java.io.IOException;

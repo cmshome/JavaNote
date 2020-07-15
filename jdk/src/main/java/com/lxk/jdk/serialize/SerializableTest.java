@@ -4,7 +4,7 @@ package com.lxk.jdk.serialize;
 import com.lxk.bean.model.Bird;
 import com.lxk.bean.model.Dog;
 import com.lxk.bean.model.FlyPig;
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 
 import java.io.*;
 import java.util.Date;

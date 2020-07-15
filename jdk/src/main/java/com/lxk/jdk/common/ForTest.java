@@ -2,7 +2,7 @@ package com.lxk.jdk.common;
 
 
 import com.google.common.collect.Lists;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 import org.junit.Test;
 
 import java.util.ArrayList;

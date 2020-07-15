@@ -1,7 +1,7 @@
 package com.lxk.thread.threadpool.pool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.lxk.tool.thread.ThreadUtils;
+import com.lxk.tool.ThreadUtils;
 
 import java.util.concurrent.*;
 

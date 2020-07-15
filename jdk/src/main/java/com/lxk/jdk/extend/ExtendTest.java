@@ -4,7 +4,7 @@ import com.lxk.bean.model.Child;
 import com.lxk.bean.model.Grandson;
 import com.lxk.bean.model.Grandson2;
 import com.lxk.bean.model.Parent;
-import com.lxk.tool.print.PrintUtil;
+import com.lxk.tool.PrintUtil;
 import org.junit.Test;
 
 /**

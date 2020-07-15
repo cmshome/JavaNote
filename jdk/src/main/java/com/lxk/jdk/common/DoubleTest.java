@@ -1,8 +1,8 @@
 package com.lxk.jdk.common;
 
 import com.google.common.collect.Lists;
-import com.lxk.tool.number.DoubleUtil;
-import com.lxk.tool.print.PrintUtil;
+import com.lxk.tool.DoubleUtil;
+import com.lxk.tool.PrintUtil;
 import org.junit.Test;
 
 import java.math.BigDecimal;

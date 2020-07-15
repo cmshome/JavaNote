@@ -1,7 +1,7 @@
 package com.lxk.jdk8.lambda;
 
 import com.google.common.collect.Lists;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 
 import java.util.Iterator;
 import java.util.List;

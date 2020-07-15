@@ -6,7 +6,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.lxk.bean.model.Car;
 import com.lxk.bean.model.Dog;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 
 import java.util.*;
 

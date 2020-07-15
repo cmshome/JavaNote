@@ -2,7 +2,7 @@ package com.lxk.guava.collection;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Lists;
-import com.lxk.tool.print.PrintUtil;
+import com.lxk.tool.PrintUtil;
 
 import java.util.Set;
 

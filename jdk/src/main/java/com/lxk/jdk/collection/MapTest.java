@@ -1,7 +1,7 @@
 package com.lxk.jdk.collection;
 
 import com.google.common.collect.Maps;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 import org.junit.Test;
 
 import java.util.Iterator;

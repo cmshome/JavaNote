@@ -1,6 +1,6 @@
 package com.lxk.vertx.elastic.main;
 
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import com.lxk.vertx.elastic.factory.ElasticSearchRestClientFactory;
 import com.lxk.vertx.elastic.module.Config;
 import com.lxk.vertx.elastic.module.Repository;

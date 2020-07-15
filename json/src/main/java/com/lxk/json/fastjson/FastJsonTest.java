@@ -1,6 +1,6 @@
 package com.lxk.json.fastjson;
 
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 import java.util.Map;

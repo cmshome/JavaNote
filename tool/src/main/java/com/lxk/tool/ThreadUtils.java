@@ -1,6 +1,4 @@
-package com.lxk.tool.thread;
-
-import com.lxk.tool.print.PrintUtil;
+package com.lxk.tool;
 
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;

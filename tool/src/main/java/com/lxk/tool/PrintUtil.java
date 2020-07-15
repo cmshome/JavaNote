@@ -1,4 +1,4 @@
-package com.lxk.tool.print;
+package com.lxk.tool;
 
 /**
  * PrintUtil

@@ -1,4 +1,4 @@
-package com.lxk.tool.collection;
+package com.lxk.tool;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

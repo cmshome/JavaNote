@@ -1,4 +1,4 @@
-package com.lxk.tool.file;
+package com.lxk.tool;
 
 import java.io.File;
 import java.io.IOException;

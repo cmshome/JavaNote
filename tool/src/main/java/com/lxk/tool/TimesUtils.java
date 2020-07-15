@@ -1,4 +1,4 @@
-package com.lxk.tool.time;
+package com.lxk.tool;
 
 
 import java.text.SimpleDateFormat;

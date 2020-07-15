@@ -1,4 +1,4 @@
-package com.lxk.tool.number;
+package com.lxk.tool;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

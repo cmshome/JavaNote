@@ -1,7 +1,7 @@
 package com.lxk.jdk.format;
 
 
-import com.lxk.tool.time.TimesUtils;
+import com.lxk.tool.TimesUtils;
 import org.junit.Test;
 
 import java.text.ParseException;

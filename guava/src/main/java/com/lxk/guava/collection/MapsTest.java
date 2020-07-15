@@ -1,7 +1,7 @@
 package com.lxk.guava.collection;
 
 import com.google.common.collect.*;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 
 import java.util.Iterator;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package com.lxk.thread.syn;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.lxk.tool.collection.CollectionUtil;
+import com.lxk.tool.CollectionUtil;
 import org.junit.Test;
 
 import java.util.Map;

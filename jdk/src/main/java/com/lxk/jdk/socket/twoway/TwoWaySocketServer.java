@@ -1,6 +1,6 @@
 package com.lxk.jdk.socket.twoway;
 
-import com.lxk.tool.thread.ThreadUtils;
+import com.lxk.tool.ThreadUtils;
 import lombok.Getter;
 import lombok.Setter;
 

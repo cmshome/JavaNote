@@ -3,7 +3,7 @@ package com.lxk.json.fastjson.jsonfield;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.lxk.bean.model.*;
-import com.lxk.tool.json.JsonUtils;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 import java.util.Date;

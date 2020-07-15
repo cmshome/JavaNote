@@ -1,4 +1,4 @@
-package com.lxk.tool.json;
+package com.lxk.tool;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
