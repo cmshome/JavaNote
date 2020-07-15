@@ -26,4 +26,22 @@ public class HttpTest {
         System.out.println(httpClientResult.getCode());
         System.out.println(httpClientResult.getContent());
     }
+
+    @Test
+    public void testClose() {
+        initCloseEvent();
+        System.out.println("----");
+    }
+
+    /**
+     * 在JVM销毁前执行的一个线程
+     */
+    private void initCloseEvent() {
+        Runtime.getRuntime().addShutdownHook(new Thread("shut-Consumers") {
+            @Override
+            public void run() {
+                System.out.println("shutdown program");
+            }
+        });
+    }
 }
