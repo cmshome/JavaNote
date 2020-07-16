@@ -1,11 +1,16 @@
 package com.lxk.jdk.http;
 
 import com.google.common.collect.Maps;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lxk.tool.HttpUtils;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * http test
@@ -37,11 +42,22 @@ public class HttpTest {
      * 在JVM销毁前执行的一个线程
      */
     private void initCloseEvent() {
-        Runtime.getRuntime().addShutdownHook(new Thread("shut-Consumers") {
+        ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(
+                1, new ThreadFactoryBuilder().setNameFormat(
+                "import-user-thread-pool").build(),
+                new ThreadPoolExecutor.AbortPolicy());
+        monitorSchedule.scheduleWithFixedDelay(this::importUerInfo, 0, 1, TimeUnit.HOURS);
+
+        Runtime.getRuntime().addShutdownHook(new Thread("do-when-jvm-is-shut-down") {
             @Override
             public void run() {
+                monitorSchedule.shutdown();
                 System.out.println("shutdown program");
             }
         });
+    }
+
+    private void importUerInfo() {
+        System.out.println("import user");
     }
 }
