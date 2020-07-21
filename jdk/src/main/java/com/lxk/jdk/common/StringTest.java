@@ -641,6 +641,33 @@ public class StringTest {
         System.out.println(s2 == s3);
     }
 
+    @Test
+    public void testSubstring() {
+        String ss = "-1,-0";
+        String[] split = ss.split(",");
+        String split1 = split[0];
+        String split2 = split[1];
+        String data = "0123456789876543210";
+
+        int length = data.toString().length();
+        String value = null;
+        try {
+            int from = Integer.parseInt(split1);
+            if (from < 0) {
+                from = length + from;
+            }
+            int to = Integer.parseInt(split2);
+            if (split2.startsWith("-")) {
+                to = to + length;
+            }
+            value = data.toString().substring(from, to);
+            System.out.println(value);
+        } catch (Exception e) {
+        }
+
+
+
+    }
     /**
      * 测试字符串的 split()
      * 返回的数组，若末尾有一连串空的，则舍弃
@@ -650,7 +677,7 @@ public class StringTest {
         String ss = ",aa,bb,cc,dd,,,";
         ss = "1|2|3||7|4";
         String[] array = ss.split("\\|");
-        System.out.println(array.toString());
+        System.out.println(Arrays.toString(array));
 
         //结果是5，而不是预想中的8
         System.out.println(array.length);
