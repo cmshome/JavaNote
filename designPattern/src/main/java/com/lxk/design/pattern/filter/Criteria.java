@@ -9,5 +9,11 @@ import java.util.List;
  */
 public interface Criteria {
 
+    /**
+     * 满足 标准
+     *
+     * @param persons list
+     * @return 满足条件的data
+     */
     List<Person> meetCriteria(List<Person> persons);
 }
