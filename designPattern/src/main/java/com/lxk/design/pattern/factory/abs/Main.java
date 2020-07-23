@@ -1,6 +1,7 @@
 package com.lxk.design.pattern.factory.abs;
 
 /**
+ * 抽象工厂模式（Abstract Factory Pattern）
  * 围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂.
  * 主要解决：主要解决接口选择的问题。
  * 何时使用：系统的产品有多于一个的产品族，而系统只消费其中某一族的产品。
