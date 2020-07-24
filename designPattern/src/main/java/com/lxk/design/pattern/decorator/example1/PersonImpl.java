@@ -1,4 +1,4 @@
-package com.lxk.design.pattern.decorator;
+package com.lxk.design.pattern.decorator.example1;
 
 /**
  * 被装饰的类

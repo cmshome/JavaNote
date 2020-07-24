@@ -1,4 +1,4 @@
-package com.lxk.design.pattern.decorator;
+package com.lxk.design.pattern.decorator.example1;
 
 /**
  * 装饰设计模式：
@@ -14,9 +14,9 @@ package com.lxk.design.pattern.decorator;
 
 public class Main {
     public static void main(String[] args) {
-        Person p = new PersonImpl();
-        //p.eat();//这个是需求1.0
-        Person sp = new DecoratorPerson(p);
-        sp.eat();
+        // 这个是需求1.0
+        new PersonImpl().eat();
+        // 向一个现有的对象添加新的功能，同时又不改变其结构。
+        new DecoratorPerson(new PersonImpl()).eat();
     }
 }

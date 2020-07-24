@@ -1,4 +1,4 @@
-package com.lxk.design.pattern.decorator;
+package com.lxk.design.pattern.decorator.example1;
 
 /**
  * 公共接口(为实现多态)
