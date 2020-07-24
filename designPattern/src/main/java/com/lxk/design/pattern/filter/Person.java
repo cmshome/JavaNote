@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 创建一个类，在该类上应用标准。
+ * 创建一个类，在该类上应用标准
  *
  * @author LiXuekai on 2020/7/23
  */
