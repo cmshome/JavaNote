@@ -14,12 +14,13 @@ package com.lxk.design.pattern.mvc;
 public class Main {
     public static void main(String[] args) {
 
-        //从数据库获取学生记录
+        //M 从数据库获取学生记录
         Student model = retrieveStudentFromDatabase();
 
-        //创建一个视图：把学生详细信息输出到控制台
+        //V 创建一个视图：把学生详细信息输出到控制台
         StudentView view = new StudentView();
 
+        // C
         StudentController controller = new StudentController(model, view);
 
         controller.updateView();
