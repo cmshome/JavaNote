@@ -1,4 +1,4 @@
-package com.lxk.design.pattern.observer;
+package com.lxk.design.pattern.observer.example1;
 
 /**
  * 观察者模式

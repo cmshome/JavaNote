@@ -1,4 +1,4 @@
-package com.lxk.design.pattern.observer;
+package com.lxk.design.pattern.observer.example1;
 
 import java.util.ArrayList;
 import java.util.List;
