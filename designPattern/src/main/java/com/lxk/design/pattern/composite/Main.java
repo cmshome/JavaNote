@@ -56,7 +56,7 @@ public class Main {
         headMarketing.add(clerk1);
         headMarketing.add(clerk2);
 
-        //打印该组织的所有员工
+        // 打印该组织的所有员工
         System.out.println(CEO);
         for (Employee headEmployee : CEO.getSubordinates()) {
             System.out.println(headEmployee);
