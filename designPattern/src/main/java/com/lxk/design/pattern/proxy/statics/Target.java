@@ -5,7 +5,7 @@ package com.lxk.design.pattern.proxy.statics;
  * 为实现多态
  * 包含目标方法的声明
  */
-public interface TargetInterface {
+public interface Target {
     /**
      * 目标方法
      */

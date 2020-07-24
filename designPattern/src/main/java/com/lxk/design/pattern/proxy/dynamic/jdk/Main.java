@@ -2,7 +2,7 @@ package com.lxk.design.pattern.proxy.dynamic.jdk;
 
 import java.lang.reflect.Proxy;
 
-public class MainTest {
+public class Main {
     public static void main(String[] args) {
         //目标对象
         TargetObject target = new TargetObject();

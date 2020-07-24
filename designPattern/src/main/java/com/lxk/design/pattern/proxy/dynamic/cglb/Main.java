@@ -1,6 +1,6 @@
 package com.lxk.design.pattern.proxy.dynamic.cglb;
 
-public class MainTest {
+public class Main {
     public static void main(String[] args) {
         //目标对象
         TargetObject target = new TargetObject();

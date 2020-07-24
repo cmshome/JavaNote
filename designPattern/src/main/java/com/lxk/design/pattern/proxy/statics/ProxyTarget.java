@@ -5,19 +5,19 @@ package com.lxk.design.pattern.proxy.statics;
  * 也实现目标接口
  * 继而实现目标方法。
  */
-public class ProxyObject implements TargetInterface {
+public class ProxyTarget implements Target {
 
     /**
      * 面向接口编程，这个target其实指的是目标对象
      * MainTest测试的时候，传入的就是目标接口的实现类的对象。
      */
-    private TargetInterface target;
+    private Target target;
 
     /**
      * 构造方法，代理对象得到真实的目标对象
      * 即：给真实目标对象赋值
      */
-    public ProxyObject(TargetInterface target) {
+    public ProxyTarget(Target target) {
         this.target = target;
     }
 
