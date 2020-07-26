@@ -9,7 +9,7 @@ import org.dom4j.io.SAXReader;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,16 +20,6 @@ import java.util.Map;
 public class XmlTest2 {
     private static final String XML_INFO = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<ROOT type=\"response\">\n" +
-            "    <std400mgid>AAAAAAA</std400mgid>\n" +
-            "    <stdrtninfo>处理成功</stdrtninfo>\n" +
-            "    <stdrespno>DCBS</stdrespno>\n" +
-            "    <stdmsgtype>0210</stdmsgtype>\n" +
-            "    <stdprocode>1001045</stdprocode>\n" +
-            "    <stdbankno>001</stdbankno>\n" +
-            "    <std400usno>8164</std400usno>\n" +
-            "    <stdtranins>732841</stdtranins>\n" +
-            "    <std400aqid>PWAP</std400aqid>\n" +
-            "    <stdtermtrc>PWAP20200715430697015999</stdtermtrc>\n" +
             "    <std400trdt>20200715</std400trdt>\n" +
             "    <std400tcsq>0</std400tcsq>\n" +
             "    <std400qsys>" +
@@ -37,34 +27,6 @@ public class XmlTest2 {
             "        <lxk1>200</lxk1>" +
             "    </std400qsys>\n" +
             "    <std400pgqf>N</std400pgqf>\n" +
-            "    <std400pgtk/>\n" +
-            "    <std400pgsn/>\n" +
-            "    <std400pgoq>1</std400pgoq>\n" +
-            "    <std400pgts/>\n" +
-            "    <std400pgtn>0</std400pgtn>\n" +
-            "    <std400miqt>0</std400miqt>\n" +
-            "    <stdrefnum>031199815484</stdrefnum>\n" +
-            "    <std400acur>00</std400acur>\n" +
-            "    <std400jrno>SC220233099396</std400jrno>\n" +
-            "    <std400actn>0000000000022</std400actn>\n" +
-            "    <std400rvac>6217680502869253</std400rvac>\n" +
-            "    <std400acsq>000001</std400acsq>\n" +
-            "    <std400cunm>周波</std400cunm>\n" +
-            "    <std400oabr>732841</std400oabr>\n" +
-            "    <stdcyno>001</stdcyno>\n" +
-            "    <std400byfg/>\n" +
-            "    <std400tram>10000.00</std400tram>\n" +
-            "    <std400oubl>325279.58</std400oubl>\n" +
-            "    <std400rzac>6217680508841637</std400rzac>\n" +
-            "    <std400insq>000001</std400insq>\n" +
-            "    <stkessbnfg/>\n" +
-            "    <std400etnm>周向阳</std400etnm>\n" +
-            "    <stdessbsin>732801</stdessbsin>\n" +
-            "    <std400etbl>232035.14</std400etbl>\n" +
-            "    <std400elno/>\n" +
-            "    <std400ouam/>\n" +
-            "    <std400uanm/>\n" +
-            "    <std400iuac/>\n" +
             "    <std400ouan/>\n" +
             "    <ESFECT>00000</ESFECT>\n" +
             "    <EMTRCD>1001045</EMTRCD>\n" +
@@ -72,23 +34,21 @@ public class XmlTest2 {
             "</ROOT>";
 
     @Test
-    public void parse() throws UnsupportedEncodingException, DocumentException {
+    public void parse() throws DocumentException {
         SAXReader sr = new SAXReader();
-        Document doc = sr.read(new ByteArrayInputStream(XML_INFO.getBytes("utf-8")));
+        Document doc = sr.read(new ByteArrayInputStream(XML_INFO.getBytes(StandardCharsets.UTF_8)));
         Element root = doc.getRootElement();
-        getChildNodes(root);
+        getKeyValueInOneMap(root);
 
     }
 
-    public static void getChildNodes(Element element) {
-        List attributes = element.attributes();
+    public static void getKeyValueInOneMap(Element element) {
         Map<String, Object> map = Maps.newHashMap();
-        String keyPrifix = "trans_ref";
-        forkv0(keyPrifix, map, element);
+        String keyPrefix = "pre";
+        forkv0(keyPrefix, map, element);
         //forkv1(element);
         //forkv2(element);
         out(map);
-
     }
 
     private static void out(Map<String, Object> map) {
@@ -115,9 +75,7 @@ public class XmlTest2 {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-
         }
-
     }
 
     private static void forkv2(Element element) {
@@ -128,7 +86,7 @@ public class XmlTest2 {
             //只有标签节点才有子节点 所以判断这个节点是否是标签节点
             if (node instanceof Element) {
                 Element element1 = (Element) node;
-                getChildNodes(element1);
+                forkv2(element1);
             }
         }
     }
