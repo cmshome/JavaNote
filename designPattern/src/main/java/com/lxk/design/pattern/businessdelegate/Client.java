@@ -5,7 +5,7 @@ package com.lxk.design.pattern.businessdelegate;
  */
 public class Client {
 
-    BusinessDelegate businessService;
+    private BusinessDelegate businessService;
 
     public Client(BusinessDelegate businessService) {
         this.businessService = businessService;

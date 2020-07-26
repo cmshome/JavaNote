@@ -5,7 +5,6 @@ package com.lxk.design.pattern.businessdelegate;
  */
 public class BusinessDelegate {
     private BusinessLookUp lookupService = new BusinessLookUp();
-    private BusinessService businessService;
     private String serviceType;
 
     public void setServiceType(String serviceType) {
@@ -13,7 +12,7 @@ public class BusinessDelegate {
     }
 
     public void doTask() {
-        businessService = lookupService.getBusinessService(serviceType);
+        BusinessService businessService = lookupService.getBusinessService(serviceType);
         businessService.doProcessing();
     }
 }
