@@ -1,6 +1,7 @@
 package com.lxk.jdk.jvm.memory;
 
 import com.lxk.jdk.jvm.memory.model.JavaMemoryModel;
+import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
 /**
@@ -16,5 +17,6 @@ public class MainTest {
     @Test
     public void jvm() {
         JavaMemoryModel memoryModel = new JavaMemoryModel();
+        System.out.println(JsonUtils.parseObjToFormatJson(memoryModel));
     }
 }

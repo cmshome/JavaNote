@@ -26,4 +26,8 @@ public class MethodArea implements OutOfMemory {
      * Interned strings
      */
     private ConstantPool constantPool;
+
+    public MethodArea() {
+        this.constantPool = new ConstantPool();
+    }
 }

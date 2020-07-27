@@ -11,6 +11,14 @@ import lombok.Data;
 @Data
 public class JavaRunningDataArea {
 
+    public JavaRunningDataArea() {
+        this.programCounterRegister = new ProgramCounterRegister();
+        this.javaVirtualMachineStacks = new JavaVirtualMachineStacks();
+        this.nativeMethodStacks = new NativeMethodStacks();
+        this.heap = new JavaHeap();
+        this.methodArea = new MethodArea();
+    }
+
     /**
      * 程序计数器
      */
