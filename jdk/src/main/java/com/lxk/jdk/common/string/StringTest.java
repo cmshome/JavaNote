@@ -1,4 +1,4 @@
-package com.lxk.jdk.common;
+package com.lxk.jdk.common.string;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
