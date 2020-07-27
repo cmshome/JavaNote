@@ -1,4 +1,4 @@
-package com.lxk.thread.howmany;
+package com.lxk.thread.question.howmany;
 
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author LiXuekai on 2020/7/27
  */
-public class Main {
+public class HowMany {
     private static final ExecutorService service = Executors.newCachedThreadPool();
     private static final AtomicInteger count = new AtomicInteger();
     private static final CountDownLatch countDownLatch = new CountDownLatch(Integer.MAX_VALUE);
