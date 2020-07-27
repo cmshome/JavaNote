@@ -12,8 +12,8 @@ import lombok.Data;
 @Data
 public class JavaHeap implements OutOfMemory, Shared {
 
-    private Young young;
+    private JavaHeapYoung javaHeapYoung;
 
-    private Old old;
+    private JavaHeapOld javaHeapOld;
 
 }
