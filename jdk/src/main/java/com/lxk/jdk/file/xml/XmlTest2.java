@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 解析xml，循环输出所有的k v
+ *
  * @author LiXuekai on 2020/7/26
  */
 public class XmlTest2 {
@@ -43,7 +45,7 @@ public class XmlTest2 {
     }
 
     public static void getKeyValueInOneMap(Element element) {
-        Map<String, Object> map = Maps.newHashMap();
+        Map<String, Object> map = Maps.newTreeMap();
         String keyPrefix = "pre";
         forkv0(keyPrefix, map, element);
         //forkv1(element);
@@ -52,8 +54,9 @@ public class XmlTest2 {
     }
 
     private static void out(Map<String, Object> map) {
+        int index = 0;
         for (Map.Entry<String, Object> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + "  " + entry.getValue());
+            System.out.println(++index + " " + entry.getKey() + "  " + entry.getValue());
         }
     }
 
