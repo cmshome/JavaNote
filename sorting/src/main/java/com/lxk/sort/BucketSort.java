@@ -9,12 +9,16 @@ import java.util.Arrays;
  *
  * @author LiXuekai on 2020/8/3
  */
-public class BucketSort {
+public class BucketSort extends AbstractSort {
 
     private static final InsertSort insertSort = new InsertSort();
 
     @Test
-    public void sort(int[] sourceArray) throws Exception {
+    public void test() {
+        sort(super.arr);
+    }
+
+    public void sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
@@ -22,7 +26,7 @@ public class BucketSort {
         System.out.println(Arrays.toString(ints));
     }
 
-    private int[] bucketSort(int[] arr, int bucketSize) throws Exception {
+    private int[] bucketSort(int[] arr, int bucketSize) {
         if (arr.length == 0) {
             return arr;
         }

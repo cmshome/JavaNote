@@ -9,13 +9,18 @@ import java.util.Arrays;
  *
  * @author LiXuekai on 2020/8/3
  */
-public class QuickSort {
+public class QuickSort extends AbstractSort {
 
     @Test
-    public int[] sort(int[] sourceArray) throws Exception {
-        // 对 arr 进行拷贝，不改变参数内容
-        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+    public void sort() {
 
+        int[] sort = sort0(super.arr);
+        System.out.println();
+        System.out.println(Arrays.toString(sort));
+    }
+
+    private int[] sort0(int[] sourceArray) {
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
         return quickSort(arr, 0, arr.length - 1);
     }
 

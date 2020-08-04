@@ -6,12 +6,20 @@ import java.util.Arrays;
 
 /**
  * 归并排序
+ *
  * @author LiXuekai on 2020/8/3
  */
-public class MergeSort {
+public class MergeSort extends AbstractSort {
+
 
     @Test
-    public int[] sort(int[] sourceArray) throws Exception {
+    public void test() {
+        int[] sort = sort(super.arr);
+        System.out.println();
+        System.out.println(Arrays.toString(sort));
+    }
+
+    public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
