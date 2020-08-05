@@ -70,9 +70,7 @@ MVC 模式（MVC Pattern）
   
        
  
- 
-## html
-1. [tools](res/tools.html)
+
 
 
 ## 漫漫人生路
