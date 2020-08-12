@@ -1,6 +1,6 @@
 # 请叫我大师兄 Java Note Project![:kiss:][lips]
 
-## 项目结构简单说明目录
+## 项目结构目录
 * [Bean](#bean)
 * [DesignPattern](#设计模式)
 * [Doc](#doc)
@@ -29,6 +29,7 @@
     
 ```
   
+----
 ## 设计模式
 ### 简要说明
 ```
@@ -87,6 +88,7 @@ MVC 模式（MVC Pattern）
 服务定位器模式（Service Locator Pattern）
 传输对象模式（Transfer Object Pattern）
 ```
+----
 ## doc
  ```
  主要存储一些，可复用的文档
@@ -96,6 +98,7 @@ MVC 模式（MVC Pattern）
  ......  
      
  ``` 
+----
 ## ElasticSearch
 ```
 Elastic Search    
@@ -104,6 +107,7 @@ Elastic Search
 这个项目，就来学习这个工具。
   
 ```
+----
 ## Guava
 ```
 Guava    
@@ -113,6 +117,7 @@ google的一个通用的工具jar
 这个项目就学习一下，这个工具的使用方法  
   
 ```
+----
 ## JDK
 ```
 JDK    
@@ -120,6 +125,7 @@ jdk中很多代码都是似懂非懂的
 有的疑问的地方，还是自己手动实际测试一下来解惑是比较好的 
   
 ```
+----
 ## JDK8
 ```
 JDK 8   
@@ -128,6 +134,7 @@ JDK 8
 这个项目就学习和使用一下的例子  
   
 ```
+----
 ## JSON
 ```
 JSON 常用的数据结构  
@@ -137,12 +144,14 @@ json工具的jar也有很多的
 都是未知的，需要测试一下，自己确认一下。  
 
 ```
+----
 ## JVM
 ```
 JMM java内存分区模型  
 Java的GC  
 内存重排序的代码实例  
 ```
+----
 ## Lombok
 ```
 lombok 工具  
@@ -150,16 +159,19 @@ lombok 工具
 会在编译阶段，自动给class文件带上这些个自动生成的方法。  
 很是方便，主要测试和学习一下这个工具的使用。  
 ```
+----
 ## MD
 ```
 要写 README.md 文件，咱就的学习一下这个md的语法  
 这个项目，就存了几个md文件，学习一下这个md语法  
 不记得了，可以参考一下。  
 ```
+----
 ## Questions
 ```
 记录一些程序题
 ```
+----
 ## 十大排序算法  
 ![十大经典排序算法 概览截图](sorting/res/sort.png)
 1. [冒泡排序](sorting/1.bubbleSort.md)
@@ -172,6 +184,7 @@ lombok 工具
 8. [计数排序](sorting/8.countingSort.md)
 9. [桶排序](sorting/9.bucketSort.md)
 10. [基数排序](sorting/10.radixSort.md)
+----
 ## SpringMVC
 ```
 一个简单的spring mvc的 web 例子  
@@ -180,6 +193,7 @@ lombok 工具
 体验一下入门时候说的分层结构   
 ```
  
+ ----
 ## Thread
 ```
 thread  
@@ -187,6 +201,7 @@ thread
 CountDownLatch、CyclicBarrier、DeadLockDemo、volatile、n 个 ThreadPool...
   
 ```
+ ----
 ## Tool
 ```
 算是一个底层的 common jar项目  
@@ -194,26 +209,29 @@ CountDownLatch、CyclicBarrier、DeadLockDemo、volatile、n 个 ThreadPool...
 此项目 主要是存放一些公用的工具jar依赖    
 比如，lombok，guava，fastjson ...  
 ```
+----
 ## vertx
 ```
 使用 vertx 框架做的微服务  
 主要是学习 vertx 的使用  
 vertx 果然还是不太适合，还是Spring cloud 香
 ```
+----
 ## web
 ```
 想着弄个web例子的，但是后期发现springboot相比之前的Spring mvc 简直是ezsy的不要不要的，加上使用vue，前后端分离之后  
 撇开了过时的jsp页面啥的，后端完全从js里面解放出来了。也不需要做web调试了。
 ```
+----
 ## 漫漫人生路
 ![begin][start] ![going on][going on] ![going on][going on more]
-
+----
 ## About Me
 - QQ：[1181415316][CSDN_]
 - Email：  [cmshome@163.com][Email]
 - GitHub： [Please Call Me Big Brother.][Github]
 - CSDN：   [请叫我大师兄][CSDN]
-
+----
 ## Copyright and License
 **The MIT License (MIT)**
 
