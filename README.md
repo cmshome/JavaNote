@@ -7,7 +7,7 @@
 * [ElasticSearch](#ElasticSearch)
 * [Guava](#Guava)
 * [JDK](#JDK)
-* [JDK 8](#JDK 8)
+* [JDK8](#JDK8)
 * [JSON](#JSON)
 * [JVM](#JVM)
 * [Lombok](#Lombok)
@@ -120,7 +120,7 @@ jdk中很多代码都是似懂非懂的
 有的疑问的地方，还是自己手动实际测试一下来解惑是比较好的 
   
 ```
-## JDK 8
+## JDK8
 ```
 JDK 8   
 它已经出来n年了  
