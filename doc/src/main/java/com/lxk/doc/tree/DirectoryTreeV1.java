@@ -236,7 +236,7 @@ public class DirectoryTreeV1 {
         final int length = files.size();
         for (int i = 0; i < length; i++) {
             final File f = files.get(i);
-            boolean directory = f.isDirectory();
+            boolean fileIsDirectory = f.isDirectory();
             final List<File> subFiles = this.fetchFiles(f);
             final boolean isLast = (i >= length - 1);
             this.r.append(prefix);
@@ -248,7 +248,7 @@ public class DirectoryTreeV1 {
 
             this.appendDisplayContent(f);
             String tab;
-            if (flattenFlag && directory && subFiles.size() == 1) {
+            if (flattenFlag && fileIsDirectory && subFiles.size() == 1) {
                 this.r.append(".");
                 tab = "";
             } else {
@@ -258,7 +258,7 @@ public class DirectoryTreeV1 {
             }
 
             String s = !(length <= 1 || isLast) ? VERTICAL : EMPTY;
-            if (directory && deep <= this.deep) {
+            if (fileIsDirectory && deep <= this.deep) {
                 this.generateHandleLxk(f, prefix + s + tab, deep);
             }
         }

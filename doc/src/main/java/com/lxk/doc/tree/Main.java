@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         String path = "/Users/fang/Documents/intelliJ/lixuekai/JavaNote";
-        //path = "/Users/fang/Downloads/lxk";
+        path = "/Users/fang/Downloads/lxk";
         List<String> exceptDir = Lists.newArrayList("target", "out", "test", "package", "gradle", "resources", "build");
         final File generateFile = new File(path);
         final String generate = DirectoryTreeV1.create(generateFile)
@@ -21,7 +21,7 @@ public class Main {
                         || exceptDir.contains(pathname.getName())
                 )))
                 .sort(Comparator.comparing(File::getName))
-                .setFlattenFlag(false)
+                .setFlattenFlag(true)
                 /*.showLength()
                 .showModify()
                 .showPermission()
