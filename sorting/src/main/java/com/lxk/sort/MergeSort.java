@@ -26,7 +26,7 @@ public class MergeSort extends AbstractSort {
         if (arr.length < 2) {
             return arr;
         }
-        int middle = (int) Math.floor(arr.length / 2);
+        int middle = (int) Math.floor(arr.length >> 1);
 
         int[] left = Arrays.copyOfRange(arr, 0, middle);
         int[] right = Arrays.copyOfRange(arr, middle, arr.length);
