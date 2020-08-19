@@ -24,4 +24,20 @@ public class FastJsonTest {
         Map map = JsonUtils.parseJsonToObj(json, Map.class);
         System.out.println(map);
     }
+
+
+    /**
+     * 因为key之前多了个 \ 导致解码失败了。
+     *
+     * fastjson 右斜杠
+     */
+    @Test
+    public void unclosedString() {
+        String json = "{\"s.os\":\"李\\学23456...#\",\"ssass\":\"\",\"lxk\":123467987654345}";
+        System.out.println(json);
+        //Map 类可以， hash map 不 OK。
+        Map map = JsonUtils.parseJsonToObj(json, Map.class);
+        System.out.println(map);
+    }
+
 }

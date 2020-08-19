@@ -38,7 +38,13 @@ public final class JsonUtils {
             JSONObject jsonObject = JSON.parseObject(json);
             return JSON.toJavaObject(jsonObject, c);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            try {
+                String s = StringEscapeUtils.unescapeJavaScript(json);
+                JSONObject jsonObject = JSON.parseObject(s);
+                return JSON.toJavaObject(jsonObject, c);
+            } catch (Exception ee) {
+                System.out.println(ee.getMessage());
+            }
         }
         return null;
     }
