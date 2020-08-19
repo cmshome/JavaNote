@@ -6,7 +6,26 @@ import java.io.Writer;
 import java.util.Locale;
 
 /**
- * @author LiXuekai on 2020/8/19
+ * Adapted from Apache Commons code
+ *
+ *
+ * <p>Escapes and unescapes <code>String</code>s for
+ * Java, Java Script, HTML, XML, and SQL.</p>
+ * <p></p>
+ * <p>#ThreadSafe#</p>
+ *
+ * @author Apache Software Foundation
+ * @author Apache Jakarta Turbine
+ * @author Purple Technology
+ * @author <a href="mailto:alex@purpletech.com">Alexander Day Chaffee</a>
+ * @author Antony Riley
+ * @author Helge Tesgaard
+ * @author <a href="sean@boohai.com">Sean Brown</a>
+ * @author <a href="mailto:ggregory@seagullsw.com">Gary Gregory</a>
+ * @author Phil Steitz
+ * @author Pete Gieser
+ * @version $Id: StringEscapeUtils.java 1057072 2011-01-10 01:55:57Z niallp $
+ * @since 2.0
  */
 public class StringEscapeUtils {
 
@@ -44,7 +63,6 @@ public class StringEscapeUtils {
      * output string: He didn't say, \"Stop!\"
      * </pre>
      *
-     *
      * @param str String to escape values in, may be null
      * @return String with escaped values, <code>null</code> if null string input
      */
@@ -61,7 +79,7 @@ public class StringEscapeUtils {
      * @param out Writer to write escaped string into
      * @param str String to escape values in, may be null
      * @throws IllegalArgumentException if the Writer is <code>null</code>
-     * @throws java.io.IOException              if error occurs on underlying Writer
+     * @throws java.io.IOException      if error occurs on underlying Writer
      * @see #escapeJava(String)
      */
     public static void escapeJava(Writer out, String str) throws IOException {
@@ -101,7 +119,7 @@ public class StringEscapeUtils {
      * @param out Writer to write escaped string into
      * @param str String to escape values in, may be null
      * @throws IllegalArgumentException if the Writer is <code>null</code>
-     * @throws java.io.IOException              if error occurs on underlying Writer
+     * @throws java.io.IOException      if error occurs on underlying Writer
      * @see #escapeJavaScript(String)
      */
     public static void escapeJavaScript(Writer out, String str) throws Exception {
@@ -255,9 +273,9 @@ public class StringEscapeUtils {
      * <p>A <code>null</code> string input has no effect.</p>
      *
      * @param out the <code>Writer</code> used to output unescaped characters
-     * @param str the <code>String</code> to unescape, may be null
+     * @param str the <code>String</code> t o unescape, may be null
      * @throws IllegalArgumentException if the Writer is <code>null</code>
-     * @throws java.io.IOException              if error occurs on underlying Writer
+     * @throws java.io.IOException      if error occurs on underlying Writer
      */
     public static void unescapeJava(Writer out, String str) throws Exception {
         if (out == null) {
@@ -366,7 +384,7 @@ public class StringEscapeUtils {
      * @param out the <code>Writer</code> used to output unescaped characters
      * @param str the <code>String</code> to unescape, may be null
      * @throws IllegalArgumentException if the Writer is <code>null</code>
-     * @throws java.io.IOException              if error occurs on underlying Writer
+     * @throws java.io.IOException      if error occurs on underlying Writer
      * @see #unescapeJava(java.io.Writer, String)
      */
     public static void unescapeJavaScript(Writer out, String str) throws Exception {
