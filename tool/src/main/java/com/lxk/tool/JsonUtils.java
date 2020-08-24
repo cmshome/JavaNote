@@ -29,6 +29,7 @@ public final class JsonUtils {
 
     /**
      * 将Json字符串信息转换成对应的Java对象
+     * StringEscapeUtils.unescapeJavaScript(json); 一个反斜杠好说，要是1个2个的，不是很好用的感觉。
      *
      * @param json json字符串对象
      * @param c    对应的类型
@@ -39,7 +40,7 @@ public final class JsonUtils {
             return JSON.toJavaObject(jsonObject, c);
         } catch (Exception e) {
             try {
-                String s = StringEscapeUtils.unescapeJavaScript(json);
+                String s = json.replace("\\", "");
                 JSONObject jsonObject = JSON.parseObject(s);
                 return JSON.toJavaObject(jsonObject, c);
             } catch (Exception ee) {

@@ -28,12 +28,26 @@ public class FastJsonTest {
 
     /**
      * 因为key之前多了个 \ 导致解码失败了。
-     *
-     * fastjson 右斜杠
+     * fastjson 右斜杠 简单粗暴的直接给他replace了吧。
      */
     @Test
     public void unclosedString() {
         String json = "{\"s.os\":\"李\\学23456...#\",\"ssass\":\"\",\"lxk\":123467987654345}";
+        System.out.println(json);
+        //Map 类可以， hash map 不 OK。
+        Map map = JsonUtils.parseJsonToObj(json, Map.class);
+        System.out.println(map);
+    }
+
+    /**
+     * 因为key之前多了个 \ 导致解码失败了。
+     * 不管多少个反斜杠，简单粗暴的给他全替换了得了
+     * StringEscapeUtils.unescapeJavaScript(json);
+     * 这个不太好使。
+     */
+    @Test
+    public void unclosedString2() {
+        String json = "{\"s.os\":\"李\\\\\\\\\\\\学\\十大!@#$%^&*()))_+{}:?><{}][|||||{{{}}}}[][][][[[]]]:::;;;''''''\\~`表代表///////23456...#\",\"ssass\":\"\",\"lxk\":123467987654345}";
         System.out.println(json);
         //Map 类可以， hash map 不 OK。
         Map map = JsonUtils.parseJsonToObj(json, Map.class);
