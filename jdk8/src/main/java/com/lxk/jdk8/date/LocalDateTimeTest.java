@@ -17,6 +17,13 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class LocalDateTimeTest {
 
+    @Test
+    public void format() {
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String format = sf.format(localDateTime);
+        System.out.println(format);
+    }
 
     @Test
     public void toEpochDay() {
