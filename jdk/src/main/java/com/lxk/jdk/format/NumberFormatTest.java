@@ -177,7 +177,7 @@ public class NumberFormatTest {
     public void format() {
         double value = 987654321100.0023;
         System.out.println(new DecimalFormat("#.##%").format(value));
-        System.out.println(new DecimalFormat("0.00").format(new BigDecimal("987654321100.0023")));
+        System.out.println(new DecimalFormat("0.000000").format(new BigDecimal("987654321100.0023")));
 
     }
 

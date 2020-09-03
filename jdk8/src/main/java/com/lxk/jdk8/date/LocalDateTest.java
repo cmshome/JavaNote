@@ -17,6 +17,28 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class LocalDateTest {
 
+    @Test
+    public void yesterday() {
+        LocalDate localDate = LocalDate.now().minusDays(1);
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println( sf.format(localDate));
+    }
+
+    @Test
+    public void yesterdayDateTime() {
+        LocalDateTime localDateTime = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).minusDays(1);
+
+        LocalDateTime from = localDateTime.withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = localDateTime.withHour(23).withMinute(59).withSecond(59);
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        System.out.println(sf.format(localDateTime));
+        System.out.println( sf.format(from) + "  " + sf.format(to));
+
+        ZoneId zoneId = ZoneOffset.systemDefault();
+        System.out.println(from.atZone(zoneId).toEpochSecond() + "  " + to.atZone(zoneId).toEpochSecond());
+    }
+
     /**
      * 将秒数格式化成日期字符串输出
      */
