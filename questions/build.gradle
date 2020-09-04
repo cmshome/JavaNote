@@ -4,4 +4,9 @@ version '1.0-SNAPSHOT'
 
 dependencies {
     compile project(':tool')
+    // https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on
+    compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.57'
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+
 }
