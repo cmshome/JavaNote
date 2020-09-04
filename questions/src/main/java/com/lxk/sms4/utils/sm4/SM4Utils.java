@@ -31,7 +31,6 @@ public class SM4Utils {
             if (hexString) {
                 keyBytes = Util.hexStringToBytes(secretKey);
             } else {
-                //keyBytes = secretKey.getBytes();
                 keyBytes = Util.hexStringToBytes(secretKey);
             }
 
@@ -49,8 +48,6 @@ public class SM4Utils {
         try {
             byte[] encrypted = Util.hexToByte(cipherText);
             cipherText = Base64.encodeBase64String(encrypted);
-            ;
-            //cipherText = new BASE64Encoder().encode(encrypted);
             if (cipherText != null && cipherText.trim().length() > 0) {
                 Pattern p = Pattern.compile("\\s*|\t|\r|\n");
                 Matcher m = p.matcher(cipherText);
@@ -71,7 +68,6 @@ public class SM4Utils {
             SM4 sm4 = new SM4();
             sm4.sm4_setkey_dec(ctx, keyBytes);
             byte[] decrypted = sm4.sm4_crypt_ecb(ctx, Base64.decodeBase64(cipherText));
-            //byte[] decrypted = sm4.sm4_crypt_ecb(ctx, new BASE64Decoder().decodeBuffer(cipherText));
             return new String(decrypted, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,8 +105,6 @@ public class SM4Utils {
         try {
             byte[] encrypted = Util.hexToByte(cipherText);
             cipherText = Base64.encodeBase64String(encrypted);
-            ;
-            //cipherText = new BASE64Encoder().encode(encrypted);
             if (cipherText != null && cipherText.trim().length() > 0) {
                 Pattern p = Pattern.compile("\\s*|\t|\r|\n");
                 Matcher m = p.matcher(cipherText);
@@ -132,10 +126,7 @@ public class SM4Utils {
 
             SM4 sm4 = new SM4();
             sm4.sm4_setkey_dec(ctx, keyBytes);
-            //byte[] decrypted = sm4.sm4_crypt_cbc(ctx, ivBytes, new BASE64Decoder().decodeBuffer(cipherText));
             byte[] decrypted = sm4.sm4_crypt_cbc(ctx, ivBytes, Base64.decodeBase64(cipherText));
-            /*String text = new String(decrypted, "UTF-8");
-            return text.substring(0,text.length()-1);*/
             return new String(decrypted, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,7 +139,6 @@ public class SM4Utils {
         String s = Util.byteToHex(plainText.getBytes());
         System.out.println("原文" + s);
         SM4Utils sm4 = new SM4Utils();
-        //sm4.secretKey = "JeF8U9wHFOMfs2Y8";
         sm4.secretKey = "64EC7C763AB7BF64E2D75FF83A319918";
         sm4.hexString = true;
 

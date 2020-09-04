@@ -7,7 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Created by $(USER) on $(DATE)
+ * SM4无线局域网标准的分组数据算法。对称加密，密钥长度和分组长度均为128位。
  */
 public class SM4 {
     public static final int SM4_ENCRYPT = 1;
