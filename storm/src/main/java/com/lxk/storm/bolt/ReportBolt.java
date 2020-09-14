@@ -1,6 +1,5 @@
 package com.lxk.storm.bolt;
 
-import org.apache.storm.shade.com.google.common.collect.Lists;
 import org.apache.storm.shade.com.google.common.collect.Maps;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -8,8 +7,6 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,13 +52,7 @@ public class ReportBolt extends BaseRichBolt {
     @Override
     public void cleanup(){
         System.out.println("---------- FINAL COUNTS -----------");
-
-        List<String> keys = Lists.newArrayList();
-        keys.addAll(this.counts.keySet());
-        Collections.sort(keys);
-        for(String key : keys){
-            System.out.println(key + " : " + this.counts.get(key));
-        }
+        counts.forEach((k, v) -> System.out.println(k + " : " + v));
         System.out.println("----------------------------");
     }
 }
