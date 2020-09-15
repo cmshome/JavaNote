@@ -8,6 +8,7 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -48,6 +49,8 @@ public class SplitSentenceBolt extends BaseRichBolt {
         // TODO Auto-generated method stub
         String sentence = input.getStringByField("sentence");
         String[] words = sentence.split(" ");
+        String name = Thread.currentThread().getName();
+        System.out.println("一、split sentence bolt：" + Arrays.toString(words) + ", current thread name:" + name);
         for (String word : words) {
             //向下一个bolt发射数据   emit：这单词就是"发射"的意思
             this.collector.emit(new Values(word));

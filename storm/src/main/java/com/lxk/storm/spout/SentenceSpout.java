@@ -53,7 +53,10 @@ public class SentenceSpout extends BaseRichSpout {
     @Override
     public void nextTuple() {
         // TODO Auto-generated method stub
-        this.collector.emit(new Values(sentences[index]));
+        String name = Thread.currentThread().getName();
+        String sentence = sentences[index];
+        System.out.println("零、sentence spout：" + sentence + ", current thread name:" + name);
+        this.collector.emit(new Values(sentence));
         index++;
         if (index >= sentences.length) {
             index = 0;

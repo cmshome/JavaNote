@@ -42,7 +42,7 @@ public class WordCountBolt extends BaseRichBolt {
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
         // TODO Auto-generated method stub
         this.collector = collector;
-        this.counts = Maps.newHashMap();
+        this.counts = Maps.newTreeMap();
     }
 
     /**
@@ -62,6 +62,8 @@ public class WordCountBolt extends BaseRichBolt {
         }
         //增加计数
         count++;
+        String name = Thread.currentThread().getName();
+        System.out.println("二、word count bolt：" + word + " " + count + ", current thread name:" + name);
         //存储计数
         this.counts.put(word, count);
         this.collector.emit(new Values(word, count));

@@ -16,14 +16,14 @@ import java.util.Map;
  */
 public class ReportBolt extends BaseRichBolt {
     /**
-     * 保存单词和对应的计数
+     * 保存单词和对应的计数,treeMap 希望展示结果有序，好看点儿。
      */
     private Map<String, Long> counts = null;
 
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
         // TODO Auto-generated method stub
-        this.counts = Maps.newHashMap();
+        this.counts = Maps.newTreeMap();
     }
 
     @Override
@@ -31,9 +31,11 @@ public class ReportBolt extends BaseRichBolt {
         // TODO Auto-generated method stub
         String word = input.getStringByField("word");
         Long count = input.getLongByField("count");
+        String name = Thread.currentThread().getName();
+        System.out.println("三、report bolt 结果:" + word + " " + count + ", current thread name:" + name);
+
+        // 不需要再统计计算了，只是简单的转存一下信息。或者说类似一个报表生成的工作
         this.counts.put(word, count);
-        //实时输出
-        System.out.println("结果:" + this.counts);
     }
 
     @Override
@@ -50,7 +52,7 @@ public class ReportBolt extends BaseRichBolt {
      * 但是当Storm拓扑在一个集群上运行，IBolt.cleanup()方法不能保证执行（这里是开发模式，生产环境不要这样做）。
      */
     @Override
-    public void cleanup(){
+    public void cleanup() {
         System.out.println("---------- FINAL COUNTS -----------");
         counts.forEach((k, v) -> System.out.println(k + " : " + v));
         System.out.println("----------------------------");
