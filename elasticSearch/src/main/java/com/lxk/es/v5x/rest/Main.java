@@ -11,6 +11,8 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
+ * rest 访问的端口是9200，类似页面的http请求似的
+ *
  * @author LiXuekai on 2020/9/17
  */
 public class Main {
@@ -40,7 +42,7 @@ public class Main {
     @Test
     public void queryTest() throws IOException {
         JSONArray jsonArray = BASE_REPOSITORY.getJsonArray();
-        jsonArray.forEach(ss->{
+        jsonArray.forEach(ss -> {
             System.out.println(ss.toString());
         });
     }
