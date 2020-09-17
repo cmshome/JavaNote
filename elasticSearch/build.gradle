@@ -3,4 +3,8 @@ version '1.0-SNAPSHOT'
 
 dependencies {
     compile project(':tool')
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-client', version: '5.6.7'
+    compile("org.elasticsearch:elasticsearch:5.6.0") {
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
+    }
 }
