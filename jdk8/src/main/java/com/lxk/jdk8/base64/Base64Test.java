@@ -114,4 +114,19 @@ public class Base64Test {
 
         System.out.println();
     }
+
+    @Test
+    public void ttt() {
+        String s = "lxk20200923";
+        System.out.println("ordinal         : " + s);
+        // 编码
+        String asB64 = Base64.getEncoder().encodeToString(s.getBytes(UTF_8));
+        // 输出为: c29tZSBzdHJpbmc=
+        System.out.println("Using Basic     : " + asB64);
+
+        // 解码
+        byte[] asBytes = Base64.getDecoder().decode("c29tZSBzdHJpbmc=");
+        // 输出为: some string
+        System.out.println("basic decode    : " + new String(asBytes, UTF_8));
+    }
 }
