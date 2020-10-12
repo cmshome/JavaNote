@@ -33,9 +33,8 @@ public class StringToolsTest {
     public void join() {
         Joiner joiner = Joiner.on("-").skipNulls();
         List<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5);
-        list.forEach(s-> {
-            joiner.join(s);
-        });
+        String join = joiner.join(list);
+        System.out.println(join);
     }
 
     /**
