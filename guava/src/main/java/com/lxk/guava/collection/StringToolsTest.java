@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +27,15 @@ public class StringToolsTest {
         int eachLength = 8;
         List<String> randomStringList = getRandomStringList(count, eachLength);
         System.out.println(randomStringList.toString());
+    }
+
+    @Test
+    public void join() {
+        Joiner joiner = Joiner.on("-").skipNulls();
+        List<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5);
+        list.forEach(s-> {
+            joiner.join(s);
+        });
     }
 
     /**

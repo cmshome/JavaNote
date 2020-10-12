@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.lxk.bean.model.Car;
 import com.lxk.bean.model.Dog;
 import com.lxk.bean.model.Student;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +28,25 @@ public class ArraysTest {
         }
     }
 
+    @Test
+    public void test() {
+        Integer[] ints_ = {1,2,3,4,5};
+        List<Integer> list = Arrays.asList(ints_);
+        Integer integer = list.get(1);
+        System.out.println(integer);
+        list.add(19);
+
+    }
+
+    /**
+     * Arrays.asList() get set方法是OK的，但是，一旦add 或者remove就会抛异常，不建议使用。
+     */
+    @Test
+    public void test1() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4);
+        System.out.println(list.set(0, 10));
+        System.out.println(list.get(0));
+    }
     /**
      * 数组当参数，是地址传递。
      */
