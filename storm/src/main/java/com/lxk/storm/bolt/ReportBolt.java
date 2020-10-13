@@ -1,5 +1,6 @@
 package com.lxk.storm.bolt;
 
+import com.lxk.storm.model.RepeatEvent;
 import org.apache.storm.shade.com.google.common.collect.Maps;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -8,6 +9,7 @@ import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * 报告生成器
@@ -26,11 +28,14 @@ public class ReportBolt extends BaseRichBolt {
         this.counts = Maps.newTreeMap();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void execute(Tuple input) {
         // TODO Auto-generated method stub
         String word = input.getStringByField("word");
         Long count = input.getLongByField("count");
+        RepeatEvent repeatEvent = (RepeatEvent) input.getValueByField("repeatEvent");
+        TreeMap<String, Integer> dataMap = (TreeMap<String, Integer>) input.getValueByField("dataMap");
         String name = Thread.currentThread().getName();
         System.out.println("三、report bolt 结果:" + word + " " + count + ", current thread name:" + name);
 

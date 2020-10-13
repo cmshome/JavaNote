@@ -58,7 +58,7 @@ public class WordCountBolt extends BaseRichBolt {
         // TODO Auto-generated method stub
 
         String word = input.getStringByField("word");
-        RepeatEvent event = (RepeatEvent) input.getValueByField("repeatEvent");
+        RepeatEvent repeatEvent = (RepeatEvent) input.getValueByField("repeatEvent");
         TreeMap<String, Integer> dataMap = (TreeMap<String, Integer>) input.getValueByField("dataMap");
         Long count = this.counts.get(word);
         if (count == null) {
@@ -71,7 +71,7 @@ public class WordCountBolt extends BaseRichBolt {
         System.out.println("二、word count bolt：" + word + " " + count + ", current thread name:" + name);
         //存储计数
         this.counts.put(word, count);
-        this.collector.emit(new Values(word, count));
+        this.collector.emit(new Values(word, count, repeatEvent, dataMap));
     }
 
     @Override
@@ -79,6 +79,6 @@ public class WordCountBolt extends BaseRichBolt {
         // TODO Auto-generated method stub
         //声明一个输出流，其中tuple包括了单词和对应的计数，向后发射
         //其他bolt可以订阅这个数据流进一步处理
-        declarer.declare(new Fields("word", "count"));
+        declarer.declare(new Fields("word", "count", "repeatEvent", "dataMap"));
     }
 }
