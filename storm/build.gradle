@@ -5,5 +5,7 @@ version '1.0-SNAPSHOT'
 dependencies {
     compile project(':tool')
     compile group: 'org.apache.storm', name: 'storm-core', version: '1.2.3'
+    compile group: 'org.apache.storm', name: 'storm-kafka-client', version: '1.2.3'
+
     compile group: 'junit', name: 'junit', version: '4.12'
 }

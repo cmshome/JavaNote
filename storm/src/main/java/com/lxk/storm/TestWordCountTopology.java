@@ -16,7 +16,7 @@ import org.apache.storm.utils.Utils;
  *
  * @author LiXuekai on 2020/9/14
  */
-public class Main {
+public class TestWordCountTopology {
     private static final String SENTENCE_SPOUT_ID = "sentence-spout";
     private static final String SPLIT_BOLT_ID = "split-bolt";
     private static final String COUNT_BOLT_ID = "count-bolt";
@@ -47,7 +47,7 @@ public class Main {
         SentenceSpout spout = new SentenceSpout();
 
         //注册一个sentence spout，设置两个Executeor(线程)，默认一个
-        builder.setSpout(SENTENCE_SPOUT_ID, spout, 2);
+        builder.setSpout(SENTENCE_SPOUT_ID, spout, 1);
     }
 
     /**
@@ -58,7 +58,7 @@ public class Main {
 
         //注册一个bolt并订阅sentence发射出的数据流，shuffleGrouping方法告诉Storm要将SentenceSpout发射的tuple随机均匀的分发给SplitSentenceBolt的实例
         //SplitSentenceBolt单词分割器设置4个Task，2个Executeor(线程)
-        builder.setBolt(SPLIT_BOLT_ID, splitBolt, 2).setNumTasks(4).shuffleGrouping(SENTENCE_SPOUT_ID);
+        builder.setBolt(SPLIT_BOLT_ID, splitBolt, 1).setNumTasks(1).shuffleGrouping(SENTENCE_SPOUT_ID);
     }
 
     /**
@@ -70,7 +70,7 @@ public class Main {
         //fieldsGrouping将含有特定数据的tuple路由到特殊的bolt实例中
         //这里fieldsGrouping()方法保证所有“word”字段相同的tuple会被路由到同一个WordCountBolt实例中
         //WordCountBolt单词计数器设置4个Executeor(线程)
-        builder.setBolt(COUNT_BOLT_ID, countBolt, 4).fieldsGrouping(SPLIT_BOLT_ID, new Fields("word"));
+        builder.setBolt(COUNT_BOLT_ID, countBolt, 1).fieldsGrouping(SPLIT_BOLT_ID, new Fields("word"));
     }
 
     /**

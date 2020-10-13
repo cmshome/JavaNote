@@ -1,5 +1,7 @@
 package com.lxk.storm.bolt;
 
+import com.google.common.collect.Maps;
+import com.lxk.storm.model.RepeatEvent;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.OutputFieldsDeclarer;
@@ -10,6 +12,7 @@ import org.apache.storm.tuple.Values;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * 订阅sentence spout发射的tuple流，实现分割单词
@@ -51,9 +54,20 @@ public class SplitSentenceBolt extends BaseRichBolt {
         String[] words = sentence.split(" ");
         String name = Thread.currentThread().getName();
         System.out.println("一、split sentence bolt：" + Arrays.toString(words) + ", current thread name:" + name);
+        TreeMap<String, Integer> treeMap = Maps.newTreeMap();
+
+        treeMap.put("account", 3);
+        treeMap.put("amountRange", 2);
+        treeMap.put("amountSpecial", 1);
+        treeMap.put("time", 4);
+        RepeatEvent repeatEvent = RepeatEvent.builder()
+                .dataId("xxx")
+                .count(10)
+                .risk(treeMap)
+                .build();
         for (String word : words) {
             //向下一个bolt发射数据   emit：这单词就是"发射"的意思
-            this.collector.emit(new Values(word));
+            this.collector.emit(new Values(word, repeatEvent, treeMap));
         }
     }
 
@@ -63,6 +77,6 @@ public class SplitSentenceBolt extends BaseRichBolt {
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
         // TODO Auto-generated method stub
-        declarer.declare(new Fields("word"));
+        declarer.declare(new Fields("word", "repeatEvent", "dataMap"));
     }
 }

@@ -1,5 +1,6 @@
 package com.lxk.storm.bolt;
 
+import com.lxk.storm.model.RepeatEvent;
 import org.apache.storm.shade.com.google.common.collect.Maps;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -10,6 +11,7 @@ import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * 单词计数器
@@ -50,11 +52,14 @@ public class WordCountBolt extends BaseRichBolt {
      * 然后增加计数并存储,发出一个新的词和当前计数组成的二元组。
      * 发射计数作为流允许拓扑的其他bolt订阅和执行额外的处理。
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void execute(Tuple input) {
         // TODO Auto-generated method stub
 
         String word = input.getStringByField("word");
+        RepeatEvent event = (RepeatEvent) input.getValueByField("repeatEvent");
+        TreeMap<String, Integer> dataMap = (TreeMap<String, Integer>) input.getValueByField("dataMap");
         Long count = this.counts.get(word);
         if (count == null) {
             //如果不存在，初始化为0
