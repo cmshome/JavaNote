@@ -53,9 +53,10 @@ public class SlidingWindowSumBolt extends BaseWindowedBolt {
             sumExpired += (int) tuple.getValue(0);
         }
 
-        System.out.println("last sum:  " + sum + "  sumNew:  " + sumNew + "  sumExpired" + sumExpired);
-        PrintUtil.divideLine();
+        int lastSum = sum;
         sum = (sum + sumNew - sumExpired);
+        System.out.println("last sum:  " + lastSum + "  sumNew:  " + sumNew + "  sumExpired:  " + sumExpired + "  latest sum:  " + sum);
+        PrintUtil.divideLine();
         collector.emit(new Values(sum));
     }
 
