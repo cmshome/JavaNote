@@ -1,6 +1,6 @@
-package com.lxk.storm;
+package com.lxk.storm.test.windowed;
 
-import com.lxk.storm.bolt.KafkaBolt;
+import com.lxk.storm.bolt.windowed.ConsumeKafkaBolt;
 import org.apache.kafka.common.utils.Utils;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
@@ -26,7 +26,7 @@ public class KafkaStormDemo {
 
         TopologyBuilder tBuilder = new TopologyBuilder();
         tBuilder.setSpout("WordCountFileSpout", new KafkaSpout<String, String>(kafkaSpoutConfig), 1);
-        tBuilder.setBolt("readKafkaBolt", new KafkaBolt().withWindow(new Duration(60, TimeUnit.SECONDS), new Duration(60, TimeUnit.SECONDS))).shuffleGrouping("WordCountFileSpout");
+        tBuilder.setBolt("readKafkaBolt", new ConsumeKafkaBolt().withWindow(new Duration(60, TimeUnit.SECONDS), new Duration(60, TimeUnit.SECONDS))).shuffleGrouping("WordCountFileSpout");
 
 
         Config config = new Config();

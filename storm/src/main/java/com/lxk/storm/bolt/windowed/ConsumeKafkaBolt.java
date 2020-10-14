@@ -1,4 +1,4 @@
-package com.lxk.storm.bolt;
+package com.lxk.storm.bolt.windowed;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * @author LiXuekai on 2020/10/13
  */
-public class KafkaBolt extends BaseWindowedBolt {
+public class ConsumeKafkaBolt extends BaseWindowedBolt {
     private FileWriter fileWriter = null;
     private OutputCollector collector = null;
     private Map<String, Integer> counters;

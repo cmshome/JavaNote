@@ -1,4 +1,4 @@
-package com.lxk.storm.bolt;
+package com.lxk.storm.bolt.windowed;
 
 import org.apache.storm.shade.com.google.common.collect.Maps;
 import org.apache.storm.task.OutputCollector;

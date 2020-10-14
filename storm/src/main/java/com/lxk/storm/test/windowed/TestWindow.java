@@ -1,4 +1,4 @@
-package com.lxk.storm;
+package com.lxk.storm.test.windowed;
 
 import org.junit.Test;
 

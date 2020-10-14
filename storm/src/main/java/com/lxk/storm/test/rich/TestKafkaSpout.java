@@ -1,6 +1,6 @@
-package com.lxk.storm;
+package com.lxk.storm.test.rich;
 
-import com.lxk.storm.bolt.OutInfoBolt;
+import com.lxk.storm.bolt.rich.OutInfoBolt;
 import org.apache.kafka.common.utils.Utils;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;

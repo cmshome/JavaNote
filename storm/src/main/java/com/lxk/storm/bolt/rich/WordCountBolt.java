@@ -1,4 +1,4 @@
-package com.lxk.storm.bolt;
+package com.lxk.storm.bolt.rich;
 
 import com.lxk.storm.model.RepeatEvent;
 import org.apache.storm.shade.com.google.common.collect.Maps;

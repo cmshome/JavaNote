@@ -1,4 +1,4 @@
-package com.lxk.storm.bolt;
+package com.lxk.storm.bolt.rich;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
