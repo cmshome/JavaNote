@@ -7,6 +7,7 @@ import org.apache.storm.topology.base.BaseRichSpout;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -30,14 +31,18 @@ public class CustomIntSpout extends BaseRichSpout {
 
     @Override
     public void nextTuple() {
+        long timestampMs = System.currentTimeMillis();
+        long second = timestampMs / 1000;
+
+        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         ZoneId zoneId = ZoneOffset.systemDefault();
-        LocalDateTime now = LocalDateTime.now();
-        long second = now.atZone(zoneId).toEpochSecond();
-        String time = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime now = LocalDateTime.ofInstant(Instant.ofEpochSecond(second), zoneId);
+        String time = now.format(sf);
         int nextInt = new Random().nextInt(10);
 
-        System.out.println("CustomIntSpout 产出数字：number: " + nextInt + "  time: " + time + "  timestamp: " + second);
-        this.collector.emit(new Values(nextInt, time, second));
+        System.out.println("CustomIntSpout 产出数字：number: " + nextInt + "  time: " + time
+                + "  timestamp: " + second + "  timestampMs: " + timestampMs);
+        this.collector.emit(new Values(nextInt, time, second, timestampMs));
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -47,7 +52,7 @@ public class CustomIntSpout extends BaseRichSpout {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("number", "time", "timestamp"));
+        declarer.declare(new Fields("number", "time", "timestamp", "timestampMs"));
 
     }
 }
