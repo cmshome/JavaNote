@@ -26,7 +26,7 @@ public class KafkaStormDemo {
 
         TopologyBuilder tBuilder = new TopologyBuilder();
         tBuilder.setSpout("WordCountFileSpout", new KafkaSpout<String, String>(kafkaSpoutConfig), 1);
-        tBuilder.setBolt("readKafkaBolt", new ConsumeKafkaBolt().withWindow(new Duration(60, TimeUnit.SECONDS), new Duration(60, TimeUnit.SECONDS))).shuffleGrouping("WordCountFileSpout");
+        tBuilder.setBolt("readKafkaBolt", new ConsumeKafkaBolt().withWindow(new Duration(5, TimeUnit.SECONDS), new Duration(3, TimeUnit.SECONDS))).shuffleGrouping("WordCountFileSpout");
 
 
         Config config = new Config();
