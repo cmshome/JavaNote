@@ -8,6 +8,8 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Random;
@@ -28,19 +30,24 @@ public class CustomIntSpout extends BaseRichSpout {
 
     @Override
     public void nextTuple() {
-        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        ZoneId zoneId = ZoneOffset.systemDefault();
+        LocalDateTime now = LocalDateTime.now();
+        long second = now.atZone(zoneId).toEpochSecond();
+        String time = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         int nextInt = new Random().nextInt(10);
-        this.collector.emit(new Values(nextInt, time));
+
+        System.out.println("CustomIntSpout 产出数字：number: " + nextInt + "  time: " + time + "  timestamp: " + second);
+        this.collector.emit(new Values(nextInt, time, second));
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
-            System.out.println("sleep error");
+            System.out.println("CustomIntSpout sleep error");
         }
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("number", "time"));
+        declarer.declare(new Fields("number", "time", "timestamp"));
 
     }
 }
