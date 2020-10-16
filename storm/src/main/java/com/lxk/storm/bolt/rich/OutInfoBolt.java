@@ -18,6 +18,15 @@ import java.util.Map;
  */
 public class OutInfoBolt extends BaseRichBolt {
 
+    private String name = "default_field";
+
+    public OutInfoBolt() {
+    }
+
+    public OutInfoBolt(String name) {
+        this.name = name;
+    }
+
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
 
@@ -61,6 +70,6 @@ public class OutInfoBolt extends BaseRichBolt {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-
+        declarer.declare(new Fields(name));
     }
 }

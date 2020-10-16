@@ -52,7 +52,7 @@ public class TestCustomIntSpout {
     }
 
     private void outInfoBolt(TopologyBuilder topologyBuilder) {
-        OutInfoBolt outInfoBolt = new OutInfoBolt();
+        OutInfoBolt outInfoBolt = new OutInfoBolt("lxk");
         // 给自己取名字 and消费别人的名字（即数据来源）
         topologyBuilder.setBolt(OUT_INFO_BOLT_ID, outInfoBolt, 1).setNumTasks(1).shuffleGrouping(CUSTOM_INT_SPOUT_ID);
     }
