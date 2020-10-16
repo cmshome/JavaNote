@@ -2,9 +2,6 @@ package com.lxk.storm.bolt.rich;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.config.listener.Listener;
-import com.alibaba.nacos.api.exception.NacosException;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import com.lxk.storm.constants.NacosConstants;
@@ -21,7 +18,6 @@ import org.apache.storm.tuple.Tuple;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.Executor;
 
 import static com.lxk.storm.constants.NacosConstants.*;
 
@@ -34,12 +30,7 @@ public class OutInfoBolt extends BaseRichBolt {
 
     private String name = "default_field";
     @Setter
-    private ConfigService nacosServer;
-    @Setter
     public Map<String, String> config;
-    private Set<String> cache = Sets.newHashSet();
-    private String dataId;
-    private String group;
 
 
     public OutInfoBolt() {
@@ -60,44 +51,16 @@ public class OutInfoBolt extends BaseRichBolt {
     }
 
     private void nacos() {
-        nacosServer = NacosService.getNacosServer(config.get(NacosConstants.SERVER_ADDRESS), config.get(NacosConstants.NAME_SPACE));
-        initAllMetricsFromNacos();
-        try {
-            addListener();
-        } catch (NacosException e) {
-            e.printStackTrace();
-        }
-    }
+        NacosService.initNacosServer(config.get(NacosConstants.SERVER_ADDRESS), config.get(NacosConstants.NAME_SPACE));
 
-    private void addListener() throws NacosException {
-        nacosServer.addListener(dataId, group, new Listener() {
-            @Override
-            public Executor getExecutor() {
-                return null;
-            }
-
-            @Override
-            public void receiveConfigInfo(String content) {
-                System.out.println("nacos config update : " + content);
-                parseContent(content);
-            }
-        });
-    }
-
-    /**
-     * 记录一下，获取的使用的所有指标信息
-     */
-    public void initAllMetricsFromNacos() {
-        String content = null;
-        dataId = config.get(DATA_ID_2);
-        group = config.get(GROUP);
+        String dataId = config.get(DATA_ID_2);
+        String group = config.get(GROUP);
         int timeout = Integer.parseInt(config.get(TIMEOUT));
-        try {
-            content = nacosServer.getConfig(dataId, group, timeout);
-        } catch (NacosException e) {
-            System.out.println(e);
-        }
+
+        String content = NacosService.get(dataId, group, timeout);
         parseContent(content);
+
+        NacosService.addListener(dataId, group, this::parseContent);
     }
 
     private void parseContent(String content) {
@@ -117,8 +80,7 @@ public class OutInfoBolt extends BaseRichBolt {
         } catch (Exception e) {
             System.out.println("解析使用的所有指标的时候出错 ");
         }
-        cache = set;
-        System.out.println("config from nacos: " + JsonUtils.parseObjToJson(cache));
+        System.out.println("config from nacos: " + JsonUtils.parseObjToJson(set));
     }
 
     @Override

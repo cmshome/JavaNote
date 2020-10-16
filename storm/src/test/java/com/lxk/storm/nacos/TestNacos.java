@@ -4,6 +4,8 @@ import com.lxk.storm.service.NacosService;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author LiXuekai on 2020/10/15
  */
@@ -14,7 +16,7 @@ public class TestNacos {
     public void init() {
         String serverAddr = "192.168.1.191:8848";
         String nameSpace = "test";
-        NacosService.getNacosServer(serverAddr, nameSpace);
+        NacosService.initNacosServer(serverAddr, nameSpace);
     }
 
     /**
@@ -33,6 +35,16 @@ public class TestNacos {
     public void get() {
         String s = NacosService.get("allUseMetrics", "storm");
         System.out.println(s);
+    }
+
+    @Test
+    public void callback() throws InterruptedException {
+        NacosService.addListener("allUseMetrics", "storm", this::out);
+        TimeUnit.MINUTES.sleep(5);
+    }
+
+    private void out(String s) {
+        System.out.println("更新了，callback 。。。" + s);
     }
 
 
