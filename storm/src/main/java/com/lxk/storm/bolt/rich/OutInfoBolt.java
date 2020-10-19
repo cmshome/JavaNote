@@ -42,11 +42,11 @@ public class OutInfoBolt extends BaseRichBolt {
 
     @Override
     public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
-        if (!config.isEmpty()) {
+        if (config == null || config.isEmpty()) {
+            System.out.println("config map is empty.........");
+        } else {
             System.out.println("启动nacos相关");
             nacos();
-        } else {
-            System.out.println("config map is empty.........");
         }
     }
 

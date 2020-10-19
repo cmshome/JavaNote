@@ -59,7 +59,7 @@ public class TestWindow {
     }
 
     private void windowedBolt(TopologyBuilder builder) {
-        BaseWindowedBolt windowedBolt = new SlidingWindowSumBolt()
+        BaseWindowedBolt windowedBolt = new SlidingWindowSumBolt("lxk")
                 //windowLength , slidingInterval
                 .withWindow(new BaseWindowedBolt.Duration(5, TimeUnit.SECONDS), new BaseWindowedBolt.Duration(3, TimeUnit.SECONDS))
 

@@ -21,11 +21,22 @@ public class SlidingWindowSumBolt extends BaseWindowedBolt {
 
     private int sum = 0;
     private OutputCollector collector;
+    private String fieldName;
 
+
+    public SlidingWindowSumBolt() {
+    }
+
+    public SlidingWindowSumBolt(String fieldName) {
+        // 构造函数里面去设置field的名称才来得及。
+        this.fieldName = fieldName;
+    }
 
     @Override
     public void prepare(Map topoConf, TopologyContext context, OutputCollector collector) {
         this.collector = collector;
+        // prepare 里面才初始化field名称是不行的
+        fieldName = "xxx";
     }
 
     @Override
@@ -67,7 +78,7 @@ public class SlidingWindowSumBolt extends BaseWindowedBolt {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("sum"));
+        declarer.declare(new Fields(fieldName));
     }
 
 }
