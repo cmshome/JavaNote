@@ -1,7 +1,6 @@
-package com.lxk.storm.test.windowed;
+package com.lxk.storm.bolt.windowed;
 
 import com.lxk.storm.bolt.rich.OutInfoBolt;
-import com.lxk.storm.bolt.windowed.SlidingWindowSumBolt;
 import com.lxk.storm.spout.CustomIntSpout;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;

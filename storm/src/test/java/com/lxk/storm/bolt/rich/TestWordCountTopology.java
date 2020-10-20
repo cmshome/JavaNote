@@ -1,8 +1,5 @@
-package com.lxk.storm.test.rich;
+package com.lxk.storm.bolt.rich;
 
-import com.lxk.storm.bolt.rich.ReportBolt;
-import com.lxk.storm.bolt.rich.SplitSentenceBolt;
-import com.lxk.storm.bolt.rich.WordCountBolt;
 import com.lxk.storm.spout.SentenceSpout;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;

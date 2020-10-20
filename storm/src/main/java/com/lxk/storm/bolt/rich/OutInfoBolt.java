@@ -1,7 +1,5 @@
 package com.lxk.storm.bolt.rich;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import com.lxk.storm.constants.NacosConstants;
@@ -63,6 +61,7 @@ public class OutInfoBolt extends BaseRichBolt {
         NacosService.addListener(dataId, group, this::parseContent);
     }
 
+    @SuppressWarnings("unchecked")
     private void parseContent(String content) {
         if (Strings.isNullOrEmpty(content)) {
             System.out.println("get no data from nacos");
@@ -71,12 +70,12 @@ public class OutInfoBolt extends BaseRichBolt {
 
         Set<String> set = Sets.newHashSet();
         try {
-            JSONArray objects = JSON.parseArray(content);
-            objects.forEach(o -> {
-                if (o != null) {
-                    set.add(o.toString());
-                }
-            });
+            Map<String, String> map = (Map<String, String>) JsonUtils.parseJsonToObj(content, Map.class);
+            if (map == null) {
+                System.out.println("map is null, content is " + content);
+            } else {
+                map.forEach((k, v) -> set.add(k));
+            }
         } catch (Exception e) {
             System.out.println("解析使用的所有指标的时候出错 ");
         }

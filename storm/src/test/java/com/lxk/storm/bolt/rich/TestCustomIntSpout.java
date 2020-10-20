@@ -1,6 +1,5 @@
-package com.lxk.storm.test.rich;
+package com.lxk.storm.bolt.rich;
 
-import com.lxk.storm.bolt.rich.OutInfoBolt;
 import com.lxk.storm.spout.CustomIntSpout;
 import com.lxk.tool.JsonUtils;
 import org.apache.storm.Config;

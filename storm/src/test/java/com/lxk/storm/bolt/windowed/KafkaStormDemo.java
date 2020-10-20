@@ -1,6 +1,5 @@
-package com.lxk.storm.test.windowed;
+package com.lxk.storm.bolt.windowed;
 
-import com.lxk.storm.bolt.windowed.ConsumeKafkaBolt;
 import org.apache.kafka.common.utils.Utils;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
