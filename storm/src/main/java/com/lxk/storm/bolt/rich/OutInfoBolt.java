@@ -102,7 +102,7 @@ public class OutInfoBolt extends BaseRichBolt {
 
         fields.forEach(field -> {
             Object value = input.getValueByField(field);
-            System.out.println("OutInfoBolt 输出信息： field : " + field + "     value : " + JsonUtils.parseObjToJson(value));
+            System.out.println("----------name ：" + name + "  OutInfoBolt 输出信息： field : " + field + "     value : " + JsonUtils.parseObjToJson(value));
         });
 
         PrintUtil.divideLine();

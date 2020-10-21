@@ -7,6 +7,7 @@ package com.lxk.storm.constants;
  */
 public interface CustomConstants {
     String OUT_INFO_BOLT_ID = "out-info-bolt-id";
+    String OUT_INFO_BOLT_ID_2 = "out-info-bolt-id-2";
     String SLIDING_WINDOW_BOLT_ID = "sliding-window-bolt-id";
 
     String REPORT_BOLT_ID = "report-bolt";

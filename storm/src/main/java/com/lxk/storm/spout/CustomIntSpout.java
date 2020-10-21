@@ -44,7 +44,7 @@ public class CustomIntSpout extends BaseRichSpout {
                 + "  timestamp: " + second + "  timestampMs: " + timestampMs);
         this.collector.emit(new Values(nextInt, time, second, timestampMs));
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             System.out.println("CustomIntSpout sleep error");
         }
