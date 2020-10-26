@@ -29,7 +29,7 @@ public class OutInfoBolt extends BaseRichBolt {
     private String name = "default_field";
     @Setter
     public Map<String, String> config;
-
+    private static int total = 0;
 
     public OutInfoBolt() {
     }
@@ -46,6 +46,7 @@ public class OutInfoBolt extends BaseRichBolt {
             System.out.println("启动nacos相关");
             nacos();
         }
+        System.out.println(total += 1);
     }
 
     private void nacos() {
@@ -85,6 +86,7 @@ public class OutInfoBolt extends BaseRichBolt {
     @Override
     public void execute(Tuple input) {
         try {
+            System.out.println("bolt 被初始化了 " + total + " 次。。。。。。。。。。。");
             //fromKafkaInfo(input);
             commonOutInfo(input);
         } catch (Exception e) {
