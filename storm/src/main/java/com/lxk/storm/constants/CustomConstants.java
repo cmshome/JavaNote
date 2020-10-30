@@ -15,8 +15,14 @@ public interface CustomConstants {
     String SPLIT_BOLT_ID = "split-bolt";
 
 
+    String FAKE_KAFKA_SPOUT_ID = "fake-kafka-spout-id";
     String CUSTOM_INT_SPOUT_ID = "custom-int-spout-id";
     String KAFKA_INFO_SPOUT_ID = "kafka-info-spout-id";
     String SENTENCE_SPOUT_ID = "sentence-spout";
+
+    String REPLICATE_BOLT = "replicate-bolt";
+
+    String STREAM_ID_1 = "stream-id-1";
+    String STREAM_ID_2 = "stream-id-2";
 
 }

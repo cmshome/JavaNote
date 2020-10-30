@@ -51,7 +51,7 @@ public class ReplicatingSelectorBolt extends BaseRichBolt {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields(TOPIC, PARTITION, OFFSET, KEY, VALUE));
+        streamIds.forEach(streamId -> declarer.declareStream(streamId, new Fields(TOPIC, PARTITION, OFFSET, KEY, VALUE)));
     }
 
 }
