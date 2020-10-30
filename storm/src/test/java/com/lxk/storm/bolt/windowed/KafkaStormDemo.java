@@ -17,8 +17,9 @@ import java.util.concurrent.TimeUnit;
 public class KafkaStormDemo {
 
 
+    @Test
+    public void test() {
 
-    public static void main(String[] args) throws Exception {
         KafkaSpoutConfig.Builder<String, String> builder = KafkaSpoutConfig.builder("192.168.1.191:9092", "a_citic_test_lxk");
         builder.setProp("group.id", "KAFKA_STORM");
         KafkaSpoutConfig<String, String> kafkaSpoutConfig = builder.build();
@@ -38,9 +39,4 @@ public class KafkaStormDemo {
         cluster.shutdown();
     }
 
-    @Test
-    public void test() {
-
-        System.out.println("---");
-    }
 }

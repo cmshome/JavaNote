@@ -1,14 +1,13 @@
 package com.lxk.storm.bolt.rich;
 
+import com.lxk.storm.bolt.BaseBoltTest;
 import com.lxk.storm.spout.CustomIntSpout;
 import com.lxk.tool.JsonUtils;
-import org.apache.storm.Config;
-import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static com.lxk.storm.constants.CustomConstants.*;
 
@@ -17,41 +16,28 @@ import static com.lxk.storm.constants.CustomConstants.*;
  *
  * @author LiXuekai on 2020/10/14
  */
-public class TestCustomIntSpout {
-    private static final String TOPOLOGY_NAME = "custom-int-spout-topology";
+public class TestCustomIntSpout extends BaseBoltTest {
 
+
+    @Before
+    public void init() {
+        TOPOLOGY_NAME = "custom-int-spout-topology";
+    }
 
     @Test
-    public void test() throws InterruptedException {
-
-        //1，创建了一个TopologyBuilder实例
-        TopologyBuilder topologyBuilder = new TopologyBuilder();
+    public void test() {
 
         //1，实例化 kafka spout
-        customIntSpout(topologyBuilder);
+        customIntSpout(builder);
 
         //3，bolt 消费数据
-        outInfoBolt(topologyBuilder, "lxk1", OUT_INFO_BOLT_ID);
-        outInfoBolt(topologyBuilder, "lxk2", OUT_INFO_BOLT_ID_2);
+        outInfoBolt(builder, "lxk1", OUT_INFO_BOLT_ID);
+        outInfoBolt(builder, "lxk2", OUT_INFO_BOLT_ID_2);
 
         //4，提交
-        submitTopology(topologyBuilder);
+        submitTopology();
     }
 
-    private void submitTopology(TopologyBuilder builder) throws InterruptedException {
-        //Config类是一个HashMap<String,Object>的子类，用来配置topology运行时的行为
-        Config config = new Config();
-        //设置worker数量
-        //config.setNumWorkers(2);
-        LocalCluster cluster = new LocalCluster();
-
-        //本地提交
-        cluster.submitTopology(TOPOLOGY_NAME, config, builder.createTopology());
-
-        TimeUnit.MINUTES.sleep(5);
-        cluster.killTopology(TOPOLOGY_NAME);
-        cluster.shutdown();
-    }
 
     @SuppressWarnings("unchecked")
     private void outInfoBolt(TopologyBuilder topologyBuilder, String name, String boltId) {

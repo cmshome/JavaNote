@@ -1,9 +1,8 @@
 package com.lxk.storm.bolt.windowed;
 
+import com.lxk.storm.bolt.BaseBoltTest;
 import com.lxk.storm.bolt.rich.OutInfoBolt;
 import com.lxk.storm.spout.CustomIntSpout;
-import org.apache.storm.Config;
-import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.topology.base.BaseWindowedBolt;
 import org.junit.Test;
@@ -17,40 +16,24 @@ import static com.lxk.storm.constants.CustomConstants.*;
  *
  * @author LiXuekai on 2020/9/27
  */
-public class TestWindow {
-    private static final String TOPOLOGY_NAME = "windowed-topology";
+public class TestWindow extends BaseBoltTest {
 
+    @Override
+    public void init() {
+        TOPOLOGY_NAME = "windowed-topology";
+    }
 
     @Test
     public void window() {
-        TopologyBuilder topologyBuilder = new TopologyBuilder();
 
-        spout(topologyBuilder);
+        spout(builder);
 
-        windowedBolt(topologyBuilder);
-        outInfoBolt(topologyBuilder);
+        windowedBolt(builder);
+        outInfoBolt(builder);
 
-        submitTopology(topologyBuilder);
+        submitTopology();
     }
 
-    private void submitTopology(TopologyBuilder builder) {
-        //Config类是一个HashMap<String,Object>的子类，用来配置topology运行时的行为
-        Config config = new Config();
-        //设置worker数量
-        //config.setNumWorkers(2);
-        LocalCluster cluster = new LocalCluster();
-
-        //本地提交
-        cluster.submitTopology(TOPOLOGY_NAME, config, builder.createTopology());
-
-        try {
-            TimeUnit.MINUTES.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cluster.killTopology(TOPOLOGY_NAME);
-        cluster.shutdown();
-    }
 
     private void spout(TopologyBuilder builder) {
         builder.setSpout(CUSTOM_INT_SPOUT_ID, new CustomIntSpout(), 1);
