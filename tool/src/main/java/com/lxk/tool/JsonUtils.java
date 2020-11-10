@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
+import java.util.List;
+
 /**
  * JSON 转换
  *
@@ -46,6 +48,21 @@ public final class JsonUtils {
             } catch (Exception ee) {
                 System.out.println(ee.getMessage());
             }
+        }
+        return null;
+    }
+
+    /**
+     * 将Json字符串信息转换成对应的Java array对象
+     *
+     * @param json json字符串对象
+     * @param c    对应的类型
+     */
+    public static <T> List<T> parseJsonToArrayObj(String json, Class<T> c) {
+        try {
+            return JSON.parseArray(json, c);
+        } catch (Exception e) {
+            System.out.println("parse array error, json is {}, e is {}");
         }
         return null;
     }
