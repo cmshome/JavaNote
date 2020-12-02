@@ -31,6 +31,15 @@ public class StringTest {
         LO_ = "lo";
     }
 
+    @Test
+    public void regex() {
+
+        String s = "a b  c    d    f  sad";
+        // 把1或多个空格给替换成逗号，再按照逗号来split。
+        String[] split = s.replaceAll(" {1,}", ",").split(",");
+        System.out.println(Arrays.toString(split));
+    }
+
     /**
      * 点做分隔符的时候，需要转义一下，不能直接split
      */
