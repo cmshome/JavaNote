@@ -17,6 +17,22 @@ public class ForTest {
     private static final int SIZE = 40000;
 
 
+    @Test
+    public void f() {
+        List<String> es = Lists.newArrayList("1","2","3","4","5","6","7","8","9","0");
+        List<String> summary = Lists.newArrayList("a","b","c","d");
+        int a = es.size() * summary.size();
+        List<List<String>> all = Lists.newArrayList();
+        for (int i = 0; i < a; i++) {
+            List<String> list = Lists.newArrayList();
+            list.add(es.get(i % es.size()));
+            list.add(summary.get(i % summary.size()));
+            all.add(list);
+        }
+
+        all.forEach(strings -> System.out.println(strings.toString()));
+        System.out.println(all.size());
+    }
     /**
      * 测试下for each写法中的循环体，是否是只执行一次。测试结果，是的。
      */
