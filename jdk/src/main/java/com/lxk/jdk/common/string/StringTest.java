@@ -31,12 +31,18 @@ public class StringTest {
         LO_ = "lo";
     }
 
+    /**
+     * 正则表达式 {1,} :出现一次或者多次 意义同 +
+     */
     @Test
     public void regex() {
 
         String s = "a b  c    d    f  sad";
         // 把1或多个空格给替换成逗号，再按照逗号来split。
-        String[] split = s.replaceAll(" {1,}", ",").split(",");
+        String[] split = s.replaceAll(" +", ",").split(",");
+
+        //String[] split = s.replaceAll(" {1,}", ",").split(",");
+
         System.out.println(Arrays.toString(split));
     }
 
