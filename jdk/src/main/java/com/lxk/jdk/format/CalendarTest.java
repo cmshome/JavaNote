@@ -17,59 +17,57 @@ public class CalendarTest {
      * 能处理的最早时间，早于这个时间的数据将不再创建索引
      */
     private int startDate;
+    private SimpleDateFormat sdf;
+    private SimpleDateFormat simpleDateFormat;
+    private String index;
 
     @Test
     public void test() {
+        this.sdf = new SimpleDateFormat("_yyyy-MM-dd-HH");
+        this.simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        index = "detail";
         // 获取当前时间之后一小时的时间和最早时间
         Calendar per = getNowDate();
         Calendar last = (Calendar) per.clone();
 
-        System.out.println("加1小时");
-        outTime(last.getTime());
-        last.add(Calendar.HOUR_OF_DAY, 1);
-        outTime(last.getTime());
-        System.out.println("----------");
+        last.add(Calendar.MINUTE, 60);
 
-        System.out.println("加  HOUR  1小时");
-        int range;
-        range = Calendar.HOUR;
+        int range = 0;
+        range = Calendar.MINUTE;
         setZero(last);
-        outTime(last.getTime());
-        last.add(range, 1);
-        outTime(last.getTime());
-        System.out.println("----------");
+        last.add(range, 30);
 
-        System.out.println("加 DATE 一天");
-        last.add(Calendar.DATE, 1);
-        outTime(last.getTime());
-        System.out.println("-----");
-
-        System.out.println("加 MONTH 一月");
-        last.add(Calendar.MONTH, 1);
-        outTime(last.getTime());
-        System.out.println("-----");
-
-        System.out.println("加 YEAR 一月");
-        last.add(Calendar.YEAR, 1);
-        outTime(last.getTime());
-        System.out.println("-----");
-
+        per.add(range, -30 * 5);
         setZero(per);
+
         while (last.after(per)) {
             int end = (int) (last.getTime().getTime() / 1000);
-            last.add(range, -1);
+            String sss = simpleDateFormat.format(last.getTime());
+            last.add(range, -30);
             int start = (int) (last.getTime().getTime() / 1000);
+            String yyy = simpleDateFormat.format(last.getTime());
+
             try {
+                String name = index + sdf.format(last.getTime()) + getSuffix(last);
+
+                System.out.println(start + "   " + end + "   " + (end - start) + "  "+ yyy + "     " + sss + "   " + name);
             } catch (RangeException e) {
             }
         }
         startDate = (int) (per.getTime().getTime() / 1000);
+
+        System.out.println("startDate：" + index + sdf.format(per.getTime()) + getSuffix(per));
     }
 
     private void setZero(Calendar c) {
-        c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
+        int i = c.get(Calendar.MINUTE);
+        if (i < 30){
+            c.set(Calendar.MINUTE, 0);
+        } else {
+            c.set(Calendar.MINUTE, 30);
+        }
     }
 
     private Calendar getNowDate() {
@@ -84,5 +82,17 @@ public class CalendarTest {
         String dateString = sdf.format(date);
         //_2019-07-18_15
         System.out.println(dateString);
+    }
+
+    private String getSuffix(Calendar time) {
+        int minutes = time.get(Calendar.MINUTE);
+        return minutes < 30 ? "-00" : "-30";
+    }
+
+    @Test
+    public void t() {
+        Calendar nowDate = getNowDate();
+        int minutes = nowDate.get(Calendar.MINUTE);
+        System.out.println(minutes < 30 ? "-00" : "-30");
     }
 }
