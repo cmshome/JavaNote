@@ -65,6 +65,7 @@ nameArray=(
 n=${#psArray[*]}
 existIndex=0
 bbb=0
+abc=0
 declare -a notExist
 echo "                     存在的进程如下"
 for (( i=0; i < n; i++ ));
@@ -74,7 +75,8 @@ do
   if [ $pid -ne 0 ]
     then
       existIndex=$[$existIndex+1];
-	    echo $existIndex:  ${nameArray[$i]} "的进程号为:"$PID
+      abc=$existIndex
+	    echo $abc:  ${nameArray[$i]} "的进程号为:"$PID
   else
     notExist[$bbb]=${nameArray[$i]}
     bbb=$bbb+1
