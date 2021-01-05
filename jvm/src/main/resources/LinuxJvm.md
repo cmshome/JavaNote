@@ -46,6 +46,8 @@
 |jstack -l pid          |打印Java线程的Java 栈跟踪|
 
 
+### [Copyright and License][5]
+**The MIT License (MIT)**
 
 *******************
 [0]: https://lixuekai.blog.csdn.net/article/details/106421721
@@ -53,3 +55,4 @@
 [2]: https://lixuekai.blog.csdn.net/article/details/106555276
 [3]: https://lixuekai.blog.csdn.net/article/details/106672147
 [4]: https://lixuekai.blog.csdn.net/article/details/106691145
+[5]: https://github.com/cmshome/JavaNote/blob/master/jvm/src/main/resources/LinuxJvm.md
