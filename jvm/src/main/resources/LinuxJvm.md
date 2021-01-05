@@ -1,7 +1,7 @@
 ## Linux 下JDK自带的排查jvm信息的几个命令常用形式  
   
   
-### jps (java ps)
+### [jps (java ps)][0]
 |命令         |含义|
 |----        |-----|
 |jps         |输出pid和进程简单名称|
@@ -10,7 +10,7 @@
 |jps -v      |输出pid name 输出jvm参数|
 
 
-### jstat
+### [jstat][1]
 |命令         |含义|
 |----        |-----|
 |jstat -gc              64363 1s 100             |一秒一次，执行100次，单位都是 kb|
@@ -25,14 +25,14 @@
 |jstat -compiler        64363                    |输出jit编译器编译过的方法耗时等信息| 
 
 
-### jinfo
+### [jinfo][2]
 |命令         |含义|
 |----        |-----|
 |jinfo 64363             |打印所有信息|
 |jinfo -flags 757471     |输出的是默认值和命令行的jvm信息设置|
 
 
-### jmap
+### [jmap][3]
 |命令         |含义|
 |----        |-----|
 |jmap -heap            757471                     |打印heap的概要信息，GC使用的算法，heap（堆）的配置及JVM堆内存的使用情况|
@@ -40,7 +40,16 @@
 |jmap -finalizerinfo   757471                     |打印正等候回收的对象的信息|
 
 
-### jstack
+### [jstack][4]
 |命令         |含义|
 |----        |-----|
 |jstack -l 961012          |打印Java线程的Java 栈跟踪|
+
+
+
+*******************
+[0]: https://lixuekai.blog.csdn.net/article/details/106421721
+[1]: https://lixuekai.blog.csdn.net/article/details/106524222
+[2]: https://lixuekai.blog.csdn.net/article/details/106555276
+[3]: https://lixuekai.blog.csdn.net/article/details/106672147
+[4]: https://lixuekai.blog.csdn.net/article/details/106691145
