@@ -2,7 +2,7 @@
 
  
 |命令         |含义|
-|:----        |-----|
+|:----        |:-----|
 |ntpdate 1.cn.pool.ntp.org          |校正服务器时间同网络时间一致|
 |netstat -tunlp &#124; grep 8088     |查看端口被占用否|
 |top -c                             |shift + m 按照内存排序<br>shift + p  按照cpu排序<br>b + x 正在运行的和排序的那一列加黑<br>按键盘数字“1”，可监控每个逻辑CPU的状况<br>通过”shift + >”或”shift + <”可以向右或左改变排序列|
@@ -64,3 +64,11 @@
 |vi 之esc再冒号再set nu              |文件中的每一行前面列出行号|
 |vi 之esc再冒号再#                   |如输入数字15，再回车，就会跳到文章的第15行|
 |vi 之esc再/关键字                   |搜索关键字，n 下一个，N 上一个|
+
+
+- [my github][0]  
+- [my csdn][1]
+
+*******************
+[0]: https://github.com/cmshome/JavaNote/blob/master/jvm/src/main/resources/Linux.md
+[1]: https://lixuekai.blog.csdn.net/article/details/112243730
