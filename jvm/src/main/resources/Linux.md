@@ -66,8 +66,8 @@
 |vi 之esc再/关键字                   |搜索关键字，n 下一个，N 上一个|
 
 
-- [my github][0]  
-- [my csdn][1]
+- [link 2 my github][0]  
+- [link 2 my csdn][1]
 
 *******************
 [0]: https://github.com/cmshome/JavaNote/blob/master/jvm/src/main/resources/Linux.md
