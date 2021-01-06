@@ -66,8 +66,8 @@
 |shift + g                          |命令行下，直接跳转到文件的末尾|
 
 
-- [link 2 my github][0]  
-- [link 2 my csdn][1]
+- [link 2 github][0]  
+- [link 2 csdn][1]
 
 *******************
 [0]: https://github.com/cmshome/JavaNote/blob/master/jvm/src/main/resources/Linux.md
