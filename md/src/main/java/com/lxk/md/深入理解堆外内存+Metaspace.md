@@ -54,7 +54,7 @@ Metaspace 是用来存放 class metadata 的，class metadata 用于记录一个
 
 所以，只有当这个类加载器加载的所有类都没有存活的对象，并且没有到达这些类和类加载器的引用时，相应的 Metaspace 空间才会被 GC 释放。看下图：
 
-![Metadata lifecycle - Deallocation](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-lifecycle-deallocation.png)
+![Metadata lifecycle - Deallocation](../imgs/20510079/metaspace/metaspace-lifecycle-deallocation.png)
 
 所以，一个 Java 类在 Metaspace 中占用的空间，它是否释放，取决于这个类的类加载器是否被卸载。
 
@@ -108,19 +108,19 @@ Metaspace 在实现上分为多层。最底层，负责向操作系统申请大�
 
 从一个 Node 中分配内存，每一块称为 MetaChunk，chunk 有三种规格，在 64 位系统中分别为 1K、4K、64K。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-vslist.png)
+![alt text](../imgs/20510079/metaspace/metaspace-vslist.png)
 
 链表 VirtualSpaceList 和每个节点 Node 是全局的，而 Node 内部的一个个 MetaChunk 是分配给每个类加载器的。所以一个 Node 通常由分配给多个类加载器的 chunks 组成。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders.png)
+![alt text](../imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders.png)
 
 当一个类加载器和它加载的所有的类都卸载的时候，它占用的 chunks 就会加入到一个全局的空闲列表中：[*ChunkManager*](http://hg.openjdk.java.net/jdk/jdk11/file/1ddf9a99e4ad/src/hotspot/share/memory/metaspace/chunkManager.hpp#l44)，看下图：
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders-one-dies.png)
+![alt text](../imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders-one-dies.png)
 
 这些 chunks 会被复用：如果其他的类加载器加载新的类，它可能就会得到一个空闲列表中的 chunk，而不是去 Node 中申请一个新的 chunk。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders-chunk-reused.png)
+![alt text](../imgs/20510079/metaspace/metaspace-vsnode-multiple-loaders-chunk-reused.png)
 
 > 后面会说到，如果刚好把整个 Node 都清空了，那么这整个 Node 的内存会直接还给操作系统。
 >
@@ -152,7 +152,7 @@ Metaspace 在实现上分为多层。最底层，负责向操作系统申请大�
 
 下面展示一个 Metachunk 的结构：
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-metachunk.png)
+![alt text](../imgs/20510079/metaspace/metaspace-metachunk.png)
 
 这个 chunk 诞生的时候，它只有一个 header，之后的分配都只要在顶部进行分配就行。
 
@@ -176,13 +176,13 @@ Metaspace 在实现上分为多层。最底层，负责向操作系统申请大�
 
 这样做的目的之一，其实就是没有必要扩大大量的 Lambdas 和 method  handlers 在 Metaspace 中的空间的生命周期。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-classloadermetaspace.png)
+![alt text](../imgs/20510079/metaspace/metaspace-classloadermetaspace.png)
 
 ### 内存什么时候会还给操作系统
 
 当一个 VirtualSpaceListNode 中的所有 chunk 都是空闲的时候，这个 Node 就会从链表 VirtualSpaceList 中移除，它的 chunks 也会从空闲列表中移除，这个 Node 就没有被使用了，会将其内存归还给操作系统。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-vsnode-purged.png)
+![alt text](../imgs/20510079/metaspace/metaspace-vsnode-purged.png)
 
 对于一个空闲的 Node 来说，拥有其上面的 chunks 的所有的类加载器必然都是被卸载了的。
 
@@ -219,11 +219,11 @@ Metaspace 在实现上分为多层。最底层，负责向操作系统申请大�
 
 每个 Java 对象，在它的头部，有一个引用指向 Metaspace 中的 Klass 结构。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-uncompressed-class-ptr.png)
+![alt text](../imgs/20510079/metaspace/metaspace-uncompressed-class-ptr.png)
 
 当使用了 compressed class pointers，这个引用是 32 位的值，为了找到真正的 64 位地址，需要加上一个 base 值：
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-compressed-class-ptr.png)
+![alt text](../imgs/20510079/metaspace/metaspace-compressed-class-ptr.png)
 
 上面的内容应该很好理解，这项技术对 Klass 的分配带来的问题是：由于 32 位地址只能访问到 4G 的空间，所以**最大只允许 4G** 的 Klass 地址。这项限制也意味着，JVM 需要向 Metaspace 分配一个**连续的地址空间**。
 
@@ -252,7 +252,7 @@ compressed class space 空间的大小，是通过 -XX:CompressedClassSpaceSize 
 
 但是对于 Class Space，既然我们需要一个连续的空间我们不能使用一个链表来存放所有的 Node，所以这个链表退化为只有一个节点，并且不能扩展。这个 Node 就是 compressed class space，和 Non-Class Space 中的 Node 相比，它可是巨大无比。
 
-![alt text](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-classspace-duality.png)
+![alt text](../imgs/20510079/metaspace/metaspace-classspace-duality.png)
 
 ClassLoaderMetaspace（记录当前类加载器持有哪些 chunks）需要两个链表，一个用于记录 Class Space 中的 chunks，一个用于记录 Non-Class Space 中的 chunks。
 
@@ -292,7 +292,7 @@ ClassLoaderMetaspace（记录当前类加载器持有哪些 chunks）需要两�
 
 下图展示了它们是怎么工作的：
 
-![MaxMetaspaceSize and CompressedClassSpaceSize](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-sizing-params.png)
+![MaxMetaspaceSize and CompressedClassSpaceSize](../imgs/20510079/metaspace/metaspace-sizing-params.png)
 
 红色部分是 Metaspace 中已使用的系统内存，包括 Non-Class Space 链表中的红色部分和 Class Space 中大 Node 的红色部分。这个总和受到 `-XX:MaxMetaspaceSize` 的限制，超出将抛出 **OutOfMemoryError(“Metaspace”)**。
 
@@ -312,7 +312,7 @@ ClassLoaderMetaspace（记录当前类加载器持有哪些 chunks）需要两�
 
 对于一个被加载到虚拟机中的类，Metaspace 需要分配 class 和 non-class 空间，那么这些空间花在哪里了呢？看下图：
 
-![How much space does a Java class need?](https://assets.javadoop.com/imgs/20510079/metaspace/metaspace-class-metadata.png)
+![How much space does a Java class need?](../imgs/20510079/metaspace/metaspace-class-metadata.png)
 
 #### 深入 Class Space：
 
