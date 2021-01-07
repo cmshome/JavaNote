@@ -55,4 +55,4 @@
 [2]: https://lixuekai.blog.csdn.net/article/details/106555276
 [3]: https://lixuekai.blog.csdn.net/article/details/106672147
 [4]: https://lixuekai.blog.csdn.net/article/details/106691145
-[5]: https://github.com/cmshome/JavaNote/blob/master/jvm/src/main/resources/LinuxJvm.md
+[5]: https://github.com/cmshome/JavaNote/blob/master/md/src/main/java/com/lxk/md/JDK%E5%B8%B8%E7%94%A8JVM%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.md
