@@ -219,7 +219,7 @@ vertx 果然还是不太适合，还是Spring cloud 香
 ----
 ## web
 ```
-想着弄个web例子的，但是后期发现springboot相比之前的Spring mvc 简直是ezsy的不要不要的，加上使用vue，前后端分离之后  
+想着弄个web例子的，但是后期发现springboot相比之前的Spring mvc 简直是easy的不要不要的，加上使用vue，前后端分离之后  
 撇开了过时的jsp页面啥的，后端完全从js里面解放出来了。也不需要做web调试了。
 ```
 ----
