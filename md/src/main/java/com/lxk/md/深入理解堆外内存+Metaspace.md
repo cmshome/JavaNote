@@ -44,7 +44,7 @@ Metaspace 是用来存放 class metadata 的，class metadata 用于记录一个
 
 当一个类被加载时，它的类加载器会负责在 Metaspace 中分配空间用于存放这个类的元数据。
 
-![Metadata lifecycle - Allocation](../../imgs/20510079/metaspace/metaspace-lifecycle-allocation.png)
+![Metadata lifecycle - Allocation](../imgs/20510079/metaspace/metaspace-lifecycle-allocation.png)
 
 上面这个示意图非常简单，可以看到在 `Id` 这个类加载器第一次加载类 `X` 和 `Y` 的时候，在 Metaspace 中为它们开辟空间存放元信息。
 
