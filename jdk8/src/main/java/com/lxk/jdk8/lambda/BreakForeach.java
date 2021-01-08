@@ -1,5 +1,7 @@
 package com.lxk.jdk8.lambda;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -10,24 +12,14 @@ import java.util.Optional;
  * @author LiXuekai on 2018/10/23
  */
 public class BreakForeach {
-    public static void main(String[] args) {
-        int max = 5;
-        List<String> list = Arrays.asList("123", "12345", "1234", "4321", "1234567", "5678");
-        continueForeachJava8(max, list);
-        System.out.println();
-        breakForeachJava8(max, list);
-        System.out.println();
-        continueFor(max, list);
-        System.out.println();
-        breakFor(max, list);
-        System.out.println();
-        breakManyFor(max, list);
-    }
+    private final List<String> list = Arrays.asList("123", "12345", "1234", "4321", "1234567", "5678");
+    private final int max = 5;
 
     /**
      * Java8跳过一次foreach循环，然后继续执行。
      */
-    private static void continueForeachJava8(int max, List<String> list) {
+    @Test
+    public void continueForeachJava8() {
         list.forEach(s -> {
             if (s.length() >= max) {
                 return;
@@ -40,7 +32,8 @@ public class BreakForeach {
      * 跳出Java8的foreach循环
      * 还这没找到，怎么跳出
      */
-    private static void breakForeachJava8(int max, List<String> list) {
+    @Test
+    public void breakForeachJava8() {
         //这么做是不对的
         //try {
         //    list.forEach(s -> {
@@ -64,7 +57,8 @@ public class BreakForeach {
     /**
      * continue 跳过本次循环，继续执行。
      */
-    private static void continueFor(int max, List<String> list) {
+    @Test
+    public void continueFor() {
         for (String s : list) {
             if (s.length() >= max) {
                 continue;
@@ -76,7 +70,8 @@ public class BreakForeach {
     /**
      * break 是直接跳出for循环，不再继续执行for循环到代码了。
      */
-    private static void breakFor(int max, List<String> list) {
+    @Test
+    public void breakFor() {
         for (String s : list) {
             if (s.length() >= max) {
                 break;
@@ -88,7 +83,8 @@ public class BreakForeach {
     /**
      * break lxk 是直接跳出多层for循环，不再继续执行for循环到代码了。
      */
-    private static void breakManyFor(int max, List<String> list) {
+    @Test
+    public void breakManyFor() {
         lxk:
         for (String s1 : list) {
             System.out.println("第一层：" + s1);
