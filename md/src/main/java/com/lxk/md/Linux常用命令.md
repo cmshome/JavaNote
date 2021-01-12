@@ -12,7 +12,10 @@
 |ps -ef &#124; grep xxxx &#124; grep -v "grep" &#124; wc -l| 只有 ps -ef &#124; grep xxxx会出2个结果，一个是目的pid，还有一个就是grep这个pid，<br>后面再接 &#124; 继续grep -v 就是剔除掉，grep这个pid。只留下我们想ps的目的pid。<br>后面又继续接管道，wc -l，就是统计个数。|
 |ps -ef &#124; grep collector.cluster.xml &#124; grep -v "grep" &#124; awk '{print$2}'|输出这个目的pid，$1 是用户 $2是pid 。。。。，依次是ps的结果列|
 |echo $JAVA_HOME                    |查看Java的环境变量|
-|/etc/profile                       |linux环境变量地址|
+|less /etc/profile                  |查看linux服务器环境变量|
+|less /etc/hosts                    |查看linux hosts文件中映射的配置|
+|hostname                           |显示主机名称|
+|hostname -i                        |显示主机IP|
 |export JAVA_HOME=/usr/java/jdk1.8.0_131|设置环境变量|
 |scp license.dat 192.168.1.191:/home/lxk <br>scp -r root@ip:/home/lxk/|不同服务器之间复制东西<br>复制个文件夹及其所有子 命令中间  -r  就OK了|
 |crontab -e                         |设置定时任务，执行指定的脚本<br>然后使用那个表达式就可以执行了，比如每分钟一次    */1 * * * * sh /home/a.sh|
