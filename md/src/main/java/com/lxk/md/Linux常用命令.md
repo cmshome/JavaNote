@@ -11,6 +11,7 @@
 |ps aux &#124; grep -E 'kthreadd &#124; migration/0' |查找多个字符串的匹配（grep -E相当于egrep）|
 |ps -ef &#124; grep xxxx &#124; grep -v "grep" &#124; wc -l| 只有 ps -ef &#124; grep xxxx会出2个结果，一个是目的pid，还有一个就是grep这个pid，<br>后面再接 &#124; 继续grep -v 就是剔除掉，grep这个pid。只留下我们想ps的目的pid。<br>后面又继续接管道，wc -l，就是统计个数。|
 |ps -ef &#124; grep collector.cluster.xml &#124; grep -v "grep" &#124; awk '{print$2}'|awk 后面跟的是英文单引号，这个md，会自动变成中文的，直接复制的时候还的改改<br>输出这个目的pid，$1 是用户 $2是pid 。。。。，依次是ps的结果列|
+|ps -ef &#124; grep storm &#124; grep -v "grep" &#124; awk '{print$2}' &#124; xargs kill -9|批量关闭ps出来的进程 xargs 把前面管道的输出当作后面命令的输入|
 |echo $JAVA_HOME                    |查看Java的环境变量|
 |less /etc/profile                  |查看linux服务器环境变量|
 |less /etc/hosts                    |查看linux hosts文件中映射的配置|
