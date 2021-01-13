@@ -1,5 +1,6 @@
 package com.lxk.json.fastjson;
 
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
@@ -52,6 +53,14 @@ public class FastJsonTest {
         //Map 类可以， hash map 不 OK。
         Map map = JsonUtils.parseJsonToObj(json, Map.class);
         System.out.println(map);
+    }
+
+    @Test
+    public void t() {
+        String s = "{\"mapping\":{\"transRef\":{\"@type\":\"string\"}},\"start_at\":1610513218,\"stream\":\"5f968721303e482cf6dd344b\"}";
+        Map map = JsonUtils.parseJsonToObj(s, Map.class);
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+        System.out.println(map.size());
     }
 
 }
