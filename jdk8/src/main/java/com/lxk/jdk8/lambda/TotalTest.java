@@ -22,6 +22,7 @@ public class TotalTest {
     private final List<BigDecimal> prices = Arrays.asList(
             new BigDecimal("10"), new BigDecimal("30"), new BigDecimal("17"),
             new BigDecimal("20"), new BigDecimal("15"), new BigDecimal("18"),
+            new BigDecimal("20"), new BigDecimal("15"), new BigDecimal("18"),
             new BigDecimal("45"), new BigDecimal("12"));
 
     private final List<String> friends = Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
@@ -495,6 +496,16 @@ public class TotalTest {
                 .filter(person -> person.getAge() > 20)
                 .forEach(person -> olderThan20.add(person));
         System.out.println("People older than 20: " + olderThan20);
+    }
+
+    @Test
+    public void testC() {
+        System.out.println(prices.size());
+        prices.stream().distinct().collect(Collectors.toList()).forEach(System.out::println);
+        long size = prices.stream().distinct().count();
+        System.out.println(size);
+
+        List<Integer> list = people.stream().map(Person::getAge).collect(Collectors.toList());
     }
 
 
