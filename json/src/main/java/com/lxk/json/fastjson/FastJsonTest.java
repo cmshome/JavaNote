@@ -57,6 +57,9 @@ public class FastJsonTest {
         System.out.println(map);
     }
 
+    /**
+     * json中key是 @type 的，fastjson会解析异常。
+     */
     @Test
     public void t() {
         String s = "{\"mapping\":{\"transRef\":{\"@type\":\"string\"}},\"start_at\":1610513218,\"stream\":\"5f968721303e482cf6dd344b\"}";
@@ -65,6 +68,9 @@ public class FastJsonTest {
         System.out.println(map.size());
     }
 
+    /**
+     * json中key是 @type 的，fastjson会解析异常。
+     */
     @Test
     public void ss() {
         String json = "{\"mapping\":{\"transRef\":{\"@type\":\"string\"}},\"start_at\":1610513218,\"stream\":\"5f968721303e482cf6dd344b\"}";
