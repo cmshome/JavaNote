@@ -31,7 +31,8 @@ public final class JsonUtils {
 
     /**
      * 将Json字符串信息转换成对应的Java对象
-     * StringEscapeUtils.unescapeJavaScript(json); 一个反斜杠好说，要是1个2个的，不是很好用的感觉。
+     * 1，StringEscapeUtils.unescapeJavaScript(json); 一个反斜杠好说，要是1个2个的，不是很好用的感觉。
+     * 2，fastjson在转换 "@type"为key的json的时候出异常
      *
      * @param json json字符串对象
      * @param c    对应的类型
