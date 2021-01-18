@@ -5,6 +5,7 @@
 |:----        |:-----|
 |ntpdate 1.cn.pool.ntp.org          |校正服务器时间同网络时间一致|
 |netstat -tunlp &#124; grep 8088    |查看端口被占用否|
+|sl                                 |本来要ls的，一不小sl了，就在页面上动态打印一个小火车从右边跑到左边，就完事儿了。|
 |top -c                             |shift + m 按照内存排序<br>shift + p  按照cpu排序<br>b + x 正在运行的和排序的那一列加黑<br>按键盘数字“1”，可监控每个逻辑CPU的状况<br>通过”shift + >”或”shift + <”可以向右或左改变排序列|
 |cd /proc/pid                       |然后ls -al 就看到exe和cwd，2个软连接指向运行关键|
 |ps aux                             |查看全部多个的|
