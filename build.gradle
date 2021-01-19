@@ -29,7 +29,10 @@ ext {
     lombokVersion = '1.18.8'
     junitVersion = '4.12'
     log4jVersion = '2.8.2'
+
     fastjsonVersion = '1.2.75'
+    gsonVersion = '2.8.6'
+    jacksonVersion = '2.12.1'
 }
 
 
