@@ -3,9 +3,11 @@ package com.lxk.json.fastjson;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.ParserConfig;
+import com.lxk.json.model.Cup;
 import com.lxk.tool.JsonUtils;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -77,4 +79,15 @@ public class FastJsonTest {
         JSONObject jsonObject = JSON.parseObject(json);
     }
 
+    /**
+     * json中key是 @type 的，fastjson会解析异常。这个对象的map里面的可以是 @type导致的异常。
+     */
+    @Test
+    public void parseArray() {
+        String json = Cup.getArrayJson();
+        List<Cup> list = JSON.parseArray(json, Cup.class);
+        list.forEach(cup -> {
+            System.out.println(cup.toString());
+        });
+    }
 }
