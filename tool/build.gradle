@@ -1,11 +1,6 @@
 group 'com.lxk.note'
 version '1.0-SNAPSHOT'
 
-ext {
-    dslJsonVersion = '1.9.3'
-    johnzonVersion = '1.1.7'
-    jmhVersion = '1.20'
-}
 
 dependencies {
     //common tools jar dependencies
