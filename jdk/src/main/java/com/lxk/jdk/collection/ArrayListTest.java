@@ -95,4 +95,12 @@ public class ArrayListTest {
         System.out.println(list2);
 
     }
+
+    @Test
+    public void sort() {
+        List<String> list = Lists.newArrayList("1","2","3","4","5","6");
+        Collections.reverse(list);
+        Collections.sort(list);
+        list.forEach(System.out::println);
+    }
 }
