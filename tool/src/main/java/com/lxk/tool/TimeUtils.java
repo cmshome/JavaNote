@@ -14,6 +14,8 @@ public class TimeUtils {
     private static final String YYYY_MM_DD_HH_MM_SS_SSS = "yyyy-MM-dd HH:mm:ss:SSS";
     private static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     private static final String EMPTY = "";
+    private static final long K = 1000L;
+    private static final int ZERO = 0;
     private static final DateTimeFormatter DATE_TIME_FORMATTER_SSS = DateTimeFormatter.ofPattern(YYYY_MM_DD_HH_MM_SS_SSS);
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(YYYY_MM_DD_HH_MM_SS);
     private static final ZoneId ZONE_ID = ZoneOffset.systemDefault();
@@ -34,7 +36,7 @@ public class TimeUtils {
      * @return 当前时间戳 秒
      */
     public static long nowS() {
-        return nowMs() / 1000;
+        return nowMs() / K;
     }
 
     /**
@@ -64,7 +66,7 @@ public class TimeUtils {
      */
     public static String formatS(long s) {
         try {
-            LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(s * 1000), ZONE_ID);
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(s * K), ZONE_ID);
             return DATE_TIME_FORMATTER.format(localDateTime);
         } catch (Exception ignore) {
         }
@@ -132,7 +134,7 @@ public class TimeUtils {
      * @return 传入时间置为整0点时间戳秒
      */
     public static Long dayStartSecond(LocalDateTime localDateTime) {
-        return localDateTime.withHour(0).withMinute(0).withSecond(0).withNano(0).atZone(ZONE_ID).toEpochSecond();
+        return localDateTime.withHour(ZERO).withMinute(ZERO).withSecond(ZERO).withNano(ZERO).atZone(ZONE_ID).toEpochSecond();
     }
 
     /**
