@@ -17,6 +17,7 @@ public final class JsonUtils {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final Gson GSON = new Gson();
 
+
     /**
      * 把Java对象转换成json字符串
      *
@@ -61,6 +62,45 @@ public final class JsonUtils {
     }
 
     /**
+     * 把json转成对应的list
+     *
+     * @param json json
+     * @param c    class
+     * @param <T>  T
+     * @return list<T>
+     */
+    public static <T> List<T> parseJsonToArrayObj(String json, Class<T> c) {
+        List<T> list;
+        list = fastjsonCastArray(json, c);
+        if (list != null) {
+            return list;
+        }
+
+        list = jacksonCastArray(json, c);
+        if (list != null) {
+            return list;
+        }
+
+        System.out.println("parseJsonToArrayObj error，json is  " + json);
+        return null;
+    }
+
+    /**
+     * 输出格式化的json字符串
+     */
+    public static <T> String parseObjToFormatJson(T object) {
+        return JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.PrettyFormat);
+    }
+
+    /**
+     * 不格式化Json数据
+     */
+    public static <T> String parseObjToNoFormatJson(T object) {
+        return JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect);
+    }
+
+
+    /**
      * fastjson在转换 "@type"为key的json的时候出异常
      */
     private static <T> T fastjsonCast(String json, Class<T> c) {
@@ -97,22 +137,6 @@ public final class JsonUtils {
         return null;
     }
 
-    public static <T> List<T> parseJsonToArrayObj(String json, Class<T> c) {
-        List<T> list;
-        list = fastjsonCastArray(json, c);
-        if (list != null) {
-            return list;
-        }
-
-        list = jacksonCastArray(json, c);
-        if (list != null) {
-            return list;
-        }
-
-        System.out.println("parseJsonToArrayObj error，json is  " + json);
-        return null;
-    }
-
     private static <T> List<T> fastjsonCastArray(String json, Class<T> c) {
         try {
             return JSON.parseArray(json, c);
@@ -122,7 +146,7 @@ public final class JsonUtils {
         return null;
     }
 
-    public static <T> List<T> jacksonCastArray(String json, Class<T> c) {
+    private static <T> List<T> jacksonCastArray(String json, Class<T> c) {
         try {
             return OBJECT_MAPPER.readValue(json, OBJECT_MAPPER.getTypeFactory().constructParametricType(List.class, c));
         } catch (Exception e) {
@@ -131,17 +155,4 @@ public final class JsonUtils {
         return null;
     }
 
-    /**
-     * 输出格式化的json字符串
-     */
-    public static <T> String parseObjToFormatJson(T object) {
-        return JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.PrettyFormat);
-    }
-
-    /**
-     * 不格式化Json数据
-     */
-    public static <T> String parseObjToNoFormatJson(T object) {
-        return JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect);
-    }
 }
