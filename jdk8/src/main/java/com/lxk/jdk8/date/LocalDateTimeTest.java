@@ -1,5 +1,6 @@
 package com.lxk.jdk8.date;
 
+import com.lxk.tool.TimeUtils;
 import org.junit.Test;
 
 import java.time.*;
@@ -19,9 +20,8 @@ public class LocalDateTimeTest {
 
     @Test
     public void format() {
-        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.now();
-        String format = sf.format(localDateTime);
+        String format = TimeUtils.format(localDateTime);
         System.out.println(format);
     }
 
@@ -40,14 +40,12 @@ public class LocalDateTimeTest {
      */
     @Test
     public void turnSecondsToData() {
-        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        ZoneId zoneId = ZoneOffset.systemDefault();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(System.currentTimeMillis() / 1000), zoneId);
+        LocalDateTime localDateTime = TimeUtils.castSecondsToLocalDateTime(TimeUtils.nowS());
         System.out.println(localDateTime.getDayOfMonth());
         LocalDateTime localDateTime1 = localDateTime.withDayOfMonth(11);
-        System.out.println(localDateTime1.format(sf));
-        System.out.println(localDateTime1.atZone(zoneId).toEpochSecond());
 
+        System.out.println(TimeUtils.format(localDateTime1));
+        System.out.println(TimeUtils.castLocalDateTimeToSeconds(localDateTime1));
     }
 
     /**
@@ -55,18 +53,17 @@ public class LocalDateTimeTest {
      */
     @Test
     public void secondToJava8Date() {
-        long second = System.currentTimeMillis() / 1000;
+        long second = TimeUtils.nowS();
         System.out.println(second);
-        ZoneId zoneId = ZoneOffset.systemDefault();
-        //之所以这么初始化，是因为根据传入的时间进行操作
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(second), zoneId);
-        LocalDateTime dateTime = localDateTime.plusDays(-1);
-        long second1 = dateTime.atZone(zoneId).toEpochSecond();
-        System.out.println(second1);
-        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        System.out.println(localDateTime.format(sf));
-        System.out.println(dateTime.format(sf));
+        LocalDateTime localDateTime = TimeUtils.castSecondsToLocalDateTime(second);
+        LocalDateTime dateTime = localDateTime.plusDays(-1);
+
+        long second1 = TimeUtils.castLocalDateTimeToSeconds(dateTime);
+        System.out.println(second1);
+
+        System.out.println(TimeUtils.format(localDateTime));
+        System.out.println(TimeUtils.format(dateTime));
 
     }
 
@@ -77,11 +74,11 @@ public class LocalDateTimeTest {
     public void localDateTimeTest() {
         System.out.println("-----------test java 8 LocalDateTime-----------");
         //当前时间，以秒为单位。
-        long epochSecond = System.currentTimeMillis() / 1000L;
+        long epochSecond = TimeUtils.nowS();
         //默认使用系统时区
         ZoneId zoneId = ZoneOffset.systemDefault();
         //之所以这么初始化，是因为根据传入的时间进行操作
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(epochSecond), zoneId);
+        LocalDateTime localDateTime = TimeUtils.castSecondsToLocalDateTime(epochSecond);
         //LocalDateTime.now();//也可以这么获得当前时间
         System.out.println("localDateTime 初始化值：" + localDateTime);
         System.out.println("getYear：" + localDateTime.getYear());
@@ -97,7 +94,7 @@ public class LocalDateTimeTest {
         /*
          * 获得传入时间的某一天的凌晨零分零秒的秒数
          */
-        long dayStart = localDateTime.withHour(0).withMinute(0).withSecond(0).atZone(zoneId).toEpochSecond();
+        long dayStart = TimeUtils.dayStartSecond(localDateTime);
         System.out.println("dayStart 时间戳，秒数：" + dayStart);
         /*
          * 获得传入时间的周一的凌晨零分零秒的秒数

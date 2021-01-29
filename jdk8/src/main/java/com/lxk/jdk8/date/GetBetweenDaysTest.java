@@ -1,6 +1,6 @@
 package com.lxk.jdk8.date;
 
-import com.lxk.tool.TimesUtils;
+import com.lxk.tool.TimeUtils;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -20,6 +20,6 @@ public class GetBetweenDaysTest {
         //阴历，腊月27早上出生🐣，28，29，30。距离过年三天
         LocalDate start = LocalDate.of(2018, 2, 12);
         LocalDate now = LocalDate.now();
-        System.out.println("儿子今天是 " + TimesUtils.getBetweenDay(start, now) + " 天啦。");
+        System.out.println("儿子今天是 " + TimeUtils.betweenDay(start, now) + " 天啦。");
     }
 }

@@ -11,7 +11,6 @@ import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
@@ -28,9 +27,6 @@ public final class Tools {
             SECONDS_IN_HOUR = SECONDS_IN_MINUTE * 60,
             SECONDS_IN_DAY = SECONDS_IN_HOUR * 24,
             DAYS_IN_WEEK = 7;
-    public static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"),
-            DATE_FORMATTER_MINUTE = new SimpleDateFormat("yyyy-MM-dd HH:mm"),
-            DATE_FORMATTER_DATE = new SimpleDateFormat("yyyy-MM-dd");
 
 
     private Tools() {
@@ -256,83 +252,6 @@ public final class Tools {
         return String.format("%1$tY-%1$tm-%1$td %1$tH-%1$tM-%1$tS", cal); // ramtamtam
     }
 
-
-    /**
-     * 获取当前时刻的整点分钟数的Timestamp
-     *
-     * @return
-     */
-    public static int getUTCTimestampByMinute() {
-        int ret = getUTCTimestamp();
-        ret -= ret % Tools.SECONDS_IN_MINUTE;
-        return ret;
-    }
-
-    /**
-     * 获取当前时间的整数分钟时间戳
-     *
-     * @return
-     */
-    public static int getUTCTimestampByMinute(int timestamp) {
-        return timestamp - timestamp % Tools.SECONDS_IN_MINUTE;
-    }
-
-    /**
-     * 获取当前时刻在当天的分钟数
-     *
-     * @return minute of day.
-     */
-    public static int getMinuteOfDay(Calendar cal) {
-        if (cal == null) {
-            cal = Calendar.getInstance();
-        }
-        return (int) (cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE));
-    }
-
-    /**
-     * 获取当前时刻在当前周的第几天
-     *
-     * @return
-     */
-    public static int getDayOfWeek() {
-        Calendar cal = Calendar.getInstance();
-        return (int) (cal.get(Calendar.DAY_OF_WEEK));
-    }
-
-    /**
-     * 获取当前时刻在当天的秒数
-     *
-     * @return
-     */
-    public static int getSecondsOfDay(Calendar cal) {
-        if (cal == null) {
-            cal = Calendar.getInstance();
-        }
-        return getMinuteOfDay(cal) * 60 + cal.get(Calendar.SECOND);
-    }
-
-    /**
-     * 获取时间戳的格式化字符串
-     *
-     * @param datetime
-     * @return
-     */
-    public static String getFormatedDateTime(long datetime) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(datetime * 1000);
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
-        String curTime = formater.format(cal.getTime());
-        return curTime;
-    }
-
-    /**
-     * 当前时间戳
-     *
-     * @return
-     */
-    public static int now() {
-        return getUTCTimestamp();
-    }
 
     public static String getMD5(String string) {
         MessageDigest messageDigest = null;

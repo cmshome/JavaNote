@@ -1,5 +1,6 @@
 package com.lxk.jdk8.date;
 
+import com.lxk.tool.TimeUtils;
 import org.junit.Test;
 
 import java.time.*;
@@ -17,12 +18,9 @@ public class DateTimeFormatterTest {
      */
     @Test
     public void format() {
-        ZoneId zoneId = ZoneOffset.systemDefault();
         long currentTimeMillis = System.currentTimeMillis();
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(currentTimeMillis), zoneId);
-        //LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(System.currentTimeMillis() / 1000), zoneId);
-        DateTimeFormatter sf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS");
-        System.out.println(sf.format(localDateTime));
+        String formatMs = TimeUtils.formatMs(currentTimeMillis);
+        System.out.println(formatMs);
         System.out.println(currentTimeMillis);
     }
 

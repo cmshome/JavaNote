@@ -1,7 +1,7 @@
 package com.lxk.jdk.format;
 
 
-import com.lxk.tool.TimesUtils;
+import com.lxk.tool.TimeUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -60,7 +60,7 @@ public class DateFormat {
 
     @Test
     public void noGroup() {
-        Long dayStartSecond = TimesUtils.getDayStartSecond();
+        Long dayStartSecond = TimeUtils.dayStartSecond();
         long nowDate = Calendar.getInstance().getTimeInMillis();
         //result.put("date", nowDate);//服务器时间 1478793600
         long minute = (nowDate / 1000 - dayStartSecond) / 60;
