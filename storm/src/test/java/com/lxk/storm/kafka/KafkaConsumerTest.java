@@ -23,7 +23,7 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.*;
  *
  * @author LiXuekai on 2020/7/20
  */
-public class ConsumerTest {
+public class KafkaConsumerTest {
 
     @Test
     @SuppressWarnings("unchecked")

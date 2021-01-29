@@ -22,7 +22,7 @@ import static org.apache.kafka.clients.producer.ProducerConfig.*;
  *
  * @author LiXuekai on 2020/7/20
  */
-public class ProducerTest {
+public class KafkaProducerTest {
     private boolean xml = false;
     private boolean all = true;
 
