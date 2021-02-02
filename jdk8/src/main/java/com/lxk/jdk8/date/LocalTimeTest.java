@@ -19,7 +19,7 @@ import java.util.concurrent.*;
 public class LocalTimeTest {
 
     public static void main(String[] args) {
-        ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("File-Config-Center-Monitor-Thread-Pool").build();
+        ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("File-Config-Center-Monitor-Thread-Pool-%d").build();
         ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(1, monitorThreadFactory, new ThreadPoolExecutor.AbortPolicy());
         monitorSchedule.scheduleWithFixedDelay(LocalTimeTest::monitorConfigFileChange, 0, 1, TimeUnit.MINUTES);
     }

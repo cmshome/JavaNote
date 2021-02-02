@@ -77,7 +77,7 @@ public class PoolTest {
      * 启动定时任务，监视pool的信息
      */
     private static void initScheduledExecutorService() {
-        ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("Monitor-Thread-Pool").build();
+        ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("Monitor-Thread-Pool-%d").build();
         ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(1, monitorThreadFactory, new ThreadPoolExecutor.AbortPolicy());
         monitorSchedule.scheduleWithFixedDelay(PoolTest::monitorSchedule, 0, 1, TimeUnit.SECONDS);
     }

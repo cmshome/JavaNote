@@ -42,10 +42,7 @@ public class HttpTest {
      * 在JVM销毁前执行的一个线程
      */
     private void initCloseEvent() {
-        ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(
-                1, new ThreadFactoryBuilder().setNameFormat(
-                "import-user-thread-pool").build(),
-                new ThreadPoolExecutor.AbortPolicy());
+        ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor( 1, new ThreadFactoryBuilder().setNameFormat( "import-user-thread-pool-%d").build(), new ThreadPoolExecutor.AbortPolicy());
         monitorSchedule.scheduleWithFixedDelay(this::importUerInfo, 0, 1, TimeUnit.HOURS);
 
         Runtime.getRuntime().addShutdownHook(new Thread("do-when-jvm-is-shut-down") {

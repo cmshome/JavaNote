@@ -41,13 +41,13 @@ public class MonitorService {
      *
      * @return scheduledExecutorService
      */
-    private static ScheduledExecutorService getScheduledExecutorService() {
+    public static ScheduledExecutorService getScheduledExecutorService() {
         if (scheduledExecutorService == null) {
             synchronized (MonitorService.class) {
                 if (scheduledExecutorService == null) {
                     System.out.println("init ScheduledThreadPool start...");
                     System.out.println("ScheduledThreadPool corePoolSize is " + corePoolSize);
-                    ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("MonitorServiceThreadPool").build();
+                    ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("MonitorServiceThreadPool-%d").build();
                     scheduledExecutorService = new ScheduledThreadPoolExecutor(corePoolSize, monitorThreadFactory, new ThreadPoolExecutor.AbortPolicy());
                     System.out.println("init ScheduledThreadPool success...");
                 }

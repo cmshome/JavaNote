@@ -60,7 +60,7 @@ public class Server extends AbstractVerticle {
             LOGGER.info("server get http request, path is " + path);
             switch (path) {
                 case PATH:
-                    ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("File-Config-Center-Monitor-Thread-Pool").build();
+                    ThreadFactory monitorThreadFactory = new ThreadFactoryBuilder().setNameFormat("File-Config-Center-Monitor-Thread-Pool-%d").build();
                     ScheduledExecutorService monitorSchedule = new ScheduledThreadPoolExecutor(1, monitorThreadFactory, new ThreadPoolExecutor.AbortPolicy());
                     monitorSchedule.scheduleWithFixedDelay(() -> writeData(websocket), 15, 15, TimeUnit.SECONDS);
                     break;
