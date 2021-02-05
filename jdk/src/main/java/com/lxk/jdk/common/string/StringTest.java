@@ -595,6 +595,31 @@ public class StringTest {
     }
 
     /**
+     * 对 . index of的时候，不需要转移符号。
+     * 对 . split   的时候，就需要转义符号。
+     */
+    @Test
+    public void index() {
+        String a = "trans_ref.ABC.A";
+        int i = a.indexOf(".");
+
+        String pre = a.substring(0, i);
+        String post = a.substring(i + 1);
+        String[] strings = new String[2];
+        strings[0] = pre;
+        strings[1] = post;
+        System.out.println(i);
+        System.out.println(Arrays.toString(a.split(".")));
+        System.out.println(Arrays.toString(a.split("\\.")));
+
+        System.out.println(pre);
+        System.out.println(post);
+
+        System.out.println(Arrays.toString(strings));
+
+    }
+
+    /**
      * 将字符串倒序
      */
     @Test
