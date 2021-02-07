@@ -11,7 +11,9 @@
 [我的csdn博客链接][CSDN]
 ```
 使用 vertx 框架做的微服务  
-主要是学习 vertx 的使用
+主要是学习 vertx 的使用  
+vertx 太low了  
+决定弃了。
 ```
 
 
