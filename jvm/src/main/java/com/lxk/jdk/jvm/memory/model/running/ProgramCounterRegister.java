@@ -1,6 +1,6 @@
-package com.lxk.jdk.jvm.memory.model;
+package com.lxk.jdk.jvm.memory.model.running;
 
-import com.lxk.jdk.jvm.memory.model.inteface.Unshared;
+import com.lxk.jdk.jvm.memory.inteface.Unshared;
 
 /**
  * 程序计数器

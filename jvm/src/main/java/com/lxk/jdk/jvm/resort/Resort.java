@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
  *
  * @author LiXuekai on 2020/6/11
  */
-public class Main {
+public class Resort {
 
     private static int x = 0, y = 0;
     private static int a = 0, b = 0;

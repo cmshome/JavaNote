@@ -1,6 +1,7 @@
 package com.lxk.jdk.jvm.memory.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.lxk.jdk.jvm.memory.model.running.*;
 import lombok.Data;
 
 /**
@@ -9,15 +10,7 @@ import lombok.Data;
  * @author LiXuekai on 2019/12/31
  */
 @Data
-public class JavaRunningDataArea {
-
-    public JavaRunningDataArea() {
-        this.programCounterRegister = new ProgramCounterRegister();
-        this.javaVirtualMachineStacks = new JavaVirtualMachineStacks();
-        this.nativeMethodStacks = new NativeMethodStacks();
-        this.heap = new JavaHeap();
-        this.methodArea = new MethodArea();
-    }
+public class RunningDataArea {
 
     /**
      * 程序计数器
@@ -29,7 +22,7 @@ public class JavaRunningDataArea {
      * Java 虚拟机栈
      */
     @JSONField(ordinal = 1)
-    private JavaVirtualMachineStacks javaVirtualMachineStacks;
+    private JVMStacks javaVirtualMachineStacks;
 
     /**
      * 本地方法栈
@@ -41,7 +34,7 @@ public class JavaRunningDataArea {
      * Java 堆 内存
      */
     @JSONField(ordinal = 3)
-    private JavaHeap heap;
+    private Heap heap;
 
     /**
      * 方法区 (从jdk1.8开始，将不再有这个区间)
@@ -49,4 +42,12 @@ public class JavaRunningDataArea {
     @JSONField(ordinal = 4)
     private MethodArea methodArea;
 
+
+    public RunningDataArea() {
+        this.programCounterRegister = new ProgramCounterRegister();
+        this.javaVirtualMachineStacks = new JVMStacks();
+        this.nativeMethodStacks = new NativeMethodStacks();
+        this.heap = new Heap();
+        this.methodArea = new MethodArea();
+    }
 }

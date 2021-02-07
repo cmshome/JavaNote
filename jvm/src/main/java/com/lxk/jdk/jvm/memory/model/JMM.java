@@ -4,24 +4,17 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
- * Java 内存分区
+ * Java 内存分区 JavaMemoryModel
  *
  * @author LiXuekai on 2019/12/31
  */
 @Data
-public class JavaMemoryModel {
-
-    public JavaMemoryModel() {
-        this.runningDataArea = new JavaRunningDataArea();
-        this.directMemory = new DirectMemory();
-        this.metaSpace = new MetaSpace();
-    }
-
+public class JMM {
     /**
      * 运行时数据区域
      */
     @JSONField()
-    private JavaRunningDataArea runningDataArea;
+    private RunningDataArea runningDataArea;
 
     /**
      * 直接内存
@@ -34,4 +27,11 @@ public class JavaMemoryModel {
      */
     @JSONField(ordinal = 2)
     private MetaSpace metaSpace;
+
+
+    public JMM() {
+        this.runningDataArea = new RunningDataArea();
+        this.directMemory = new DirectMemory();
+        this.metaSpace = new MetaSpace();
+    }
 }

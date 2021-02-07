@@ -1,4 +1,4 @@
-package com.lxk.jdk.jvm.memory.model.inteface;
+package com.lxk.jdk.jvm.memory.inteface;
 
 /**
  * 栈溢出

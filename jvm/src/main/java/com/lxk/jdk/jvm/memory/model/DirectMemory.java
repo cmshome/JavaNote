@@ -1,7 +1,7 @@
 package com.lxk.jdk.jvm.memory.model;
 
-import com.lxk.jdk.jvm.memory.model.inteface.OutOfMemory;
-import com.lxk.jdk.jvm.memory.model.inteface.Shared;
+import com.lxk.jdk.jvm.memory.inteface.OutOfMemory;
+import com.lxk.jdk.jvm.memory.inteface.Shared;
 
 /**
  * 直接内存
