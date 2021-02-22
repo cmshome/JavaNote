@@ -22,7 +22,7 @@
 |scp license.dat 192.168.1.191:/home/lxk <br>scp -r root@ip:/home/lxk/|不同服务器之间复制东西<br>复制个文件夹及其所有子 命令中间  -r  就OK了|
 |crontab -e                         |设置定时任务，执行指定的脚本<br>然后使用那个表达式就可以执行了，比如每分钟一次    */1 * * * * sh /home/a.sh|
 |sed -n '1,100p' file1  >> newfile  |按照行数截取文件到新的文件去|
-|sed -i "s/old/new/g" file          |替换文件中的字符的命令<br>这儿不能直接复制，引号得改成英文的<br>例如：sed -i "s/old_ip/new_ip/g" *.sh|
+|sed -i "s/old/new/g" file          |批量替换文件中的字符的命令<br>这儿不能直接复制，引号得改成英文的<br>例如：sed -i "s/old_ip/new_ip/g" *.sh|
 |tar zcvf lxk.zip lxk               |压缩文件夹lxk，生成lxk.zip|
 |tar xzvf lxk.zip                   |解压文件|
 |vi 之 ^                            |移动到光标所在行的"行首"|
