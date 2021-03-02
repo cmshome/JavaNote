@@ -3,10 +3,13 @@
  
 |命令         |含义|
 |:----        |:-----|
+|top -Hp pid                        |可以查看某个进程的线程信息<br>-H 显示线程信息，-p指定pid|
+|printf "%x\n" 5010 5092 5093       |将 PID 转为 16进制|
+|grep 关键词 -A2 -B2 fileName        |在fileName文件中过滤关键词，并展示关键词所在行的 after 2行和 before 2行，直接-5,就是展示关键词所在行的前后n行|
+|jstack pid &#124; grep '0x13e4' -A10 |过滤程序的堆栈信息， 0x13e4 是16进制的线程id|
+|top -c                             |shift + m 按照内存排序<br>shift + p  按照cpu排序<br>b + x 正在运行的和排序的那一列加黑<br>按键盘数字“1”，可监控每个逻辑CPU的状况<br>通过”shift + >”或”shift + <”可以向右或左改变排序列|
 |ntpdate 1.cn.pool.ntp.org          |校正服务器时间同网络时间一致|
 |netstat -tunlp &#124; grep 8088    |查看端口被占用否|
-|sl                                 |本来要ls的，一不小sl了，就在页面上动态打印一个小火车从右边跑到左边，就完事儿了。|
-|top -c                             |shift + m 按照内存排序<br>shift + p  按照cpu排序<br>b + x 正在运行的和排序的那一列加黑<br>按键盘数字“1”，可监控每个逻辑CPU的状况<br>通过”shift + >”或”shift + <”可以向右或左改变排序列|
 |cd /proc/pid                       |然后ls -al 就看到exe和cwd，2个软连接指向运行关键|
 |ps aux                             |查看全部多个的|
 |ps aux &#124; grep -E 'kthreadd &#124; migration/0' |查找多个字符串的匹配（grep -E相当于egrep）|
@@ -71,6 +74,7 @@
 |date -d @1606099440                |时间戳转日期|
 |ls -l  &#124;  wc -l<br> ls -l &#124; grep “^-” &#124; wc -l              |统计文件个数|
 |shift + g                          |命令行下，直接跳转到文件的末尾|
+|sl                                 |本来要ls的，一不小sl了，就在页面上动态打印一个小火车从右边跑到左边，就完事儿了。|
 
 
 - [link 2 github][0]  
