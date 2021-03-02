@@ -24,8 +24,6 @@
 |export JAVA_HOME=/usr/java/jdk1.8.0_131|设置环境变量|
 |scp license.dat 192.168.1.191:/home/lxk <br>scp -r root@ip:/home/lxk/|不同服务器之间复制东西<br>复制个文件夹及其所有子 命令中间  -r  就OK了|
 |crontab -e                         |设置定时任务，执行指定的脚本<br>然后使用那个表达式就可以执行了，比如每分钟一次    */1 * * * * sh /home/a.sh|
-|sed -n '1,100p' file1  >> newfile  |按照行数截取文件到新的文件去|
-|sed -i "s/old/new/g" file          |批量替换文件中的字符的命令<br>这儿不能直接复制，引号得改成英文的<br>例如：sed -i "s/old_ip/new_ip/g" *.sh|
 |tar zcvf lxk.zip lxk               |压缩文件夹lxk，生成lxk.zip|
 |tar xzvf lxk.zip                   |解压文件|
 |vi 之 ^                            |移动到光标所在行的"行首"|
@@ -64,6 +62,9 @@
 |mkdir -p /home/lxk/test            |直接创建目录，即使父目录不存在|
 |mkdir -p /home/lxk2/test1{1,2,3}   |一下子创建3个目录出来|
 |tail -20f instance.log             |动态看最后n行|
+|head -n instance.log               |看最开始的n行|
+|sed -n '1,100p' file1  >> newfile  |从第几行到第几行的信息，输出到新文件去|
+|sed -i "s/old/new/g" file          |批量替换文件中的字符的命令<br>这儿不能直接复制，引号得改成英文的<br>例如：sed -i "s/old_ip/new_ip/g" *.sh|
 |du -sh dir                         |看某个文件的大小|
 |df -h                              |查看整个系统的存储使用情况|
 |free -g                            |查看系统的内存使用情况|
