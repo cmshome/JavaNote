@@ -96,6 +96,7 @@
 |%MEM           |进程使用的物理内存百分比|
 |TIME+          |进程使用的CPU时间总计，单位1/100秒|
 |COMMAND        |进程名称（命令名/命令行）|
+|top命令详解链接 |[top命令详解链接][2]|
 
 
 - [link 2 github][0]  
@@ -104,3 +105,4 @@
 *******************
 [0]: https://github.com/cmshome/JavaNote/blob/master/md/src/main/java/com/lxk/md/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md
 [1]: https://lixuekai.blog.csdn.net/article/details/112243730
+[2]: https://lixuekai.blog.csdn.net/article/details/105044501
